@@ -8,6 +8,7 @@
 		[convenzione sui nomi nel piccolo manuale pubblicato dal professore]
 
 2. Creare schema del progetto con Mysql Workbench (o simili) utilizzando il seguente comando:
+	
 	CREATE SCHEMA `The_Artist_Room`;
 
 	2.1 Creare un seeder con il comando 
@@ -55,6 +56,13 @@
 
 		SELECT * FROM the_artist_room.users;
 
+3. Creazione modello con migrazione e controllo per prenotazione con il seguente comando:
+
+	php artisan make:model Booking -m -c --resource
+
+e poi modificare opportunamente il seguente file con gli attributi rilevanti:
+
+	/Users/solomontaiwo/Documents/The-Artist-Room/database/migrations/2023_12_24_135104_create_bookings_table.php
 
 
 
@@ -64,9 +72,9 @@
 
 
 Roadmap: 
-- inizializzare l’applicazione seguendo il manuale laravel ---> fatto
-- gestione utenti con seed iniziale ---> fatto
-- gestione prenotazioni con CRUD (Create, Read, Update, Delete). Occorre:
-	1. Creare il modello (con migrazione), 
-	2. Creare il controllo (completo di tutte le azioni)
-	3. Creare le view necessarie
+1. inizializzare l’applicazione seguendo il manuale laravel ---> fatto
+2. gestione utenti con seed iniziale ---> fatto
+3. gestione prenotazioni con CRUD (Create, Read, Update, Delete). Occorre:
+	a. Creare il modello (con migrazione), 
+	b. Creare il controllo (completo di tutte le azioni)
+	c. Creare le view necessarie
