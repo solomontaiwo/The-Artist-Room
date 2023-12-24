@@ -65,5 +65,8 @@
 
 Roadmap: 
 - inizializzare l’applicazione seguendo il manuale laravel ---> fatto
-- gestione utenti
-- gestione prenotazioni
+- gestione utenti con seed iniziale ---> fatto
+- gestione prenotazioni con CRUD (Create, Read, Update, Delete). Occorre:
+	1. Creare il modello (con migrazione), 
+	2. Creare il controllo (completo di tutte le azioni)
+	3. Creare le view necessarie
