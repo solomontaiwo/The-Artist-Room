@@ -1,4 +1,5 @@
 1. Inizializzare l'applicazione seguendo il manuale laravel e creare repository su github --> fatto 
+	
 	1.1. Creare base dati con relazioni e schema che ci serviranno:
 		STANZA con attributi DIMENSIONI, COSTO, DISPONIBILITÀ, ..., 
 		UTENTE con attributi CORSO DI LAUREA, ..., 
@@ -9,44 +10,55 @@
 2. Creare schema del progetto con Mysql Workbench (o simili) utilizzando il seguente comando:
 	CREATE SCHEMA `The_Artist_Room`;
 
-	2.1 Creare un seeder
-	DB::table('users')->insert([[
-            'name'          => 'Solomon',
-            'surname'       => 'Taiwo',
-            'email'         => 'solomontaiwo@theartistroom.com',
-            'password'      => bcrypt('password'),
-            'updated_at'    => date('Y-m-d h:i:s'),
-            'created_at'    => date('Y-m-d h:i:s')
-        ], [
-            'name'          => 'Giorgia',
-            'surname'       => 'Pirelli',
-            'email'         => 'giorgiapirelli@theartistroom.com',
-            'password'      => bcrypt('password'),
-            'updated_at'    => date('Y-m-d h:i:s'),
-            'created_at'    => date('Y-m-d h:i:s')
-        ], [
-            'name'          => 'Luca',
-            'surname'       => 'Gaudenzi',
-            'email'         => 'lucagaudenzi@theartistroom.com',
-            'password'      => bcrypt('password'),
-            'updated_at'    => date('Y-m-d h:i:s'),
-            'created_at'    => date('Y-m-d h:i:s')
-        ], [
-            'name'          => 'Gaia',
-            'surname'       => 'Marzola',
-            'email'         => 'gaiamarzola@theartistroom.com',
-            'password'      => bcrypt('password'),
-            'updated_at'    => date('Y-m-d h:i:s'),
-            'created_at'    => date('Y-m-d h:i:s')
-        ]]);
-		php artisan make:seeder <nome_model_singolare>Seeder
+	2.1 Creare un seeder con il comando 
+
+		php artisan make:seeder UsersTableSeeder
+	
+	e inserire la seguente tabella nella funzione run() del file appena creato in app-database-seeders-UsersTableSeeder.php: 
+
+		DB::table('users')->insert([[
+				'name'          => 'Solomon',
+				'surname'       => 'Taiwo',
+				'email'         => 'solomontaiwo@theartistroom.com',
+				'password'      => bcrypt('password'),
+				'updated_at'    => date('Y-m-d h:i:s'),
+				'created_at'    => date('Y-m-d h:i:s')
+			], [
+				'name'          => 'Giorgia',
+				'surname'       => 'Pirelli',
+				'email'         => 'giorgiapirelli@theartistroom.com',
+				'password'      => bcrypt('password'),
+				'updated_at'    => date('Y-m-d h:i:s'),
+				'created_at'    => date('Y-m-d h:i:s')
+			], [
+				'name'          => 'Luca',
+				'surname'       => 'Gaudenzi',
+				'email'         => 'lucagaudenzi@theartistroom.com',
+				'password'      => bcrypt('password'),
+				'updated_at'    => date('Y-m-d h:i:s'),
+				'created_at'    => date('Y-m-d h:i:s')
+			], [
+				'name'          => 'Gaia',
+				'surname'       => 'Marzola',
+				'email'         => 'gaiamarzola@theartistroom.com',
+				'password'      => bcrypt('password'),
+				'updated_at'    => date('Y-m-d h:i:s'),
+				'created_at'    => date('Y-m-d h:i:s')
+			]]);
+	
+	Una volta modificato il suddetto file, usare i seguenti comandi per creare la tabella:
+
+		composer dump-autoload   
+		php artisan db:seed --class=UsersTableSeeder
+
+	Per vedere se i dati sono stati correttamente inseriti nel database, usare il seguente comando in Mysql Workbench:
+
+		SELECT * FROM the_artist_room.users;
 
 
-[Ricordarsi di cambiare il file .env inserendo dati corretti in 
-	DB_DATABASE=nome_assegnato_a_database
-	DB_USERNAME=username
-	DB_PASSWORD=password
-]
+
+
+
 
 
 
