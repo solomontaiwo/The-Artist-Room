@@ -1,0 +1,57 @@
+1. Inizializzare l'applicazione seguendo il manuale laravel e creare repository su github --> fatto 
+	1.1. Creare base dati con relazioni e schema che ci serviranno:
+		STANZA con attributi DIMENSIONI, COSTO, DISPONIBILITÀ, ..., 
+		UTENTE con attributi CORSO DI LAUREA, ..., 
+		PRENOTAZIONE con attributi DATA PRENOTAZIONE, TEMPO PRENOTAZIONE, ...,
+		... 
+		[convenzione sui nomi nel piccolo manuale pubblicato dal professore]
+
+2. Creare schema del progetto con Mysql Workbench (o simili) utilizzando il seguente comando:
+	CREATE SCHEMA `The_Artist_Room`;
+
+	2.1 Creare un seeder
+	DB::table('users')->insert([[
+            'name'          => 'Solomon',
+            'surname'       => 'Taiwo',
+            'email'         => 'solomontaiwo@theartistroom.com',
+            'password'      => bcrypt('password'),
+            'updated_at'    => date('Y-m-d h:i:s'),
+            'created_at'    => date('Y-m-d h:i:s')
+        ], [
+            'name'          => 'Giorgia',
+            'surname'       => 'Pirelli',
+            'email'         => 'giorgiapirelli@theartistroom.com',
+            'password'      => bcrypt('password'),
+            'updated_at'    => date('Y-m-d h:i:s'),
+            'created_at'    => date('Y-m-d h:i:s')
+        ], [
+            'name'          => 'Luca',
+            'surname'       => 'Gaudenzi',
+            'email'         => 'lucagaudenzi@theartistroom.com',
+            'password'      => bcrypt('password'),
+            'updated_at'    => date('Y-m-d h:i:s'),
+            'created_at'    => date('Y-m-d h:i:s')
+        ], [
+            'name'          => 'Gaia',
+            'surname'       => 'Marzola',
+            'email'         => 'gaiamarzola@theartistroom.com',
+            'password'      => bcrypt('password'),
+            'updated_at'    => date('Y-m-d h:i:s'),
+            'created_at'    => date('Y-m-d h:i:s')
+        ]]);
+		php artisan make:seeder <nome_model_singolare>Seeder
+
+
+[Ricordarsi di cambiare il file .env inserendo dati corretti in 
+	DB_DATABASE=nome_assegnato_a_database
+	DB_USERNAME=username
+	DB_PASSWORD=password
+]
+
+
+
+
+Roadmap: 
+- inizializzare l’applicazione seguendo il manuale laravel ---> fatto
+- gestione utenti
+- gestione prenotazioni
