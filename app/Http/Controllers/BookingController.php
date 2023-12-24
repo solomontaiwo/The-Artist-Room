@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class BookingController extends Controller
 {
@@ -12,7 +13,7 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        return view('bookings.index');
     }
 
     /**
@@ -20,7 +21,8 @@ class BookingController extends Controller
      */
     public function create()
     {
-        //
+       // $pren = Room::all();
+        return view('bookings.create');
     }
 
     /**
@@ -28,7 +30,13 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        Log::info($input);
+
+        Booking::create($input);
+
+        return redirect('/booking');
     }
 
     /**

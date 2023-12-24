@@ -64,6 +64,22 @@ e poi modificare opportunamente il seguente file con gli attributi rilevanti:
 
 	/Users/solomontaiwo/Documents/The-Artist-Room/database/migrations/2023_12_24_135104_create_bookings_table.php
 
+Modifcare il routing in web.php
+
+	/Users/solomontaiwo/Documents/The-Artist-Room/routes/web.php
+
+affinchè la pagina di home sia quella delle prenotazioni (o un'altra a scelta). 
+A tal proposito, occorre aggiungere nel Controller.php interessato (es. 'BookingsController.php' 
+in app/Http/Controllers) la seguente linea nella funzione index() per poter visualizzare 
+la pagina desiderata:
+
+	return view('bookings.index');
+
+'bookings.index' (nome del file 'index.blade.php') è stato creato e messo nella 
+cartella resources/views/bookings
+
+
+
 
 
 
