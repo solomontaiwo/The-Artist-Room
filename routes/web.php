@@ -14,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
+
+Default redirection to Laravel homepage
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+*/
+
 
 Route::get('/', function () {
     return redirect('/home');
@@ -24,11 +35,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout'); // aggiunto per comodità
-
-
-// Route::resource('booking', App\Http\Controllers\BookingController::class); // Creare tutte le rotte per il CRUD di una risorsa
-Route::get('/booking/{booking}/destroy', [App\Http\Controllers\BookingController::class, 'destroy']); // Creare tutte le rotte per il CRUD di una risorsa
-
 
 // Make sure that the user is authenticated when accessing the bookings page
 Route::middleware(['auth'])->group(function () {
