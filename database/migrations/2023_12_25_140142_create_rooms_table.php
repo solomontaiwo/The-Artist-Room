@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->string('address');
             $table->integer('size');
-            $table->integer('available_seats'); // posti disponibili, valore decrementato ad ogni prenotazione
+            $table->integer('seats'); // posti disponibili, valore decrementato ad ogni prenotazione
             $table->timestamps();
         });
     }

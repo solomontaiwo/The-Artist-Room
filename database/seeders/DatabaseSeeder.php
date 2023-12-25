@@ -22,8 +22,9 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            UsersTableSeeder::class,
             AdminSeeder::class,
+            UsersTableSeeder::class,
+            RoomsTableSeeder::class
         ]);
     }
 }

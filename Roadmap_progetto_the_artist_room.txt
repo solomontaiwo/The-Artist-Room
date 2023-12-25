@@ -1,9 +1,9 @@
 1. Inizializzare l'applicazione seguendo il manuale laravel e creare repository su github --> fatto 
 	
 	1.1. Creare base dati con relazioni e schema che ci serviranno:
-		STANZA con attributi DIMENSIONI, COSTO, DISPONIBILITÀ, ..., 
-		UTENTE con attributi CORSO DI LAUREA, ..., 
-		PRENOTAZIONE con attributi DATA PRENOTAZIONE, TEMPO PRENOTAZIONE, ...,
+		ROOM con attributi DIMENSIONI, COSTO, DISPONIBILITÀ, ..., 
+		USER con attributi CORSO DI LAUREA, ..., 
+		BOOKING con attributi DATA PRENOTAZIONE, TEMPO PRENOTAZIONE, ...,
 		... 
 		[convenzione sui nomi nel piccolo manuale pubblicato dal professore]
 
@@ -11,62 +11,157 @@
 	
 	CREATE SCHEMA `The_Artist_Room`;
 
-	2.1 Creare un seeder con il comando 
+	2.1 Creare seeder per le tabelle admin, users e rooms con i seguenti comandi: 
+
+		php artisan make:seeder AdminSeeder
+		(^ potrebbe già esistere)
 
 		php artisan make:seeder UsersTableSeeder
+		
+		php artisan make:seeder RoomsTableSeeder
 	
-	e inserire la seguente tabella nella funzione run() del file appena creato in app-database-seeders-UsersTableSeeder.php: 
+	e inserire i seguenti dati nella funzione run() dei vari file creati in app/database/seeders/*.php: 
+
+		// ADMINS
+
+		User::create([
+            'name'          => 'Solomon',
+            'surname'       => 'Taiwo',
+            'email'         => 'solomontaiwo@theartistroom.com',
+            'password'      => bcrypt('password'),
+            'updated_at'    => date('Y-m-d h:i:s'),
+            'created_at'    => date('Y-m-d h:i:s'),
+            'is_admin'      => true,
+        ]);
+
+        User::create([
+            'name'          => 'Gaia',
+            'surname'       => 'Marzola',
+            'email'         => 'gaiamarzola@theartistroom.com',
+            'password'      => bcrypt('password'),
+            'updated_at'    => date('Y-m-d h:i:s'),
+            'created_at'    => date('Y-m-d h:i:s'),
+            'is_admin'      => true,
+        ]);
+
+        User::create([
+            'name'          => 'Giorgia',
+            'surname'       => 'Pirelli',
+            'email'         => 'giorgiapirelli@theartistroom.com',
+            'password'      => bcrypt('password'),
+            'updated_at'    => date('Y-m-d h:i:s'),
+            'created_at'    => date('Y-m-d h:i:s'),
+            'is_admin'      => true,
+        ]);
+
+        User::create([
+            'name'          => 'Luca',
+            'surname'       => 'Gaudenzi',
+            'email'         => 'lucagaudenzi@theartistroom.com',
+            'password'      => bcrypt('password'),
+            'updated_at'    => date('Y-m-d h:i:s'),
+            'created_at'    => date('Y-m-d h:i:s'),
+            'is_admin'      => true,
+        ]);
+
+		// USERS
 
 		DB::table('users')->insert([[
-				'name'          => 'Solomon',
-				'surname'       => 'Taiwo',
-				'email'         => 'solomontaiwo@theartistroom.com',
-				'password'      => bcrypt('password'),
-				'updated_at'    => date('Y-m-d h:i:s'),
-				'created_at'    => date('Y-m-d h:i:s')
-			], [
-				'name'          => 'Giorgia',
-				'surname'       => 'Pirelli',
-				'email'         => 'giorgiapirelli@theartistroom.com',
-				'password'      => bcrypt('password'),
-				'updated_at'    => date('Y-m-d h:i:s'),
-				'created_at'    => date('Y-m-d h:i:s')
-			], [
-				'name'          => 'Luca',
-				'surname'       => 'Gaudenzi',
-				'email'         => 'lucagaudenzi@theartistroom.com',
-				'password'      => bcrypt('password'),
-				'updated_at'    => date('Y-m-d h:i:s'),
-				'created_at'    => date('Y-m-d h:i:s')
-			], [
-				'name'          => 'Gaia',
-				'surname'       => 'Marzola',
-				'email'         => 'gaiamarzola@theartistroom.com',
-				'password'      => bcrypt('password'),
-				'updated_at'    => date('Y-m-d h:i:s'),
-				'created_at'    => date('Y-m-d h:i:s')
-			]]);
+            'name'          => 'Pino',
+            'surname'       => 'Pinoli',
+            'email'         => 'pinopinoli@theartistroom.com',
+            'password'      => bcrypt('password'),
+            'updated_at'    => date('Y-m-d h:i:s'),
+            'created_at'    => date('Y-m-d h:i:s'),
+        ], [
+            'name'          => 'Matteo',
+            'surname'       => 'Solo',
+            'email'         => 'matteosolo@theartistroom.com',
+            'password'      => bcrypt('password'),
+            'updated_at'    => date('Y-m-d h:i:s'),
+            'created_at'    => date('Y-m-d h:i:s'),
+        ], [
+            'name'          => 'Harry',
+            'surname'       => 'Potter',
+            'email'         => 'harrypotter@theartistroom.com',
+            'password'      => bcrypt('password'),
+            'updated_at'    => date('Y-m-d h:i:s'),
+            'created_at'    => date('Y-m-d h:i:s'),
+        ], [
+            'name'          => 'Ryu',
+            'surname'       => 'Hayabusa',
+            'email'         => 'ryuhayabusa@theartistroom.com',
+            'password'      => bcrypt('password'),
+            'updated_at'    => date('Y-m-d h:i:s'),
+            'created_at'    => date('Y-m-d h:i:s'),
+        ]]);
+
+		// ROOMS
+
+		DB::table('rooms')->insert([[
+            'name'          => 'Aula Pirelloni',
+            'description'   => 'Breve descrizione aula Pirelloni',
+            'address'       => 'Via Dei Peracottari, 15',
+            'size'          => 100, // metri quadri
+            'seats'         => 50,
+            'updated_at'    => date('Y-m-d h:i:s'),
+            'created_at'    => date('Y-m-d h:i:s')
+        ], [
+            'name'          => 'Aula Gaudemagna',
+            'description'   => 'Breve descrizione aula Gaudemagna',
+            'address'       => 'Via Frassina, 51',
+            'size'          => 20, // metri quadri
+            'seats'         => 50,
+            'updated_at'    => date('Y-m-d h:i:s'),
+            'created_at'    => date('Y-m-d h:i:s')
+        ], [
+            'name'          => 'Aula Taiwani',
+            'description'   => 'Breve descrizione aula Taiwani',
+            'address'       => 'Via dei Marnoni, 2',
+            'size'          => 150, // metri quadri
+            'seats'         => 50,
+            'updated_at'    => date('Y-m-d h:i:s'),
+            'created_at'    => date('Y-m-d h:i:s')
+        ], [
+            'name'          => 'Aula Marzoletti',
+            'description'   => 'Breve descrizione aula Marzoletti',
+            'address'       => 'Via Edmondo De Amicis, 66',
+            'size'          => 150, // metri quadri
+            'seats'         => 50,
+            'updated_at'    => date('Y-m-d h:i:s'),
+            'created_at'    => date('Y-m-d h:i:s')
+        ]]);
 	
-	Una volta modificato il suddetto file, usare i seguenti comandi per creare la tabella:
+	Una volta modificati i file, usare i seguenti comandi per creare le tabelle e popolarle:
 
 		composer dump-autoload   
-		php artisan db:seed --class=UsersTableSeeder
+		php artisan db:seed
+		[ Comando per singoli seed, non tutti: php artisan db:seed --class=UsersTableSeeder ]
 
 	Per vedere se i dati sono stati correttamente inseriti nel database, usare il seguente comando in Mysql Workbench:
 
+		SELECT * FROM the_artist_room.rooms;
 		SELECT * FROM the_artist_room.users;
 
-3. Creazione modello con migrazione e controllo per prenotazione con il seguente comando:
+	[Usare il seguente comando per pulire e ricreare le tabelle:
+		php artisan migrate:fresh
+	]
 
+3. Creazione modelli con migrazione e controllo per utenti, stanze e prenotazioni con il seguente comando:
+
+	php artisan make:model User -m -c --resource
+	php artisan make:model Room -m -c --resource
 	php artisan make:model Booking -m -c --resource
 
-e poi modificare opportunamente il seguente file con gli attributi rilevanti:
+e poi modificare opportunamente i seguenti file appena creati con gli attributi rilevanti:
 
-	/Users/solomontaiwo/Documents/The-Artist-Room/database/migrations/2023_12_24_135104_create_bookings_table.php
+	/database/migrations/*_create_bookings_table.php
+	/database/migrations/*_create_rooms_table.php
+	/database/migrations/*_create_users_table.php
 
-Modifcare il routing in web.php
+Modifcare poi il routing in web.php
 
-	/Users/solomontaiwo/Documents/The-Artist-Room/routes/web.php
+	/routes/web.php
 
 affinchè la pagina di home sia quella delle prenotazioni (o un'altra a scelta). 
 A tal proposito, occorre aggiungere nel Controller.php interessato (es. 'BookingsController.php' 
@@ -74,10 +169,6 @@ in app/Http/Controllers) la seguente linea nella funzione index() per poter visu
 la pagina desiderata:
 
 	return view('bookings.index');
-
-'bookings.index' (nome del file 'index.blade.php') è stato creato e messo nella 
-cartella resources/views/bookings
-
 
 
 

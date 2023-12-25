@@ -9,15 +9,16 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('surname');
+            $table->bigInteger('user_id')->unsigned();
+            $table->string('room');
             $table->date('date');
             $table->time('time');
-            $table->number('people');            
+            $table->integer('reservation time');
+            $table->integer('people');            
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
