@@ -10,7 +10,7 @@
     @else
         <ul>
             @foreach($bookings as $booking)
-                <li>{{ $booking->name }} - {{ $booking->date }} - {{ $booking->other_booking_details }}</li>
+                <li>{{ $booking->name }} - {{ $booking->date }}</li>
             @endforeach
         </ul>
     @endif
