@@ -6,23 +6,16 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up()
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
-            $table->string('room');
-            $table->date('date');
-            $table->time('time');
-            $table->integer('reservation time');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('room_id')->constrained(); 
+            $table->date('reservation_date');
+            $table->time('reservation_time');
             $table->integer('people');            
-            $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            
+            $table->timestamps();            
         });
     }
 

@@ -12,7 +12,7 @@ class Room extends Model
         'description', 
         'address',
         'size',
-        'seats'
+        'available_seats'
     ];
 
     public static function create(array $data)
@@ -22,6 +22,12 @@ class Room extends Model
             'description' => $data['description'],
             'address' => $data['address'],
             'size' => $data['size'],
+            'available_seats' => $data['available_seats']
         ]);
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
     }
 }

@@ -40,7 +40,7 @@ class RoomController extends Controller
             'description' => 'required|string',
             'address' => 'required|string',
             'size' => 'required|integer',
-            'seats' => 'required|integer',
+            'available_seats' => 'required|integer',
         ]);
 
         $data = [
@@ -48,7 +48,7 @@ class RoomController extends Controller
             'description' => $request->input('description'),
             'address' => $request->input('address'),
             'size' => $request->input('size'),
-            'seats' => $request->input('seats'),
+            'available_seats' => $request->input('seats'),
         ];
 
         $newRoom = Room::create($data);
