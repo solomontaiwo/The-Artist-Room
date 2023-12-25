@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,12 +32,14 @@ Route::get('/booking/{booking}/destroy', [App\Http\Controllers\BookingController
 
 // Make sure that the user is authenticated when accessing the bookings page
 Route::middleware(['auth'])->group(function () {
-    Route::resource('booking', App\Http\Controllers\BookingController::class);
+    Route::resource('bookings', App\Http\Controllers\BookingController::class);
+    Route::resource('rooms', App\Http\Controllers\RoomController::class);
+
 });
-/*
-Route::get('/rooms', 'UserController@viewAvailableRooms')->name('view.rooms');
-Route::post('/booking/{roomId}', 'ArtistaController@bookRoom')->name('booking.room');
-*/
+
+// Define the "Chi Siamo" page route
+Route::resource('who-are-we', App\Http\Controllers\WhoAreWeController::class);
+
 
 /*
 

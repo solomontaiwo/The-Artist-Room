@@ -79,6 +79,10 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <aside>
+            @include('navigation')
+        </aside>
     </div>
 </body>
 </html>
