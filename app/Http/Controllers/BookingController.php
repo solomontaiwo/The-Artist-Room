@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -28,8 +29,9 @@ class BookingController extends Controller
      */
     public function create()
     {
-       // $pren = Room::all();
-        return view('bookings.create');
+       $rooms = Room::all();
+
+        return view('bookings.create', compact('rooms'));
     }
 
     /**

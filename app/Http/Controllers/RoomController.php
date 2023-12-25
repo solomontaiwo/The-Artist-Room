@@ -21,7 +21,9 @@ class RoomController extends Controller
      */
     public function create()
     {
-        return view('rooms.create');
+        $rooms = Room::all(); // Fetch all rooms
+
+        return view('rooms.create', compact('rooms'));
     }
 
     /**
@@ -46,7 +48,7 @@ class RoomController extends Controller
             'description' => $request->input('description'),
             'address' => $request->input('address'),
             'size' => $request->input('size'),
-            'seats' => $request->input('size'),
+            'seats' => $request->input('seats'),
         ];
 
         $newRoom = Room::create($data);

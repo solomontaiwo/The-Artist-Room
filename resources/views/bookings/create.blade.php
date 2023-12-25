@@ -5,12 +5,22 @@
 <div class="container">
     <h1>Inserisci una nuova prenotazione</h1>
 
-    <form action="{{ url('/booking') }}" method="POST">
+    <form action="{{ url('/rooms') }}" method="POST">
         {{ csrf_field() }}
         <div class="form-group">
             <label for="room" class="form-label">Stanza</label>
+            <select name="room" id="room" class="form-control">
+                @isset($rooms)
+                    @foreach ($rooms as $room)
+                        <option value="{{ $room->id }}">{{ $room->name }}</option>
+                    @endforeach
+                @endisset
+            </select>
+            <div id="" class="form-text">Seleziona l'aula che vuoi prenotare</div>
+<!--        <label for="room" class="form-label">Stanza</label>
             <input type="text" class="form-control" name="room">
             <div id="" class="form-text">Inserisci la stanza che vuoi prenotare</div>
+-->
         </div>
 
         <br>
@@ -39,7 +49,8 @@
 
         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
         
-        <br>        
+        <br>
+        
         
         <button type="submit" class="btn btn-primary">Prenota</button>
      </form>

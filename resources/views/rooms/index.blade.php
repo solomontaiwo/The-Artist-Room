@@ -6,11 +6,11 @@
     <h1>Tutte le aule</h1>
 
     @if($rooms->isEmpty())
-        <p>No rooms available.</p>
+        <p>Nessuna aula disponibile.</p>
     @else
         <ul>
             @foreach($rooms as $room)
-                <li>{{ $room->name }} - {{ $room->description }} - {{ $room->address }} - {{ $room->size }} mq {{ $room->seats }} posti disponibili</li>
+                <li>{{ $room->name }} - {{ $room->description }} - {{ $room->address }} - {{ $room->size }} mq - {{ $room->seats }} posti disponibili</li>
                 <!-- Add more room details as needed -->
             @endforeach
         </ul>

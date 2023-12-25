@@ -46,7 +46,6 @@ Route::middleware(['auth'])->group(function () {
 // Define the "Chi Siamo" page route
 Route::resource('who-are-we', App\Http\Controllers\WhoAreWeController::class);
 
-
 /*
 
 Auth::routes();
