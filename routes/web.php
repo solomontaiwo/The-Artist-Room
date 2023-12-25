@@ -30,6 +30,11 @@ Route::resource('booking', App\Http\Controllers\BookingController::class); // Cr
 Route::get('/booking/{booking}/destroy', [App\Http\Controllers\BookingController::class, 'destroy']); // Creare tutte le rotte per il CRUD di una risorsa
 
 /*
+Route::get('/rooms', 'UserController@viewAvailableRooms')->name('view.rooms');
+Route::post('/booking/{roomId}', 'ArtistaController@bookRoom')->name('booking.room');
+*/
+
+/*
 
 Auth::routes();
 

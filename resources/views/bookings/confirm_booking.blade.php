@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    <h1>Tutte le prenotazioni</h1>
+    <h1>Prenotazione eseguita</h1>
 </div>
 
 @endsection
