@@ -1,3 +1,11 @@
+0. Eseguire i seguenti comandi dopo aver clonato la repository:
+    
+    cd <nome_progetto>
+    composer install
+    cp .env.example .env
+    php artisan key:generate
+    php artisan config:cache
+
 1. Inizializzare l'applicazione seguendo il manuale laravel e creare repository su github --> fatto 
 	
 	1.1. Creare base dati con relazioni e schema che ci serviranno:
