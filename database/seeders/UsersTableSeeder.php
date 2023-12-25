@@ -13,33 +13,33 @@ class UsersTableSeeder extends Seeder
     public function run()
     { 
         DB::table('users')->insert([[
-            'name'          => 'Solomon',
-            'surname'       => 'Taiwo',
-            'email'         => 'solomontaiwo@theartistroom.com',
+            'name'          => 'Pino',
+            'surname'       => 'Pinoli',
+            'email'         => 'pinopinoli@theartistroom.com',
             'password'      => bcrypt('password'),
             'updated_at'    => date('Y-m-d h:i:s'),
-            'created_at'    => date('Y-m-d h:i:s')
+            'created_at'    => date('Y-m-d h:i:s'),
         ], [
-            'name'          => 'Giorgia',
-            'surname'       => 'Pirelli',
-            'email'         => 'giorgiapirelli@theartistroom.com',
+            'name'          => 'Matteo',
+            'surname'       => 'Solo',
+            'email'         => 'matteosolo@theartistroom.com',
             'password'      => bcrypt('password'),
             'updated_at'    => date('Y-m-d h:i:s'),
-            'created_at'    => date('Y-m-d h:i:s')
+            'created_at'    => date('Y-m-d h:i:s'),
         ], [
-            'name'          => 'Luca',
-            'surname'       => 'Gaudenzi',
-            'email'         => 'lucagaudenzi@theartistroom.com',
+            'name'          => 'Harry',
+            'surname'       => 'Potter',
+            'email'         => 'harrypotter@theartistroom.com',
             'password'      => bcrypt('password'),
             'updated_at'    => date('Y-m-d h:i:s'),
-            'created_at'    => date('Y-m-d h:i:s')
+            'created_at'    => date('Y-m-d h:i:s'),
         ], [
-            'name'          => 'Gaia',
-            'surname'       => 'Marzola',
-            'email'         => 'gaiamarzola@theartistroom.com',
+            'name'          => 'Ryu',
+            'surname'       => 'Hayabusa',
+            'email'         => 'ryuhayabusa@theartistroom.com',
             'password'      => bcrypt('password'),
             'updated_at'    => date('Y-m-d h:i:s'),
-            'created_at'    => date('Y-m-d h:i:s')
+            'created_at'    => date('Y-m-d h:i:s'),
         ]]);
     }
 }

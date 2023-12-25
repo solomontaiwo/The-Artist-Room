@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -17,14 +19,14 @@ class UserController extends Controller
     public function bookRoom(Request $request, $roomId) {
 
         // Logica per gestire la prenotazione
-        $artistaId = auth()->id(); // Assume che l'artista sia autenticato
+        $user_Id = auth()->id(); // Assume che l'artista sia autenticato
         $stanza = Room::findOrFail($roomId);
 
         // Assicurati che la stanza sia disponibile
         if ($stanza->available) {
             // Esegui la prenotazione
             Booking::create([
-                'artista_id' => $artistaId,
+                'user_id' => $user_Id,
                 'room_id' => $roomId,
                 'data_prenotazione' => now(),
                 // Aggiungi altri campi necessari per la tua applicazione

@@ -14,31 +14,35 @@ class RoomsTableSeeder extends Seeder
     public function run()
     {
         DB::table('rooms')->insert([[
-            'name'          => 'Aula Magna',
-            'description'   => 'Aula ampia dotata di numerosi banchi, prese per ricaricare i propri dispositivi, tavolozze e colori',
+            'name'          => 'Aula Pirelloni',
+            'description'   => 'Breve descrizione aula Pirelloni',
             'address'       => 'Via Dei Peracottari, 15',
-            'dimensions'    => 50,
+            'size'          => 100, // metri quadri
+            'seats'         => 50,
             'updated_at'    => date('Y-m-d h:i:s'),
             'created_at'    => date('Y-m-d h:i:s')
         ], [
-            'name'          => 'Giorgia',
-            'surname'       => 'Pirelli',
-            'email'         => 'giorgiapirelli@theartistroom.com',
-            'password'      => bcrypt('password'),
+            'name'          => 'Aula Gaudemagna',
+            'description'   => 'Breve descrizione aula Gaudemagna',
+            'address'       => 'Via Frassina, 51',
+            'size'          => 20, // metri quadri
+            'seats'         => 50,
             'updated_at'    => date('Y-m-d h:i:s'),
             'created_at'    => date('Y-m-d h:i:s')
         ], [
-            'name'          => 'Luca',
-            'surname'       => 'Gaudenzi',
-            'email'         => 'lucagaudenzi@theartistroom.com',
-            'password'      => bcrypt('password'),
+            'name'          => 'Aula Taiwani',
+            'description'   => 'Breve descrizione aula Taiwani',
+            'address'       => 'Via dei Marnoni, 2',
+            'size'          => 150, // metri quadri
+            'seats'         => 50,
             'updated_at'    => date('Y-m-d h:i:s'),
             'created_at'    => date('Y-m-d h:i:s')
         ], [
-            'name'          => 'Gaia',
-            'surname'       => 'Marzola',
-            'email'         => 'gaiamarzola@theartistroom.com',
-            'password'      => bcrypt('password'),
+            'name'          => 'Aula Marzoletti',
+            'description'   => 'Breve descrizione aula Marzoletti',
+            'address'       => 'Via Edmondo De Amicis, 66',
+            'size'          => 150, // metri quadri
+            'seats'         => 50,
             'updated_at'    => date('Y-m-d h:i:s'),
             'created_at'    => date('Y-m-d h:i:s')
         ]]);
