@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,9 +27,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout'); // aggiunto per comodità
 
 
-Route::resource('booking', App\Http\Controllers\BookingController::class); // Creare tutte le rotte per il CRUD di una risorsa
+// Route::resource('booking', App\Http\Controllers\BookingController::class); // Creare tutte le rotte per il CRUD di una risorsa
 Route::get('/booking/{booking}/destroy', [App\Http\Controllers\BookingController::class, 'destroy']); // Creare tutte le rotte per il CRUD di una risorsa
 
+
+// Make sure that the user is authenticated when accessing the bookings page
+Route::middleware(['auth'])->group(function () {
+    Route::resource('booking', App\Http\Controllers\BookingController::class);
+});
 /*
 Route::get('/rooms', 'UserController@viewAvailableRooms')->name('view.rooms');
 Route::post('/booking/{roomId}', 'ArtistaController@bookRoom')->name('booking.room');

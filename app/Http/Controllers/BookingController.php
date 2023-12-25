@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class BookingController extends Controller
@@ -13,7 +14,13 @@ class BookingController extends Controller
      */
     public function index()
     {
-        return view('bookings.index');
+        // Get the authenticated user
+        $user = Auth::user();
+
+        // Load the user's bookings
+        $bookings = $user->bookings;
+
+        return view('bookings.index', compact('bookings'));
     }
 
     /**

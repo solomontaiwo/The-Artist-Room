@@ -27,12 +27,19 @@
             <label for="reservation time" class="form-label">Tempo di prenotazione</label>
             <input type="time" class="form-control" name="reservation time">
             <div id="" class="form-text">Inserisci il tempo per cui vorresti prenotare la stanza</div>
-        </div>  
+        </div> 
+
+        <br>
+        
+        <div class="form-group">
+            <label for="peole" class="form-label">Quante persone sarete?</label>
+            <input type="number" class="form-control" name="people">
+            <div id="" class="form-text">Inserisci il numero di persone che occuperà il locale</div>
+        </div>
 
         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
         
-        <br>
-        
+        <br>        
         
         <button type="submit" class="btn btn-primary">Prenota</button>
      </form>
