@@ -80,9 +80,7 @@
             @yield('content')
         </main>
 
-        <aside>
-            @include('navigation')
-        </aside>
+        <!-- Navigation menu, work in progress <aside> @include('navigation') </aside> 
     </div>
 </body>
 </html>
