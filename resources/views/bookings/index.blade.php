@@ -20,7 +20,7 @@
                     <p>Tempo: {{ $booking->reservation_time }} minuti</p>
                     <p>Giorno e ora di prenotazione: {{ $booking->created_at }}</p>
                     <p>Numero di persone: {{ $booking->people }}</p>
-                    <a href="{{ route('bookings.edit', $booking->id) }}">Modifica prenotazione</a> <!-- Pulsante per modificare la prenotazione -->
+                    <a href="{{ route('booking.edit', $booking->id) }}">Modifica prenotazione</a> <!-- Pulsante per modificare la prenotazione -->
 
                     <br> <br> <hr>
                 </div>

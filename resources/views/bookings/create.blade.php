@@ -7,7 +7,7 @@
 <div class="container">
     <h1>Inserisci una nuova prenotazione</h1>
 
-    <form action="{{ route('bookings.store') }}" method="POST">
+    <form action="{{ route('booking.store') }}" method="POST">
         @csrf
         <div class="form-group">
             <label for="room_id" class="form-label">Stanza</label>

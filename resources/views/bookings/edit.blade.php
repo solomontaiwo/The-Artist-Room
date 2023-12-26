@@ -6,7 +6,7 @@
 
     <h1>Modifica la prenotazione di "{{ $booking->room->name }}" del {{ $booking->reservation_date }} alle ore {{ \Carbon\Carbon::parse($booking->reservation_hour)->format('H:i') }}</h1>
 
-    <form method="POST" action="{{ route('bookings.update', $booking->id) }}">
+    <form method="POST" action="{{ route('booking.update', $booking->id) }}">
         @csrf
         @method('PUT')
 
@@ -64,6 +64,14 @@
         <br>
 
         <button type="submit" class="btn btn-primary">Salva modifiche</button>
+
+        <!-- Form per eliminare la prenotazione -->
+        <form method="POST" action="{{ route('booking.destroy', $booking->id) }}" style="display: inline-block;">
+            @csrf
+            @method('DELETE')
+
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Sei sicuro di voler eliminare la prenotazione?')">Elimina prenotazione</button>
+        </form>
     </form>
 
 </div>

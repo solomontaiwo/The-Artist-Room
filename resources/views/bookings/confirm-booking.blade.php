@@ -13,8 +13,8 @@
     <p>Numero di persone: {{ $booking->people }}</p>
 
     <hr>
-    <p><a href="{{ route('bookings.edit', $booking->id) }}">Modifica prenotazione</a></p>
-    <p><a href="{{ route('bookings.index') }}">Vai alle tue prenotazioni</a></p>
+    <p><a href="{{ route('booking.edit', $booking->id) }}">Modifica prenotazione</a></p>
+    <p><a href="{{ route('booking.index') }}">Vai alle tue prenotazioni</a></p>
     <p><a href="{{ route('home') }}">Torna alla homepage</a></p>
 
 </div>
