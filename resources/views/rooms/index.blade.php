@@ -5,6 +5,10 @@
 <div class="container">
     <h1>Tutte le aule</h1>
 
+    <br>
+    
+    <h3> Aule totali: {{ $rooms->count() }} </h3>
+
     @if($rooms->isEmpty())
         <p>Nessuna aula disponibile.</p>
     @else

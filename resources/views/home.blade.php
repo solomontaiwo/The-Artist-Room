@@ -16,7 +16,7 @@
                     @endif
 
                     <li><a href="{{ route('room.index') }}">Tutte le aule</a></li>
-                    <li><a href="{{ route('booking.index') }}">Visualizza prenotazioni</a></li>
+                    <li><a href="{{ route('booking.index') }}">Visualizza le tue prenotazioni</a></li>
                     <li><a href="{{ route('booking.create') }}">Fai una prenotazione</a></li>
                     <li><a href="{{ route('who-are-we.index') }}">Chi siamo</a></li>
 

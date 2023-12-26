@@ -1,11 +1,11 @@
 @extends('layouts.app')
-<!-- Per far funzionare il javascript che dice quanti posti disponibili ci sono alla selezione dell'aula -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 @section('content')
 
 <div class="container">
     <h1>Inserisci una nuova prenotazione</h1>
+
+    <br>
 
     <form action="{{ route('booking.store') }}" method="POST">
         @csrf
@@ -81,6 +81,9 @@
 @endsection
 
 <!-- javascript per verificare la disponibilità della stanza -->
+
+<!-- Per far funzionare il javascript che dice quanti posti disponibili ci sono alla selezione dell'aula -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script>
     $(document).ready(function () {
