@@ -11,9 +11,16 @@
         <ul>
             @foreach($bookings as $booking)
                 <div>
-                    <p>Room: {{ $booking->room->name }}</p>
-                    <p>Date: {{ $booking->reservation_date }}</p>
-                    <p>Time: {{ $booking->reservation_time }}</p>
+                    <br>
+
+                    <p>Aula: {{ $booking->room->name }}</p>
+                    <p>Giorno: {{ $booking->reservation_date }}</p>
+                    <p>Ora: {{ $booking->reservation_date }}</p>
+                    <p>Tempo: {{ $booking->reservation_time }} minuti</p>
+                    <!-- Pulsante per modificare la prenotazione -->
+                    <a href="{{ route('bookings.edit', $booking->id) }}">Modifica</a>
+
+                    <br> <br> <hr>
                 </div>
             @endforeach
         </ul>

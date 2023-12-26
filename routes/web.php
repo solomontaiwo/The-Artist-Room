@@ -16,16 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 /*
 
-Default redirection to Laravel homepage
+Redirezione di default di Laravel
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-
 */
 
 
+// Redirezione alla pagina home
 Route::get('/', function () {
     return redirect('/home');
 });
@@ -36,20 +36,10 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout'); // aggiunto per comodità
 
-// Make sure that the user is authenticated when accessing the bookings page
-Route::middleware(['auth'])->group(function () {
-    Route::resource('bookings', App\Http\Controllers\BookingController::class);
-    Route::resource('rooms', App\Http\Controllers\RoomController::class);
+Route::resource('/bookings', App\Http\Controllers\BookingController::class);
+Route::resource('/rooms', App\Http\Controllers\RoomController::class);
+Route::get('/bookings/{booking}/edit', [App\Http\Controllers\BookingController::class, 'edit'])->name('bookings.edit');
 
-});
+// Rotta per la pagina "Chi siamo"
+Route::get('/who-are-we', [App\Http\Controllers\WhoAreWeController::class, 'index'])->name('who-are-we.index');
 
-// Define the "Chi Siamo" page route
-Route::resource('who-are-we', App\Http\Controllers\WhoAreWeController::class);
-
-/*
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-*/

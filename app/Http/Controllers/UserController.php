@@ -19,7 +19,7 @@ class UserController extends Controller
     public function bookRoom(Request $request, $roomId) {
 
         // Logica per gestire la prenotazione
-        $user_Id = auth()->id(); // Assume che l'artista sia autenticato
+        $user_Id = auth()->id(); // Assume che l'utente sia autenticato
         $stanza = Room::findOrFail($roomId);
 
         // Assicurati che la stanza sia disponibile
@@ -29,7 +29,6 @@ class UserController extends Controller
                 'user_id' => $user_Id,
                 'room_id' => $roomId,
                 'data_prenotazione' => now(),
-                // Aggiungi altri campi necessari per la tua applicazione
             ]);
 
             // Aggiorna lo stato della stanza

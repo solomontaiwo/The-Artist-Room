@@ -10,17 +10,21 @@ class Booking extends Model
     use HasFactory;
 
     protected $fillable = [
+        'room_id',
+        'user_id',
         'name',
         'surname',
-        'date',
-        'time',
+        'reservation_date',
+        'reservation_time',
         'people'
     ];
 
+    // Relazione tra prenotazioni e utente
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->onDelete('cascade');
     }
 
+    // Relazione tra prenotazioni e stanza
     public function room()
     {
         return $this->belongsTo(Room::class);

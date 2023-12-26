@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        // Seed che vengono immessi nel database con il comando 
+        // php artisan db:seed
         $this->call([
             AdminSeeder::class,
             UsersTableSeeder::class,

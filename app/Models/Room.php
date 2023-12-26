@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
     protected $fillable = [
+        'room_id',
         'name', 
         'description', 
         'address',
@@ -15,17 +16,7 @@ class Room extends Model
         'available_seats'
     ];
 
-    public static function create(array $data)
-    {
-        return self::create([
-            'name' => $data['name'],
-            'description' => $data['description'],
-            'address' => $data['address'],
-            'size' => $data['size'],
-            'available_seats' => $data['available_seats']
-        ]);
-    }
-
+    // Relazione tra la stanza e le prenotazioni
     public function bookings()
     {
         return $this->hasMany(Booking::class);

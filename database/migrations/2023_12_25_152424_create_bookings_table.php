@@ -10,10 +10,11 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('room_id')->constrained(); 
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('room_id')->constrained()->onDelete('cascade'); 
+            $table->foreignId('room_name')->constrained()->onDelete('cascade');
             $table->date('reservation_date');
-            $table->time('reservation_time');
+            $table->integer('reservation_time');
             $table->integer('people');            
             $table->timestamps();            
         });
