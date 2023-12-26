@@ -74,10 +74,12 @@
         <input type="hidden" name="user_id" value="{{ optional(Auth::user())->id }}">
 
         <script>
-            // Add JavaScript to update the hidden room_name field when a room is selected
-            document.getElementById('room_id').addEventListener('change', function() {
-                var roomName = document.getElementById('room_id').options[document.getElementById('room_id').selectedIndex].text;
-                document.getElementById('room_name').value = roomName;
+            $(document).ready(function() {
+                // Listen for changes in the selected room
+                $('#room_id').change(function() {
+                    var roomName = $('#room_id option:selected').text();
+                    $('#room_name').val(roomName);
+                });
             });
         </script>
 

@@ -87,9 +87,13 @@
     <!-- Javascript event listener che aggiorna il valore dell'hidden input in create.blade.app in /resources/views/bookings
     in base all'aula selezionata dal menu dropdown -->
     <script>
-        document.getElementById('room').addEventListener('change', function() {
-            document.getElementById('room_id').value = this.value;
-        });
+        // Check if the element with ID 'room' exists before adding the event listener
+        var roomDropdown = document.getElementById('room');
+        if (roomDropdown) {
+            roomDropdown.addEventListener('change', function() {
+                document.getElementById('room_id').value = this.value;
+            });
+        }
     </script>
 
 </body>

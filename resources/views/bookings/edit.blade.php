@@ -111,7 +111,7 @@
                     console.error('Failed to fetch room information', error);
                     $('#availableSeatsInfo').html('');
                 }
-            });
+            })
         }
     });
 </script>
