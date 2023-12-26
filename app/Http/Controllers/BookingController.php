@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Models\Room;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -41,6 +40,7 @@ class BookingController extends Controller
         $request->validate([
             'room_id' => 'required|exists:rooms,id',
             'reservation_date' => 'required|date',
+            'reservation_hour' => 'required|date_format:H:i',
             'reservation_time' => 'required',
             'people' => 'required|integer',
             'user_id' => 'required|exists:users,id',
@@ -58,15 +58,12 @@ class BookingController extends Controller
             }
 
             // Crea una nuova prenotazione
-            $bookingData = $request->only(['reservation_date', 'reservation_time', 'people']);
+            $bookingData = $request->only(['reservation_date', 'reservation_hour', 'reservation_time', 'people']);
             $bookingData['room_id'] = $room->id;
-            $bookingData['user_id'] = auth()->user()->id; // Ensure user_id is set correctly
-
-            Log::info('Prenotazione creata');
+            $bookingData['user_id'] = auth()->user()->id; // Per assicurarsi che lo user id sia impostato correttamente
+            $bookingData['room_name'] = $room->name;
 
             $booking = Booking::create($bookingData);
-
-            Log::info('inserita prenotazione utente');
 
             // Aggiorna il numero di posti disponibili nella stanza
             $room->available_seats -= $request->input('people');

@@ -30,7 +30,15 @@
         <br>
 
         <div class="form-group">
-            <label for="reservation_time" class="form-label">Tempo di prenotazione (in minuti)</label>
+            <label for="reservation_hour" class="form-label">Orario di prenotazione</label>
+            <input type="time" class="form-control" name="reservation_hour">
+            <div id="" class="form-text">Inserisci l'ora dalla quale vorresti prenotare l'aula</div>
+        </div> 
+
+        <br>
+
+        <div class="form-group">
+            <label for="reservation_time" class="form-label">Tempo di permanenza (in minuti)</label>
             <input type="number" class="form-control" name="reservation_time">
             <div id="" class="form-text">Inserisci il tempo per cui vorresti prenotare la stanza</div>
         </div> 
@@ -53,10 +61,11 @@
             document.getElementById('room_name').value = roomName;
             });
         </script>
+
+        <input type="hidden" name="room_name" id="room_name" value="">
         
         <br>
-        
-        
+                
         <button type="submit" class="btn btn-primary">Prenota</button>
      </form>
 </div>
