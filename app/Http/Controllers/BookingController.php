@@ -33,11 +33,6 @@ class BookingController extends Controller
     // Funzione per creare nuova prenotazione
     public function store(Request $request)
     {
-        /* 
-        Debugging per verificare che venga mandato tutto
-        dd($request->all()); 
-        */
-
         $request->validate([
             'room_id' => 'required|exists:rooms,id',
             'reservation_date' => 'required|date',
@@ -82,15 +77,6 @@ class BookingController extends Controller
         }
     }
 
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Booking $booking)
-    {
-        //
-    }
-
     // Funzione per visualizzare la pagina di edit
     public function edit(Booking $booking)
     {
@@ -122,11 +108,11 @@ class BookingController extends Controller
         return view('bookings.confirm-booking', compact('booking'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // Funzione per eliminare la prenotazione
     public function destroy(Booking $booking)
     {
-        //
+        $booking->delete();
+
+        return redirect('/booking');
     }
 }
