@@ -59,6 +59,17 @@
             <div id="" class="form-text">Inserisci il numero di persone che occuperà il locale</div>
         </div>
 
+        @if ($errors->has('people'))
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->get('people') as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
+
         <!-- Manda lo user_id al BookingController, assicurandosi prima che l'utente sia effettivamente autenticato -->
         <input type="hidden" name="user_id" value="{{ optional(Auth::user())->id }}">
 

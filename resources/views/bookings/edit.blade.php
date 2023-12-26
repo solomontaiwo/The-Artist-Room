@@ -48,7 +48,7 @@
         <br>
 
         <div class="form-group">
-            <label for="reservation_time" class="form-label">Tempo di permanenza</label>
+            <label for="reservation_time" class="form-label">Tempo di permanenza (in minuti)</label>
             <input type="number" class="form-control" name="reservation_time" value="{{ $booking->reservation_time }}">
             <div id="" class="form-text">Cambia il tempo di permanenza</div>
         </div>
@@ -65,13 +65,14 @@
 
         <button type="submit" class="btn btn-primary">Salva modifiche</button>
 
-        <!-- Form per eliminare la prenotazione -->
-        <form method="POST" action="{{ route('booking.destroy', $booking->id) }}" style="display: inline-block;">
-            @csrf
-            @method('DELETE')
+    </form>
 
-            <button type="submit" class="btn btn-danger" onclick="return confirm('Sei sicuro di voler eliminare la prenotazione?')">Elimina prenotazione</button>
-        </form>
+    <!-- Form per eliminare la prenotazione -->
+    <form method="POST" action="{{ route('booking.destroy', $booking->id) }}" style="display: inline-block;">
+        @csrf
+        @method('DELETE')
+
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Sei sicuro di voler eliminare la prenotazione?')">Elimina prenotazione</button>
     </form>
 
 </div>

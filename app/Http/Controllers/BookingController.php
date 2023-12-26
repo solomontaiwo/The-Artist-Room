@@ -49,7 +49,9 @@ class BookingController extends Controller
 
             // Verifica che ci siano abbastanza posti disponibili
             if ($room->available_seats < $request->input('people')) {
-                return redirect()->back()->with('error', 'Spazio non disponibile.');
+                return redirect()->back()
+                    ->with('error', 'Spazio non disponibile.')
+                    ->withInput(); // Torna alla pagina di prenotazione con gli stessi valori di prima
             }
 
             // Crea una nuova prenotazione
@@ -67,7 +69,7 @@ class BookingController extends Controller
             DB::commit();
 
             // Redirezione alla pagina della conferma della prenotazione
-            return redirect()->route('confirm-booking')->with('success', 'Prenotazione eseguita con successo.');
+            return redirect()->route('booking.show', $booking->id)->with('success', 'Prenotazione eseguita con successo.');
         } catch (\Exception $e) {
             // Rollback in caso di exception
             DB::rollBack();
@@ -87,16 +89,24 @@ class BookingController extends Controller
     // Funzione per la modifica della prenotazione con il form relativo
     public function update(Request $request, Booking $booking)
     {
-        $input = $request->all();
+        // Validazione dei dati
+        $request->validate([
+            'room_id' => 'required|exists:rooms,id',
+            'reservation_date' => 'required|date',
+            'reservation_hour' => 'required|date_format:H:i',
+            'reservation_time' => 'required',
+            'people' => 'required|integer',
+            'user_id' => 'required|exists:users,id',
+        ]);
 
-        $booking->room_id = $input['room_id'];
-        $booking->reservation_date = $input['reservation_date'];
-        $booking->reservation_hour = $input['reservation_hour'];
-        $booking->reservation_time = $input['reservation_time'];
-        $booking->people = $input['people'];
-        $booking->save();
+        $booking->update($request->all()); 
+       
+        return redirect()->route('bookings.show', $booking->id)->with('success', 'Prenotazione modificata correttamente!');
+    }
 
-        return redirect()->route('bookings.edit', $booking->id)->with('success', 'Prenotazione modificata correttamente!');
+    public function show(Booking $booking)
+    {
+        return view('bookings.show', compact('booking'));
     }
 
     // Funzione per visualizzare la pagina di conferma della prenotazione in resources/views/confirm-booking
