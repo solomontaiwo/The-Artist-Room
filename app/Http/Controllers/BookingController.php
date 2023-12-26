@@ -102,23 +102,16 @@ class BookingController extends Controller
     // Funzione per la modifica della prenotazione con il form relativo
     public function update(Request $request, Booking $booking)
     {
-        $request->validate([
-            'name' => 'required',
-            'surname' => 'required',
-            'date' => 'required|date',
-            'time' => 'required',
-            'people' => 'required|integer',
-        ]);
+        $input = $request->all();
 
-        $booking->update([
-            'name' => $request->input('name'),
-            'surname' => $request->input('surname'),
-            'date' => $request->input('date'),
-            'time' => $request->input('time'),
-            'people' => $request->input('people'),
-        ]);
+        $booking->room_id = $input['room_id'];
+        $booking->reservation_date = $input['reservation_date'];
+        $booking->reservation_hour = $input['reservation_hour'];
+        $booking->reservation_time = $input['reservation_time'];
+        $booking->people = $input['people'];
+        $booking->save();
 
-        return redirect()->route('bookings.index')->with('success', 'Prenotazione modificata correttamente!');
+        return redirect()->route('bookings.edit', $booking->id)->with('success', 'Prenotazione modificata correttamente!');
     }
 
     // Funzione per visualizzare la pagina di conferma della prenotazione in resources/views/confirm-booking
