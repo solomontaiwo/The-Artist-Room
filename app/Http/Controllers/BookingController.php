@@ -72,7 +72,7 @@ class BookingController extends Controller
             DB::commit();
 
             // Redirezione alla pagina delle prenotazioni
-            return redirect()->route('bookings.index')->with('success', 'Prenotazione eseguita con successo.');
+            return redirect()->route('bookings.confirm_booking')->with('success', 'Prenotazione eseguita con successo.');
         } catch(\Exception $e) {
             // Rollback in caso di exception
             DB::rollBack();

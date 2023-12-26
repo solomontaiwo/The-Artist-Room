@@ -83,4 +83,13 @@ class RoomController extends Controller
 
         return redirect()->route('rooms.index')->with('success', 'Stanza eliminata!');
     }
+
+    public function getRoomInfo($id)
+{
+    $room = Room::findOrFail($id);
+
+    return response()->json([
+        'available_seats' => $room->available_seats,
+    ]);
+}
 }

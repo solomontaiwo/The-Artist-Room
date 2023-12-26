@@ -1,5 +1,6 @@
 @extends('layouts.app')
-
+<!-- Per far funzionare il javascript che dice quanti posti disponibili ci sono alla selezione dell'aula -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 @section('content')
 
 <div class="container">
@@ -10,6 +11,7 @@
         <div class="form-group">
             <label for="room_id" class="form-label">Stanza</label>
             <select name="room_id" id="room_id" class="form-control">
+                <option value="" selected disabled>Seleziona un'aula</option> <!-- Per fare in modo che nessuna stanza sia preselezionata -->
                 @isset($rooms)
                     @foreach ($rooms as $room)
                         <option value="{{ $room->id }}">{{ $room->name }}</option>
@@ -17,6 +19,11 @@
                 @endisset
             </select>
             <div id="" class="form-text">Seleziona l'aula che vuoi prenotare</div>
+
+            <!-- Script per visualizzare in tempo reale i posti liberi nell'aula selezionata -->
+            <br>
+            <div id="availableSeatsInfo">Seleziona un'aula per verificare quanti posti sono disponibili </div>
+
         </div>
 
         <br>
@@ -48,7 +55,7 @@
         <div class="form-group">
             <label for="people" class="form-label">Quante persone sarete?</label>
             <input type="number" class="form-control" name="people">
-            <div id="" class="form-text">Inserisci il numero di persone che occuperà il locale</div>
+            <div id="" class="form-text">Inserisci il numero di persone che occuperà il locale</div>            
         </div>
 
         <!-- Manda lo user_id al BookingController, assicurandosi prima che l'utente sia effettivamente autenticato -->
@@ -71,3 +78,26 @@
 </div>
 
 @endsection
+
+<script>
+    $(document).ready(function () {
+        // Listen for changes in the selected room
+        $('#room_id').change(function () {
+            var roomId = $(this).val();
+
+            // Fetch the available seats for the selected room using an AJAX request
+            $.ajax({
+                url: '/api/rooms/' + roomId, // Adjust the URL to your API endpoint
+                method: 'GET',
+                success: function (response) {
+                    // Update the availableSeatsInfo element with the fetched data
+                    $('#availableSeatsInfo').html('Posti disponibili nell\'aula selezionata: ' + response.available_seats);
+                },
+                error: function () {
+                    console.error('Failed to fetch room information');
+                    $('#availableSeatsInfo').html('');
+                }
+            });
+        });
+    });
+</script>
