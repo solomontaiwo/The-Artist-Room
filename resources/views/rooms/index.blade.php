@@ -10,10 +10,21 @@
     @else
         <ul>
             @foreach($rooms as $room)
-                <li>{{ $room->name }} - {{ $room->description }} - {{ $room->address }} - {{ $room->size }} mq - {{ $room->available_seats }} posti disponibili</li>
-                <!-- Add more room details as needed -->
+                <div>
+                    <br> 
+                    
+                    <!-- Informazioni sull'aula -->
+                    <p>Nome aula: {{ $room->name }}</p>
+                    <p>Descrizione: {{ $room->description }}</p>
+                    <p>Indirizzo: {{ $room->address }}</p> 
+                    <p>Dimensioni: {{ $room->size }} mq</p>
+                    <p>Posti attualmente disponibili: {{ $room->available_seats }}</p>
+                    
+                    <br> <hr>
+                </div>            
             @endforeach
         </ul>
     @endif
 </div>
+
 @endsection

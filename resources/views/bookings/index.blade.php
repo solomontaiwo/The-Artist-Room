@@ -13,12 +13,12 @@
                 <div>
                     <br>
 
+                    <!-- Informazioni sulla prenotazione -->
                     <p>Aula: {{ $booking->room->name }}</p>
                     <p>Giorno: {{ $booking->reservation_date }}</p>
                     <p>Ora: {{ \Carbon\Carbon::parse($booking->reservation_hour)->format('H:i') }}</p> <!-- Orario convertito in istanza Carbon per formattare in H:i -->
                     <p>Tempo: {{ $booking->reservation_time }} minuti</p>
-                    <!-- Pulsante per modificare la prenotazione -->
-                    <a href="{{ route('bookings.edit', $booking->id) }}">Modifica</a>
+                    <a href="{{ route('bookings.edit', $booking->id) }}">Modifica</a> <!-- Pulsante per modificare la prenotazione -->
 
                     <br> <br> <hr>
                 </div>
