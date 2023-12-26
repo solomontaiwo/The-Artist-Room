@@ -1,6 +1,7 @@
 @extends('layouts.app')
 <!-- Per far funzionare il javascript che dice quanti posti disponibili ci sono alla selezione dell'aula -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 @section('content')
 
 <div class="container">
@@ -78,6 +79,8 @@
 </div>
 
 @endsection
+
+<!-- javascript per verificare la disponibilità della stanza -->
 
 <script>
     $(document).ready(function () {

@@ -18,7 +18,9 @@
                     <p>Giorno: {{ $booking->reservation_date }}</p>
                     <p>Ora: {{ \Carbon\Carbon::parse($booking->reservation_hour)->format('H:i') }}</p> <!-- Orario convertito in istanza Carbon per formattare in H:i -->
                     <p>Tempo: {{ $booking->reservation_time }} minuti</p>
-                    <a href="{{ route('bookings.edit', $booking->id) }}">Modifica</a> <!-- Pulsante per modificare la prenotazione -->
+                    <p>Giorno e ora di prenotazione: {{ $booking->created_at }}</p>
+                    <p>Numero di persone: {{ $booking->people }}</p>
+                    <a href="{{ route('bookings.edit', $booking->id) }}">Modifica prenotazione</a> <!-- Pulsante per modificare la prenotazione -->
 
                     <br> <br> <hr>
                 </div>

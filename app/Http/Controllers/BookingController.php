@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class BookingController extends Controller
 {
@@ -71,8 +72,8 @@ class BookingController extends Controller
 
             DB::commit();
 
-            // Redirezione alla pagina delle prenotazioni
-            return redirect()->route('bookings.confirm_booking')->with('success', 'Prenotazione eseguita con successo.');
+            // Redirezione alla pagina della conferma della prenotazione
+            return redirect()->route('confirm-booking')->with('success', 'Prenotazione eseguita con successo.');
         } catch(\Exception $e) {
             // Rollback in caso di exception
             DB::rollBack();
@@ -93,8 +94,9 @@ class BookingController extends Controller
     // Funzione per visualizzare la pagina di edit
     public function edit(Booking $booking)
     {
-        return view('bookings.edit', compact('booking'));
+        $rooms = Room::all();
 
+        return view('bookings.edit', compact('booking', 'rooms'));
     }
 
     // Funzione per la modifica della prenotazione con il form relativo
@@ -117,6 +119,14 @@ class BookingController extends Controller
         ]);
 
         return redirect()->route('bookings.index')->with('success', 'Prenotazione modificata correttamente!');
+    }
+
+    // Funzione per visualizzare la pagina di conferma della prenotazione in resources/views/confirm-booking
+    public function confirmBooking()
+    {
+        $booking = Booking::latest()->first();
+
+        return view('bookings.confirm-booking', compact('booking'));
     }
 
     /**

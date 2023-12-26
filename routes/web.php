@@ -24,12 +24,10 @@ Route::get('/', function () {
 
 */
 
-
 // Redirezione alla pagina home
 Route::get('/', function () {
     return redirect('/home');
 });
-
 
 Auth::routes();
 
@@ -38,6 +36,11 @@ Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout
 
 Route::resource('/bookings', App\Http\Controllers\BookingController::class);
 Route::resource('/rooms', App\Http\Controllers\RoomController::class);
+
+// Rotta per pagina di conferma della prenotazione
+Route::get('/confirm-booking', [App\Http\Controllers\BookingController::class, 'confirmBooking'])->name('confirm-booking');
+
+// Rotta per ottenere con script Javascript il numero di stanze disponibili
 Route::get('/api/rooms/{id}', [App\Http\Controllers\RoomController::class, 'getRoomInfo']);
 
 

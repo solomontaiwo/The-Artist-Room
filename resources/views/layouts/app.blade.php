@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <!-- App logo and name -->
+                    <!-- Logo dell'app e nome -->
                 <img src="{{ asset('images/the-artist-room-logo.png') }}" alt="Logo" width="50" height="50">
                 {{ config('app.name', 'The Artist Name') }}
                 </a>
