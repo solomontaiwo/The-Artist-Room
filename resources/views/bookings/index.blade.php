@@ -13,19 +13,20 @@
     <ul>
         @foreach($bookings as $booking)
         <div>
+
             <br>
 
             <!-- Informazioni sulla prenotazione -->
-            <p>Aula: {{ $booking->room->name }}</p>
-            <p>Giorno: {{ $booking->reservation_date }}</p>
-            <p>Ora: {{ \Carbon\Carbon::parse($booking->reservation_hour)->format('H:i') }}</p> <!-- Orario convertito in istanza Carbon per formattare in H:i -->
-            <p>Tempo: {{ $booking->reservation_time }} minuti</p>
-            <p>Giorno e ora di prenotazione: {{ $booking->created_at }}</p>
-            <p>Numero di persone: {{ $booking->people }}</p>
+            <p><strong>Aula:</strong> {{ $booking->room->name }}</p>
+            <p><strong>Giorno:</strong> {{ $booking->reservation_date }}</p>
+            <p><strong>Ora:</strong> {{ \Carbon\Carbon::parse($booking->reservation_hour)->format('H:i') }}</p>
+           
+            <a href="{{ route('booking.show', $booking->id) }}">Dettagli</a> <!-- Pulsante per modificare la prenotazione -->
+            -
             <a href="{{ route('booking.edit', $booking->id) }}">Modifica prenotazione</a> <!-- Pulsante per modificare la prenotazione -->
 
-            <br> <br>
-            <hr>
+            <br> <br> <hr>
+            
         </div>
         @endforeach
     </ul>

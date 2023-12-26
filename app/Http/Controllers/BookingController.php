@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+
 
 class BookingController extends Controller
 {
@@ -91,13 +93,22 @@ class BookingController extends Controller
     {
         // Validazione dei dati
         $request->validate([
-            'room_id' => 'required|exists:rooms,id',
             'reservation_date' => 'required|date',
             'reservation_hour' => 'required|date_format:H:i',
             'reservation_time' => 'required',
             'people' => 'required|integer',
-            'user_id' => 'required|exists:users,id',
         ]);
+
+        $validator = Validator::make($request->all(), [
+            'reservation_date' => 'required|date',
+            'reservation_hour' => 'required|date_format:H:i',
+            'reservation_time' => 'required',
+            'people' => 'required|integer',
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $booking->update($request->all());
 
