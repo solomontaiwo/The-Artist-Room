@@ -8,15 +8,16 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function viewAvailableRooms() 
+    public function viewAvailableRooms()
     {
-    // Logica per ottenere le stanze disponibili
-    $availableRooms = Room::where('available', true)->get();
+        // Logica per ottenere le stanze disponibili
+        $availableRooms = Room::where('available', true)->get();
 
-    return view('bookings.view_rooms', ['rooms' => $availableRooms]);
+        return view('bookings.view_rooms', ['rooms' => $availableRooms]);
     }
 
-    public function bookRoom(Request $request, $roomId) {
+    public function bookRoom(Request $request, $roomId)
+    {
 
         // Logica per gestire la prenotazione
         $user_Id = auth()->id(); // Assume che l'utente sia autenticato

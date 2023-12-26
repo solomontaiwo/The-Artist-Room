@@ -11,14 +11,14 @@
         @method('PUT')
 
         <div class="form-group">
-        <label for="room_id" class="form-label">Stanza</label>
+            <label for="room_id" class="form-label">Stanza</label>
             <select name="room_id" id="room_id" class="form-control">
                 @isset($rooms)
-                    @foreach ($rooms as $room)
-                        <option value="{{ $room->id }}" {{ $booking->room_id == $room->id ? 'selected' : '' }}>
-                            {{ $room->name }}
-                        </option>
-                    @endforeach
+                @foreach ($rooms as $room)
+                <option value="{{ $room->id }}" {{ $booking->room_id == $room->id ? 'selected' : '' }}>
+                    {{ $room->name }}
+                </option>
+                @endforeach
                 @endisset
             </select>
             <div id="" class="form-text">Cambia l'aula che vuoi prenotare</div>
@@ -26,7 +26,7 @@
             <!-- Script per visualizzare in tempo reale i posti liberi nell'aula selezionata -->
             <br>
             <div id="availableSeatsInfo"> Posti disponibili nell'aula selezionata: 0</div>
-       
+
         </div>
 
         <br>
@@ -81,36 +81,36 @@
 <!-- javascript per verificare la disponibilità della stanza -->
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            // Fetch the available seats for the selected room using an AJAX request on page load
+<script>
+    $(document).ready(function() {
+        // Fetch the available seats for the selected room using an AJAX request on page load
+        fetchRoomInfo();
+
+        // Listen for changes in the selected room
+        $('#room_id').change(function() {
             fetchRoomInfo();
-
-            // Listen for changes in the selected room
-            $('#room_id').change(function () {
-                fetchRoomInfo();
-            });
-
-            function fetchRoomInfo() {
-                var roomId = $('#room_id').val();
-
-                console.log('Fetching room information for room ID:', roomId);
-
-                // Fetch the available seats for the selected room using an AJAX request
-                $.ajax({
-                    url: '/api/rooms/' + roomId, // Adjust the URL to your API endpoint
-                    method: 'GET',
-                    success: function (response) {
-                        console.log('Received response:', response);
-
-                        // Update the availableSeatsInfo element with the fetched data
-                        $('#availableSeatsInfo').html('Posti disponibili nell\'aula selezionata: ' + response.available_seats);
-                    },
-                    error: function (error) {
-                        console.error('Failed to fetch room information', error);
-                        $('#availableSeatsInfo').html('');
-                    }
-                });
-            }
         });
-    </script>
+
+        function fetchRoomInfo() {
+            var roomId = $('#room_id').val();
+
+            console.log('Fetching room information for room ID:', roomId);
+
+            // Fetch the available seats for the selected room using an AJAX request
+            $.ajax({
+                url: '/api/rooms/' + roomId, // Adjust the URL to your API endpoint
+                method: 'GET',
+                success: function(response) {
+                    console.log('Received response:', response);
+
+                    // Update the availableSeatsInfo element with the fetched data
+                    $('#availableSeatsInfo').html('Posti disponibili nell\'aula selezionata: ' + response.available_seats);
+                },
+                error: function(error) {
+                    console.error('Failed to fetch room information', error);
+                    $('#availableSeatsInfo').html('');
+                }
+            });
+        }
+    });
+</script>

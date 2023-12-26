@@ -11,7 +11,7 @@ class UsersTableSeeder extends Seeder
      * Run the database seeds.
      */
     public function run()
-    { 
+    {
         DB::table('users')->insert([[
             'name'          => 'Pino',
             'surname'       => 'Pinoli',

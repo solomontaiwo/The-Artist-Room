@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Validator;
 
 class BookingController extends Controller
 {
@@ -25,7 +24,7 @@ class BookingController extends Controller
 
     public function create()
     {
-       $rooms = Room::all();
+        $rooms = Room::all();
 
         return view('bookings.create', compact('rooms'));
     }
@@ -40,17 +39,17 @@ class BookingController extends Controller
             'reservation_time' => 'required',
             'people' => 'required|integer',
             'user_id' => 'required|exists:users,id',
-        ]); 
-                
+        ]);
+
         try {
             DB::beginTransaction();
 
             // Cerca l'aula selezionata
             $room = Room::findOrFail($request->input('room_id'));
-        
+
             // Verifica che ci siano abbastanza posti disponibili
             if ($room->available_seats < $request->input('people')) {
-            return redirect()->back()->with('error', 'Spazio non disponibile.');
+                return redirect()->back()->with('error', 'Spazio non disponibile.');
             }
 
             // Crea una nuova prenotazione
@@ -69,7 +68,7 @@ class BookingController extends Controller
 
             // Redirezione alla pagina della conferma della prenotazione
             return redirect()->route('confirm-booking')->with('success', 'Prenotazione eseguita con successo.');
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             // Rollback in caso di exception
             DB::rollBack();
             Log::error($e->getMessage());

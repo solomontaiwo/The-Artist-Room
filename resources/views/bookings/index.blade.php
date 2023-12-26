@@ -8,26 +8,27 @@
     <h3> Prenotazioni totali: {{ $bookings->count() }} </h3>
 
     @if($bookings->isEmpty())
-        <p>Non hai ancora effettuato prenotazioni.</p>
+    <p>Non hai ancora effettuato prenotazioni.</p>
     @else
-        <ul>
-            @foreach($bookings as $booking)
-                <div>
-                    <br>
+    <ul>
+        @foreach($bookings as $booking)
+        <div>
+            <br>
 
-                    <!-- Informazioni sulla prenotazione -->
-                    <p>Aula: {{ $booking->room->name }}</p>
-                    <p>Giorno: {{ $booking->reservation_date }}</p>
-                    <p>Ora: {{ \Carbon\Carbon::parse($booking->reservation_hour)->format('H:i') }}</p> <!-- Orario convertito in istanza Carbon per formattare in H:i -->
-                    <p>Tempo: {{ $booking->reservation_time }} minuti</p>
-                    <p>Giorno e ora di prenotazione: {{ $booking->created_at }}</p>
-                    <p>Numero di persone: {{ $booking->people }}</p>
-                    <a href="{{ route('booking.edit', $booking->id) }}">Modifica prenotazione</a> <!-- Pulsante per modificare la prenotazione -->
+            <!-- Informazioni sulla prenotazione -->
+            <p>Aula: {{ $booking->room->name }}</p>
+            <p>Giorno: {{ $booking->reservation_date }}</p>
+            <p>Ora: {{ \Carbon\Carbon::parse($booking->reservation_hour)->format('H:i') }}</p> <!-- Orario convertito in istanza Carbon per formattare in H:i -->
+            <p>Tempo: {{ $booking->reservation_time }} minuti</p>
+            <p>Giorno e ora di prenotazione: {{ $booking->created_at }}</p>
+            <p>Numero di persone: {{ $booking->people }}</p>
+            <a href="{{ route('booking.edit', $booking->id) }}">Modifica prenotazione</a> <!-- Pulsante per modificare la prenotazione -->
 
-                    <br> <br> <hr>
-                </div>
-            @endforeach
-        </ul>
+            <br> <br>
+            <hr>
+        </div>
+        @endforeach
+    </ul>
     @endif
 </div>
 

@@ -85,11 +85,11 @@ class RoomController extends Controller
     }
 
     public function getRoomInfo($id)
-{
-    $room = Room::findOrFail($id);
+    {
+        $room = Room::findOrFail($id);
 
-    return response()->json([
-        'available_seats' => $room->available_seats,
-    ]);
-}
+        return response()->json([
+            'available_seats' => $room->available_seats,
+        ]);
+    }
 }
