@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Validator;
 
 class BookingController extends Controller
 {
+    // Per rendere i metodi di booking solo accessibili agli utenti registrati e autenticati
+    public function __construct()
+{
+    $this->middleware('auth');
+}
+
     public function index()
     {
         // Ottengo l'utente autenticato
