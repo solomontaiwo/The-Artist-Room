@@ -99,8 +99,8 @@ class BookingController extends Controller
             'user_id' => 'required|exists:users,id',
         ]);
 
-        $booking->update($request->all()); 
-       
+        $booking->update($request->all());
+
         return redirect()->route('bookings.show', $booking->id)->with('success', 'Prenotazione modificata correttamente!');
     }
 
@@ -120,7 +120,16 @@ class BookingController extends Controller
     // Funzione per eliminare la prenotazione
     public function destroy(Booking $booking)
     {
+        // Individuo l'aula associata alla prenotazione e prendo il numero di persone che erano prenotate
+        $room = $booking->room;
+        $peopleCount = $booking->people;
+
+        // Cancello la prenotazione
         $booking->delete();
+
+        // Aumento il numero di posti disponibili, dato che ora la prenotazione è cancellata
+        $room->available_seats += $peopleCount;
+        $room->save();
 
         return redirect('/booking');
     }
