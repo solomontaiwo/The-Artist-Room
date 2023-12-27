@@ -15,9 +15,9 @@ class BookingController extends Controller
 {
     // Per rendere i metodi di booking solo accessibili agli utenti registrati e autenticati
     public function __construct()
-{
-    $this->middleware('auth');
-}
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -106,10 +106,40 @@ class BookingController extends Controller
             'people' => 'required|integer|min:1',
             'user_id' => 'required|exists:users,id',
         ];
-    
+
         $request->validate($rules);
 
-        Log::info("Superata valdazione");
+        // Per verificare se l'aula è cambiata o meno
+        $originalRoomId = $booking->room_id;
+        $newRoomId = $request->input('room_id');
+
+        // Per verificare se è cambiato il numero di persone
+        $originalPeople = $booking->people;
+        $newPeople = $request->input('people');
+
+        if ($originalRoomId != $newRoomId) {
+            // Cerca la nuova stanza e diminuisce il numero di posti
+            $newRoom = Room::find($newRoomId);
+            $originalRoom = Room::find($originalRoomId);
+
+            $newRoom->available_seats -= $request->input('people');
+            $newRoom->save();
+
+            $originalRoom->available_seats += $originalPeople;
+            $originalRoom->save();
+        }
+
+        if ($originalRoomId === $newRoomId) {
+            if ($originalPeople != $newPeople) {
+                // Calcola la differenza del numero di persone prenotate
+                $peopleDifference = $originalPeople - $newPeople;
+
+                // Update the available seats in the room
+                $room = $booking->room;
+                $room->available_seats += $peopleDifference;
+                $room->save();
+            }
+        }
 
         $booking->update($request->all());
 

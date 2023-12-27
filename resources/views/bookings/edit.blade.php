@@ -55,6 +55,9 @@
 
         <br>
 
+        <!-- Input nascosto per il numero originario di persone originario -->
+        <input type="hidden" name="original_people" value="{{ $booking->people }}">
+
         <div class="form-group">
             <label for="people" class="form-label">Numero di persone</label>
             <input type="number" class="form-control" name="people" value="{{ $booking->people }}">
@@ -66,9 +69,9 @@
         <!-- Manda lo user_id al BookingController, assicurandosi prima che l'utente sia effettivamente autenticato -->
         <input type="hidden" name="user_id" value="{{ optional(Auth::user())->id }}">
 
+        <!-- Script per verificare se viene cambiata aula -->
         <script>
             $(document).ready(function() {
-                // Listen for changes in the selected room
                 $('#room_id').change(function() {
                     var roomName = $('#room_id option:selected').text();
                     $('#room_name').val(roomName);
