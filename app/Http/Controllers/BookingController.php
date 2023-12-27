@@ -98,27 +98,22 @@ class BookingController extends Controller
     public function update(Request $request, Booking $booking)
     {
         // Validazione dei dati
-        $request->validate([
+        $rules = [
+            'room_id' => 'required|exists:rooms,id',
             'reservation_date' => 'required|date',
-            'reservation_hour' => 'required|date_format:H:i',
-            'reservation_time' => 'required',
-            'people' => 'required|integer',
-        ]);
+            'reservation_hour' => 'required|date_format:H:i:s',
+            'reservation_time' => 'required|integer|min:1',
+            'people' => 'required|integer|min:1',
+            'user_id' => 'required|exists:users,id',
+        ];
+    
+        $request->validate($rules);
 
-        $validator = Validator::make($request->all(), [
-            'reservation_date' => 'required|date',
-            'reservation_hour' => 'required|date_format:H:i',
-            'reservation_time' => 'required',
-            'people' => 'required|integer',
-        ]);
-        
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
+        Log::info("Superata valdazione");
 
         $booking->update($request->all());
 
-        return redirect()->route('bookings.show', $booking->id)->with('success', 'Prenotazione modificata correttamente!');
+        return redirect()->route('booking.show', $booking->id)->with('success', 'Prenotazione modificata correttamente!');
     }
 
     public function show(Booking $booking)

@@ -5,7 +5,7 @@
 <div class="container">
     <h1>Le tue prenotazioni</h1>
     <br>
-    <h3> Prenotazioni totali: {{ $bookings->count() }} </h3>
+    <h3>Prenotazioni totali: {{ $bookings->count() }} </h3>
 
     @if($bookings->isEmpty())
     <p>Non hai ancora effettuato prenotazioni.</p>

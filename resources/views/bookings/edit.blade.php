@@ -6,9 +6,9 @@
 
     <h1>Modifica la prenotazione di "{{ $booking->room->name }}" del {{ $booking->reservation_date }} alle ore {{ \Carbon\Carbon::parse($booking->reservation_hour)->format('H:i') }}</h1>
 
-    <form method="POST" action="{{ route('booking.update', $booking->id) }}">
+    <form method="POST" action="{{ route('booking.update', $booking) }}">
         @csrf
-        @method('PUT')
+        @method('PATCH')
 
         <div class="form-group">
             <label for="room_id" class="form-label">Stanza</label>
@@ -62,6 +62,21 @@
         </div>
 
         <br>
+
+        <!-- Manda lo user_id al BookingController, assicurandosi prima che l'utente sia effettivamente autenticato -->
+        <input type="hidden" name="user_id" value="{{ optional(Auth::user())->id }}">
+
+        <script>
+            $(document).ready(function() {
+                // Listen for changes in the selected room
+                $('#room_id').change(function() {
+                    var roomName = $('#room_id option:selected').text();
+                    $('#room_name').val(roomName);
+                });
+            });
+        </script>
+
+        <input type="hidden" name="room_name" id="room_name" value="{{ $room->name }}">
 
         <button type="submit" class="btn btn-primary">Salva modifiche</button>
 
