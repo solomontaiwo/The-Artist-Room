@@ -27,6 +27,9 @@
 		php artisan make:seeder UsersTableSeeder
 		
 		php artisan make:seeder RoomsTableSeeder
+
+        php artisan db:seed
+        (per caricare tutti i seed)
 	
 	e inserire i seguenti dati nella funzione run() dei vari file creati in app/database/seeders/*.php: 
 

@@ -9,7 +9,7 @@
     <p><strong>Aula:</strong> {{ $booking->room->name }}</p>
     <p><strong>Giorno:</strong> {{ $booking->reservation_date }}</p>
     <p><strong>Ora:</strong> {{ \Carbon\Carbon::parse($booking->reservation_hour)->format('H:i') }}</p>
-    <p><strong>Tempo:</strong> {{ $booking->reservation_time }} minuti</p>
+    <p><strong>Tempo:</strong> {{ $booking->reservation_time }} minuti</p> 
     <p><strong>Giorno e ora di prenotazione:</strong> {{ $booking->created_at }}</p>
     <p><strong>Numero di persone:</strong> {{ $booking->people }}</p>
 

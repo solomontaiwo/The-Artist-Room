@@ -69,7 +69,6 @@
         </div>
         @endif
 
-
         <!-- Manda lo user_id al BookingController, assicurandosi prima che l'utente sia effettivamente autenticato -->
         <input type="hidden" name="user_id" value="{{ optional(Auth::user())->id }}">
 

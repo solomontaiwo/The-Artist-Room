@@ -25,7 +25,7 @@
 
             <!-- Script per visualizzare in tempo reale i posti liberi nell'aula selezionata -->
             <br>
-            <div id="availableSeatsInfo"> Posti disponibili nell'aula selezionata: 0</div>
+            <div id="availableSeatsInfo">Posti disponibili nell'aula selezionata: 0</div>
 
         </div>
 
