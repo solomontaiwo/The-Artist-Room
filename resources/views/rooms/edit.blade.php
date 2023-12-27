@@ -3,8 +3,9 @@
 @section('content')
 
 <div class="container">
-
     <h1>Modifica "{{ $room->name }}"</h1>
+
+    <br>
 
     <form method="POST" action="{{ route('room.update', $room->id) }}">
         @csrf

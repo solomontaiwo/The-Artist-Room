@@ -5,7 +5,9 @@
 <div class="container">
 
     <h1>Dettagli aula</h1>
+
     <br>
+    
     <p><strong>Aula:</strong> {{ $room->name }}</p>
     <p><strong>Descrizione:</strong> {{ $room->description }}</p>
     <p><strong>Indirizzo:</strong> {{ $room->address }}</p>
