@@ -186,12 +186,11 @@ la pagina desiderata:
 
 
 
-Roadmap: 
-1. inizializzare l’applicazione seguendo il manuale laravel ---> fatto
-2. gestione utenti con seed iniziale ---> fatto
-3. gestione prenotazioni con CRUD (Create, Read, Update, Delete). Occorre:
-	a. Creare il modello (con migrazione), 
-	b. Creare il controllo (completo di tutte le azioni)
-	c. Creare le view necessarie
+Requisiti minimi del progetto: 
+1. Gestione di più livelli di utenti: amministratori, utenti, ospiti ... --> fatto
+2. Almeno una entità con CRUD completo --> fatto (prenotazioni)
+3. Gestione della validazione dei dati inseriti --> fatto (modifica delle prenotazioni) 
+4. Almeno un inserimento o modifica di una entità sviluppato in AJAX --> modifica della stanza da parte di un admin?
+
 
 99. tradurre completamente l'app in italiano/inglese
