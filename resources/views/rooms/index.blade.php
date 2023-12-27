@@ -24,8 +24,12 @@
             <p>Dimensioni: {{ $room->size }} mq</p>
             <p>Posti attualmente disponibili: {{ $room->available_seats }}</p>
 
-            <br>
-            <hr>
+            @admin
+            <a href="{{ route('room.edit', $room->id) }}">Modifica aula</a> <!-- Pulsante per modificare la prenotazione -->
+            @endadmin
+            
+            <br><hr>
+            </form>
         </div>
         @endforeach
     </ul>

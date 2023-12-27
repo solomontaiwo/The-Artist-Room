@@ -23,8 +23,8 @@
             </select>
             <div id="" class="form-text">Cambia l'aula che vuoi prenotare</div>
 
-            <!-- Script per visualizzare in tempo reale i posti liberi nell'aula selezionata -->
             <br>
+            <!-- Script per visualizzare in tempo reale i posti liberi nell'aula selezionata -->
             <div id="availableSeatsInfo">Posti disponibili nell'aula selezionata: 0</div>
 
         </div>

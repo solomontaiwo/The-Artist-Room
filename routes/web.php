@@ -35,15 +35,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 Route::resource('/booking', App\Http\Controllers\BookingController::class);
-
-Route::resource('/room', App\Http\Controllers\RoomController::class);
-
 // Rotta per pagina di conferma della prenotazione
 Route::get('/booking/{booking}/confirm-booking', [App\Http\Controllers\BookingController::class, 'confirmBooking'])->name('confirm-booking');
 
+
+Route::resource('/room', App\Http\Controllers\RoomController::class);
 // Rotta per ottenere con script Javascript il numero di stanze disponibili
 Route::get('/api/rooms/{id}', [App\Http\Controllers\RoomController::class, 'getRoomInfo']);
-
 
 // Rotta per la pagina "Chi siamo"
 Route::get('/who-are-we', [App\Http\Controllers\WhoAreWeController::class, 'index'])->name('who-are-we.index');

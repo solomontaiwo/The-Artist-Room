@@ -57,6 +57,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('who-are-we.index') }}">{{ __('Chi siamo') }}</a>
                         </li>
+
                         <!-- Authentication Links -->
                         @guest
                         @if (Route::has('login'))
@@ -77,15 +78,21 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                @admin
+                                <a class="dropdown-item" href="{{ route('room.create') }}">{{ __('Crea aula') }}
                                 </a>
+                                <div class="dropdown-divider"></div>
+                                @endadmin
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
                         </li>
                         @endguest
                     </ul>

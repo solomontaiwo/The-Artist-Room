@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class RoomController extends Controller
 {
@@ -48,12 +49,12 @@ class RoomController extends Controller
             'description' => $request->input('description'),
             'address' => $request->input('address'),
             'size' => $request->input('size'),
-            'available_seats' => $request->input('seats'),
+            'available_seats' => $request->input('available_seats'),
         ];
 
         $newRoom = Room::create($data);
 
-        return redirect()->route('rooms.index')->with('success', 'Stanza creata!');
+        return redirect()->route('room.index')->with('success', 'Stanza creata!');
     }
 
     /**
@@ -62,6 +63,34 @@ class RoomController extends Controller
      * @param  \App\Models\Room  $room
      * @return \Illuminate\View\View
      */
+
+     
+    // Funzione per visualizzare la pagina di edit
+    public function edit(Room $room)
+    {
+        $rooms = Room::all();
+
+        return view('rooms.edit', compact('room'));
+    }
+
+    // Funzione per la modifica della prenotazione con il form relativo
+    public function update(Request $request, Room $room)
+    {
+        // Validazione dei dati
+        $rules = [
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'address' => 'required|string',
+            'size' => 'required|integer|min:1',
+            'available_seats' => 'required|integer|min:0',
+        ];
+
+        $request->validate($rules);
+
+        $room->update($request->all());
+
+        return redirect()->route('room.show', $room->id)->with('success', 'Aula modificata correttamente!');
+    }
 
     public function show(Room $room)
     {
@@ -81,9 +110,10 @@ class RoomController extends Controller
     {
         $room->delete();
 
-        return redirect()->route('rooms.index')->with('success', 'Stanza eliminata!');
+        return redirect()->route('room.index')->with('success', 'Stanza eliminata!');
     }
 
+    // Per funzione Javascript che verifica il numero di stanze disponibili
     public function getRoomInfo($id)
     {
         $room = Room::findOrFail($id);

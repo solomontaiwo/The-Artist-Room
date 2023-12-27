@@ -3,27 +3,52 @@
 @section('content')
 
 <div class="container">
-    <h1>Crea una stanza</h1>
+    <h1>Crea un'aula</h1>
 
-    <form action="{{ route('rooms.store') }}" method="POST">
+    <form action="{{ route('room.store') }}" method="POST">
         @csrf
 
-        <label for="name">Nome:</label>
-        <input type="text" name="name" id="name" required>
+        <div class="form-group">
+            <label for="name" class="form-label">Nome aula</label>
+            <input type="string" class="form-control" name="name">
+            <div id="" class="form-text">Inserisci il nome dell'aula</div>
+        </div>
 
-        <label for="description">Descrizione:</label>
-        <textarea name="description" id="description" required></textarea>
+        <br>
 
-        <label for="address">Indirizzo:</label>
-        <input type="text" name="address" id="address" required>
+        <div class="form-group">
+            <label for="description" class="form-label">Descrizione</label>
+            <input type="string" class="form-control" name="description">
+            <div id="" class="form-text">Inserisci una descrizione per l'aula</div>
+        </div>
 
-        <label for="size">Dimensioni:</label>
-        <input type="number" name="size" id="size" required>
+        <br>
 
-        <label for="seats">Posti disponibili:</label>
-        <input type="number" name="seats" id="seats" required>
+        <div class="form-group">
+            <label for="address" class="form-label">Indirizzo</label>
+            <input type="string" class="form-control" name="address">
+            <div id="" class="form-text">Inserisci l'indirizzo dell'aula</div>
+        </div>
 
-        <button type="submit">Crea stanza</button>
+        <br>
+
+        <div class="form-group">
+            <label for="size" class="form-label">Dimensioni</label>
+            <input type="string" class="form-control" name="size">
+            <div id="" class="form-text">Inserisci le dimensioni dell'aula in metri quadri</div>
+        </div>
+
+        <br>
+
+        <div class="form-group">
+            <label for="available_seats" class="form-label">Posti disponibili</label>
+            <input type="number" class="form-control" name="available_seats">
+            <div id="" class="form-text">Inserisci il numero di posti disponibili</div>
+        </div>
+
+        <br>
+
+        <button type="submit" class="btn btn-primary">Crea aula</button>
     </form>
 </div>
 @endsection

@@ -45,6 +45,12 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    // Funzione per determinare se un utente è un admin o meno
+    public function isAdmin()
+    {
+        return $this->is_admin;
+    }
+
     // Relazione tra l'utente e le prenotazioni
     public function bookings()
     {

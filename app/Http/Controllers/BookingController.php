@@ -145,7 +145,6 @@ class BookingController extends Controller
 
         return redirect()->route('booking.show', $booking->id)->with('success', 'Prenotazione modificata correttamente!');
     }
-
     public function show(Booking $booking)
     {
         return view('bookings.show', compact('booking'));
