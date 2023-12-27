@@ -6,6 +6,6 @@
 
 Progetto a conclusione dell'insegnamento di Tecnologie Web (a.a. 2023/24) del corso di Informatica presso l'Università degli Studi di Ferrara.
 
-<h5>Membri</h5>
+<h3>Membri</h3>
 <strong>Gaudenzi Luca</strong> - <strong>Marzola Gaia</strong> - <strong>Pirelli Giorgia</strong> - <strong>Taiwo Solomon Olamide</strong>
 <hr>
