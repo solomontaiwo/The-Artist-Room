@@ -188,7 +188,6 @@ la pagina desiderata:
 
 
 
-
 Requisiti minimi del progetto: 
 1. Gestione di più livelli di utenti: amministratori, utenti, ospiti ... --> fatto
 2. Almeno una entità con CRUD completo --> fatto (prenotazioni)
