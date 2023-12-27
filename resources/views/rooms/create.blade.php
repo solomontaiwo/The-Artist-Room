@@ -5,6 +5,8 @@
 <div class="container">
     <h1>Crea un'aula</h1>
 
+    <br>
+
     <form action="{{ route('room.store') }}" method="POST">
         @csrf
 

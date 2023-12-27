@@ -19,19 +19,17 @@
                 @endforeach
                 @endisset
             </select>
-            <div id="" class="form-text">Seleziona l'aula che vuoi prenotare</div>
-
-            <!-- Script per visualizzare in tempo reale i posti liberi nell'aula selezionata -->
-            <br>
-            <div id="availableSeatsInfo">Seleziona un'aula per verificare quanti posti sono disponibili </div>
-
+            <div id="" class="form-text">
+                <!-- Script per visualizzare in tempo reale i posti liberi nell'aula selezionata, inserito come 'sottotitolo' del form -->
+                <div id="availableSeatsInfo">Seleziona un'aula che vuoi prenotare per verificare quanti posti sono disponibili</div>
+            </div>
         </div>
 
         <br>
 
         <div class="form-group">
             <label for="reservation_date" class="form-label">Data di prenotazione</label>
-            <input type="date" class="form-control" name="reservation_date">
+            <input type="date" class="form-control" name="reservation_date" id="reservation_date">
             <div id="" class="form-text">Inserisci la data in cui vuoi prenotare la stanza</div>
         </div>
 
@@ -39,7 +37,7 @@
 
         <div class="form-group">
             <label for="reservation_hour" class="form-label">Orario di prenotazione</label>
-            <input type="time" class="form-control" name="reservation_hour">
+            <input type="time" class="form-control" name="reservation_hour" id="reservation_hour">
             <div id="" class="form-text">Inserisci l'ora dalla quale vorresti prenotare l'aula</div>
         </div>
 
@@ -47,7 +45,7 @@
 
         <div class="form-group">
             <label for="reservation_time" class="form-label">Tempo di permanenza (in minuti)</label>
-            <input type="number" class="form-control" name="reservation_time">
+            <input type="number" class="form-control" name="reservation_time" id="reservation_time">
             <div id="" class="form-text">Inserisci il tempo per cui vorresti prenotare la stanza</div>
         </div>
 
@@ -55,60 +53,41 @@
 
         <div class="form-group">
             <label for="people" class="form-label">Quante persone sarete?</label>
-            <input type="number" class="form-control" name="people">
+            <input type="number" class="form-control" name="people" id="people">
             <div id="" class="form-text">Inserisci il numero di persone che occuperà il locale</div>
         </div>
 
-        @if ($errors->has('people'))
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->get('people') as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
-
         <!-- Manda lo user_id al BookingController, assicurandosi prima che l'utente sia effettivamente autenticato -->
         <input type="hidden" name="user_id" value="{{ optional(Auth::user())->id }}">
-
-        <script>
-            $(document).ready(function() {
-                // Listen for changes in the selected room
-                $('#room_id').change(function() {
-                    var roomName = $('#room_id option:selected').text();
-                    $('#room_name').val(roomName);
-                });
-            });
-        </script>
 
         <input type="hidden" name="room_name" id="room_name" value="">
 
         <br>
 
-        <button type="submit" class="btn btn-primary">Prenota</button>
+        <button type="submit" id="bookingButton" class="btn btn-primary">Prenota</button>
+
     </form>
 </div>
 
 @endsection
 
-<!-- javascript per verificare la disponibilità della stanza -->
-
-<!-- Per far funzionare il javascript che dice quanti posti disponibili ci sono alla selezione dell'aula -->
+<!-- Javascript -->
+<!-- Per far funzionare le JQuery  -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
+<!-- Script per determinare quanti posti sono disponibili nell'aula selezionata -->
 <script>
     $(document).ready(function() {
-        // Listen for changes in the selected room
+        // Controlla se viene selezionata un'aula diversa
         $('#room_id').change(function() {
             var roomId = $(this).val();
 
-            // Fetch the available seats for the selected room using an AJAX request
+            // Controlla la disponibilità dei posti per l'aula selezionata usando una richiesta AJAX
             $.ajax({
-                url: '/api/rooms/' + roomId, // Adjust the URL to your API endpoint
+                url: '/api/rooms/' + roomId,
                 method: 'GET',
                 success: function(response) {
-                    // Update the availableSeatsInfo element with the fetched data
+                    // Aggiorna availableSeatsInfo con i dati trovati
                     $('#availableSeatsInfo').html('Posti disponibili nell\'aula selezionata: ' + response.available_seats);
                 },
                 error: function() {
@@ -117,5 +96,48 @@
                 }
             });
         });
+    });
+</script>
+
+<!-- Script per rendere il pulsante di prenotazione non cliccabile se il numero di 
+persone che vogliono occupare l'aula è superiore al numero di posti disponibili 
+e se tutti gli altri campi non sono compilati -->
+<script>
+    $(document).ready(function() {
+        function updateBookingButton() {
+            var roomId = $('#room_id').val();
+            var peopleCount = $('#people').val();
+            var reservationDate = $('#reservation_date').val();
+            var reservationHour = $('#reservation_hour').val();
+            var reservationTime = $('#reservation_time').val();
+
+            /* Richiesta AJAX per verificare se i posti richiesti sono maggiori di quelli disponibili.
+            In caso positivo disabilitare il pulsante di prenotazione. */
+            if (roomId && peopleCount && reservationDate && reservationHour && reservationTime) {
+                $.ajax({
+                    url: '/api/rooms/' + roomId,
+                    method: 'GET',
+                    success: function(response) {
+                        var availableSeats = response.available_seats;
+                        $('#bookingButton').prop('disabled', peopleCount > availableSeats);
+                    },
+                    error: function() {
+                        console.error('Errore nell\ottenimento dei dati sui posti disponibili');
+                        $('#bookingButton').prop('disabled', true);
+                    }
+                });
+            } else {
+                $('#bookingButton').prop('disabled', true);
+            }
+        }
+
+        // Controlla se viene inserito il numero di persone che prenota l'aula
+        $('#people').on('input', updateBookingButton);
+
+        // Controlla se viene inserito un input in tutti gli altri form
+        $('#room_id, #reservation_date, #reservation_hour, #reservation_time').change(updateBookingButton);
+
+        // Initial update on page load
+        updateBookingButton();
     });
 </script>
