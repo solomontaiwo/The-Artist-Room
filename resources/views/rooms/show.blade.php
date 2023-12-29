@@ -17,10 +17,10 @@
     <hr>
     
     @admin
-    <p><a href="{{ route('room.edit', $room->id) }}">Modifica aula</a></p>
+    <p><a href="{{ route('room.edit', $room->id) }}" class="btn btn-warning btn-sm">Modifica aula</a></p>
     @endadmin
-    <p><a href="{{ route('room.index') }}">Vedi tutte le aule</a></p>
-    <p><a href="{{ route('home') }}">Torna alla homepage</a></p>
+    <p><a href="{{ route('room.index') }}" class="btn btn-primary btn-sm">Vedi tutte le aule</a></p>
+    <p><a href="{{ route('home') }}" class="btn btn-primary btn-sm">Torna alla homepage</a></p>
 
 </div>
 @endsection

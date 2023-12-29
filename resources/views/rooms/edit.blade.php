@@ -20,9 +20,9 @@
         <br>
 
         <div class="form-group">
-            <label for="description" class="form-label">Descrizione</label>
+            <label for="description" class="form-label">Tipo</label>
             <input type="string" class="form-control" name="description" value="{{ $room->description }}">
-            <div id="" class="form-text">Cambia la descrizione</div>
+            <div id="" class="form-text">Cambia il tipo di aula</div>
         </div>
 
         <br>
@@ -51,7 +51,7 @@
 
         <br>
 
-        <button type="submit" class="btn btn-primary">Salva modifiche</button>
+        <button type="submit" class="btn btn-success">Salva modifiche</button>
 
     </form>
 

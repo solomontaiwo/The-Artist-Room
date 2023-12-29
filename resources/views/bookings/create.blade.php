@@ -90,7 +90,7 @@
 
         <br>
 
-        <button type="submit" id="bookingButton" class="btn btn-primary">Prenota</button>
+        <button type="submit" id="bookingButton" class="btn btn-success">Prenota</button>
 
     </form>
 </div>

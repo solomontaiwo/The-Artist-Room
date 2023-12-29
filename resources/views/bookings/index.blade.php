@@ -21,9 +21,10 @@
             <p><strong>Giorno di arrivo:</strong> {{ \Carbon\Carbon::parse($booking->arrival_date)->format('d/m/Y') }}</p>
             <p><strong>Orario di arrivo:</strong> {{ \Carbon\Carbon::parse($booking->arrival_time)->format('H:i') }}</p>
 
-            <a href="{{ route('booking.show', $booking->id) }}">Dettagli</a> <!-- Pulsante per modificare la prenotazione -->
-            -
-            <a href="{{ route('booking.edit', $booking->id) }}">Modifica prenotazione</a> <!-- Pulsante per modificare la prenotazione -->
+            <!-- Pulsante per modificare la prenotazione -->
+            <a href="{{ route('booking.show', $booking->id) }}" class="btn btn-primary btn-sm">Dettagli</a>
+            <!-- Pulsante per modificare la prenotazione -->
+            <a href="{{ route('booking.edit', $booking->id) }}" class="btn btn-warning btn-sm">Modifica prenotazione</a>
 
             <br> <br>
             <hr>
