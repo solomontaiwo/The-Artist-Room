@@ -42,25 +42,27 @@
         let id = $(this).attr('data-id');
         let token = $('input[name="_token"]').val();
 
-        console.log(id);
+        var confirmation = window.confirm("Sei sicuro di voler cancellare questo utente?");
 
-        $.ajax({
-            url: "/user/" + id,
-            type: "DELETE",
-            dataType: 'json',
-            data: {
-                '_token': token,
-            },
-            success: function(response) {
-                // Il mio codice success
-                console.log('Response:', response);
-                location.reload();
-            },
-            error: function(response, status) {
-                // Il mio codice error
-                console.log('Errore nell\'eliminazione dell\'utente');
-            }
-        });
+        if (confirmation) {
+            $.ajax({
+                url: "/user/" + id,
+                type: "DELETE",
+                dataType: 'json',
+                data: {
+                    '_token': token,
+                },
+                success: function(response) {
+                    // Il mio codice success
+                    console.log('Response:', response);
+                    location.reload();
+                },
+                error: function(response, status) {
+                    // Il mio codice error
+                    console.log('Errore nell\'eliminazione dell\'utente');
+                }
+            });
+        }
     });
 </script>
 
