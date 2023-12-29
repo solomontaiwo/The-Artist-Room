@@ -38,8 +38,14 @@ Route::resource('/booking', App\Http\Controllers\BookingController::class);
 // Rotta per pagina di conferma della prenotazione
 Route::get('/booking/{booking}/confirm-booking', [App\Http\Controllers\BookingController::class, 'confirmBooking'])->name('confirm-booking');
 
+// Rotta per controllo utenti
+Route::resource('/user', App\Http\Controllers\UserController::class);
+
+// Rotta per ottenere con script Javascript il numero di stanze disponibili
+Route::get('/api/users/{id}', [App\Http\Controllers\UserController::class, 'getUserInfo']);
 
 Route::resource('/room', App\Http\Controllers\RoomController::class);
+
 // Rotta per ottenere con script Javascript il numero di stanze disponibili
 Route::get('/api/rooms/{id}', [App\Http\Controllers\RoomController::class, 'getRoomInfo']);
 

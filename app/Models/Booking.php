@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\Rules\Enum;
 
 class Booking extends Model
 {
@@ -15,14 +16,25 @@ class Booking extends Model
         'user_id',
         'name',
         'surname',
-        'reservation_date',
-        'reservation_hour',
-        'reservation_time',
+        'arrival_date',
+        'arrival_time',
+        'departure_date',
+        'departure_time',
         'people'
     ];
 
+    public function getMaxDeparture($arrival_date)
+    {
+        $numberOfDaysToAdd = 2;
+
+        $arrival_date->modify('+' . $numberOfDaysToAdd . ' days');
+
+        return $arrival_date;
+    }
+
     // Relazione tra prenotazioni e utente
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class)->onDelete('cascade');
     }
 

@@ -22,7 +22,7 @@ class RoomController extends Controller
      */
     public function create()
     {
-        $rooms = Room::all(); // Fetch all rooms
+        $rooms = Room::all(); // Trova tutte le stanze e le inserisce nella variabile $rooms
 
         return view('rooms.create', compact('rooms'));
     }

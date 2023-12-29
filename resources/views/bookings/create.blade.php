@@ -28,25 +28,53 @@
         <br>
 
         <div class="form-group">
-            <label for="reservation_date" class="form-label">Data di prenotazione</label>
-            <input type="date" class="form-control" name="reservation_date" id="reservation_date">
+            <label for="arrival_date" class="form-label">Data di prenotazione</label>
+            <input type="date" class="form-control" name="arrival_date" id="arrival_date">
             <div id="" class="form-text">Inserisci la data in cui vuoi prenotare la stanza</div>
         </div>
 
         <br>
 
         <div class="form-group">
-            <label for="reservation_hour" class="form-label">Orario di prenotazione</label>
-            <input type="time" class="form-control" name="reservation_hour" id="reservation_hour">
-            <div id="" class="form-text">Inserisci l'ora dalla quale vorresti prenotare l'aula</div>
+            <label for="arrival_time" class="form-label">Orario di arrivo</label>
+            <select name="arrival_time" id="arrival_time" class="form-control">
+                <option value="" selected disabled>Seleziona un orario di arrivo</option> <!-- Per fare in modo che nessun orario sia preselezionato -->
+                <option value="">12:00</option>
+                <option value="">13:00</option>
+                <option value="">14:00</option>
+                <option value="">15:00</option>
+                <option value="">16:00</option>
+                <option value="">17:00</option>
+                <option value="">18:00</option>
+                <option value="">19:00</option>
+                <option value="">20:00</option>
+                <option value="">21:00</option>
+                <option value="">22:00</option>
+                <option value="">23:00</option>
+            </select>
+            <div id="" class="form-text">Orario in cui si intende arrivare</div>
         </div>
 
         <br>
 
         <div class="form-group">
-            <label for="reservation_time" class="form-label">Tempo di permanenza (in minuti)</label>
-            <input type="number" class="form-control" name="reservation_time" id="reservation_time">
-            <div id="" class="form-text">Inserisci il tempo per cui vorresti prenotare la stanza</div>
+            <label for="name" class="form-label">Data di partenza</label>
+            <input type="date" class="form-control" id="departure_time" name="departure_time" value="{{ $room->arrival_date }}">
+            <div id="" class="form-text">Data di partenza</div>
+        </div>
+
+        <br>
+
+        <div class="form-group">
+            <label for="departure_time" class="form-label">Orario di partenza</label>
+            <select name="departure_time" id="departure_time" class="form-control">
+                <option value="" selected disabled>Seleziona un orario di partenza</option> <!-- Per fare in modo che nessun orario sia preselezionato -->
+                <option value="">9:00</option>
+                <option value="">10:00</option>
+                <option value="">11:00</option>
+                <option value="">12:00</option>
+            </select>
+            <div id="" class="form-text">Orario in cui è necessario liberare la stanza</div>
         </div>
 
         <br>

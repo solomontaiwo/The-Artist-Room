@@ -42,9 +42,10 @@ class BookingController extends Controller
     {
         $request->validate([
             'room_id' => 'required|exists:rooms,id',
-            'reservation_date' => 'required|date',
-            'reservation_hour' => 'required|date_format:H:i',
-            'reservation_time' => 'required',
+            'arrival_date' => 'required|date',
+            'arrival_time' => 'required|date_format:H:i',
+            'departure_date' => 'required|date',
+            'departure_time' => 'required|date_format:H:i',
             'people' => 'required|integer',
             'user_id' => 'required|exists:users,id',
         ]);
@@ -63,7 +64,7 @@ class BookingController extends Controller
             }
 
             // Crea una nuova prenotazione
-            $bookingData = $request->only(['reservation_date', 'reservation_hour', 'reservation_time', 'people']);
+            $bookingData = $request->only(['arrival_date', 'arrival_time', 'departure_time', 'departure_date', 'people']);
             $bookingData['room_id'] = $room->id;
             $bookingData['user_id'] = auth()->user()->id; // Per assicurarsi che lo user id sia impostato correttamente
             $bookingData['room_name'] = $room->name;

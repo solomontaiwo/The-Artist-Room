@@ -13,11 +13,13 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('room_id')->constrained()->onDelete('cascade'); 
             $table->string('room_name');
-            $table->date('reservation_date');
-            $table->time('reservation_hour');
-            $table->integer('reservation_time');
+            $table->date('arrival_date');
+            $table->time('arrival_time');
+            $table->date('departure_date');
+            $table->time('departure_time');
             $table->integer('people');            
-            $table->timestamps();            
+            $table->timestamps();   
+            
         });
     }
 

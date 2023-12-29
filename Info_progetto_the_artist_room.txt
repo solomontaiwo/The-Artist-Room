@@ -165,6 +165,32 @@ e poi modificare opportunamente i seguenti file appena creati con gli attributi 
 	/database/migrations/*_create_users_table.php
 
 
+4. Provare ad avviare il progetto con il comando
+
+    php artisan serve
+
+
+
+ ---- CONTROLLER e funzioni relative ----
+
+BookingController 
+    1. construct: per permettere l'utilizzo delle funzioni solo ad un utente autenticato;
+    2. index: funzione che, per visualizzare l'elenco delle prenotazioni dell'utente, carica nella ariabel $user l'utente autenticato
+    e poi nella variabile $bookings le sue prenotazioni;
+    3. create: rimanda alla pagina di creazione di una nuova prenotazione, dopo aver caricato nella variable $rooms tutte le stanze;
+    4. store: crea una nuova prenotazione, validando prima i dati messi in input dall'utente, e poi rimanda alla pagina che 
+    mostra i dettagli sulla prenotazione;
+    5. edit: carica tutte le stanze nella variable $rooms, che poi passa alla view di edit;
+    6. update: funzione per aggiornare una prenotazione. Prima valida i dati ricevuti dall'utente, poi aggiorna i dati e modifica
+    il numero di posti disponibili nelle varie stanze in base ai cambiamenti fatti;
+    7. show: mostra tutte le prenotazioni fatte;
+    8. confirmBooking: mostra la view di conferma della prenotazione appena inserita; 
+    9. destroy: funzione per eliminare una prenotazione e, contestualmente, aggiornare il numero di posti disponibili.
+
+HomeController
+    1. index: visualizza la home
+
+
 
 
  ---- REQUISITI MINIMI e ASPETTI DA IMPLEMENTARE ----
@@ -176,10 +202,10 @@ Requisiti minimi del progetto:
 4. Almeno un inserimento o modifica di una entità sviluppato in AJAX --> modifica della stanza da parte di un admin?
 
 Aspetti da implementare:
-- [ ] Inserire tempo di arrivo e partenza come parametri delle prenotazioni
+- [x] Inserire tempo di arrivo e partenza come parametri delle prenotazioni
 
 - [ ] Fare logica per permettere agli amministratori di rendere admin altri utenti 
--> view utenti visibile solo agli admin, in cui si vedono tutti gli utenti e si possono modificare?
+-> view utenti visibile solo agli admin, in cui si vedono tutti gli utenti e si possono modificare
 
 - [ ] Fare in modo che gli utenti amministratori possano vedere tutte le prenotazioni eseguite da tutti gli utenti
 
@@ -197,14 +223,8 @@ implementata impossibilità di premere pulsante di prenotazione se i posti non s
 - [x] Rivedere RoomController 
 -> rivisto inserendo logiche di creazione e modifica aula
 
-- [ ] Tradurre completamente l'app in italiano/inglese (SUPER OPZIONALE)
 
 
 
 
 
- ---- CONTROLLER e funzioni relative ----
-
-BookingController 
-    1. construct: per permettere l'utilizzo delle funzioni solo ad un utente autenticato;
-    2. index:

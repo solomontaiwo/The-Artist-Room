@@ -82,6 +82,11 @@
                                 <a class="dropdown-item" href="{{ route('room.create') }}">{{ __('Crea aula') }}
                                 </a>
                                 <div class="dropdown-divider"></div>
+
+                                <a class="dropdown-item" href="{{ route('user.index') }}">{{ __('Controllo utenti') }}
+                                </a>
+                                <div class="dropdown-divider"></div>
+
                                 @endadmin
 
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
