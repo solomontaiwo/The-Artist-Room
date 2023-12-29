@@ -58,14 +58,14 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     $(document).ready(function() {
-        // Enable or disable the button based on form validation
+        // Abilita o disabilita il bottone a seconda dell'input dei form
         $('#createRoomForm input').on('input', function() {
             var isFormValid = true;
 
             $('#createRoomForm input[required]').each(function() {
                 if ($(this).val() === '') {
                     isFormValid = false;
-                    return false; // Exit the loop early if a required field is empty
+                    return false; // Esci dal loop prima se un input è vuoto
                 }
             });
 
