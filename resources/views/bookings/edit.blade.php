@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    <h1>Modifica la prenotazione di "{{ $booking->room->name }}" del {{ $booking->reservation_date }} alle ore {{ \Carbon\Carbon::parse($booking->reservation_hour)->format('H:i') }}</h1>
+    <h1>Modifica la prenotazione di "{{ $booking->room->name }}" del {{ \Carbon\Carbon::parse($booking->arrival_date)->format('d/m/Y') }} alle ore {{ \Carbon\Carbon::parse($booking->arrival_time)->format('H:i') }}</h1>
 
     <form method="POST" action="{{ route('booking.update', $booking) }}">
         @csrf
@@ -21,36 +21,65 @@
                 @endforeach
                 @endisset
             </select>
-            <div id="" class="form-text">Cambia l'aula che vuoi prenotare</div>
-
-            <br>
-            <!-- Script per visualizzare in tempo reale i posti liberi nell'aula selezionata -->
-            <div id="availableSeatsInfo">Posti disponibili nell'aula selezionata: 0</div>
-
+            <div id="" class="form-text">
+                <div id="availableSeatsInfo">Posti disponibili nell'aula selezionata: 0</div>
+            </div>
         </div>
 
         <br>
 
         <div class="form-group">
-            <label for="reservation_date" class="form-label">Data di prenotazione</label>
-            <input type="date" class="form-control" name="reservation_date" value="{{ $booking->reservation_date }}">
-            <div id="" class="form-text">Cambia la data di prenotazione</div>
+            <label for="arrival_date" class="form-label">Data di arrivo</label>
+            <input type="date" class="form-control" name="arrival_date" value="{{ $booking->arrival_date }}" id="arrival_date">
+            <div id="" class="form-text">Cambia la data di arrivo</div>
         </div>
 
         <br>
 
         <div class="form-group">
-            <label for="reservation_hour" class="form-label">Ora di prenotazione</label>
-            <input type="time" class="form-control" name="reservation_hour" value="{{ $booking->reservation_hour }}">
-            <div id="" class="form-text">Cambia l'ora di prenotazione</div>
+            <label for="arrival_time" class="form-label">Orario di arrivo</label>
+            <select name="arrival_time" id="arrival_time" class="form-control">
+                <option value="{{ \Carbon\Carbon::parse($booking->arrival_time)->format('H:i') }}">{{ \Carbon\Carbon::parse($booking->arrival_time)->format('H:i') }}</option> <!-- 'selected disabled' per fare in modo che nessun orario sia preselezionato -->
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+                <option value="18:00">18:00</option>
+                <option value="19:00">19:00</option>
+                <option value="20:00">20:00</option>
+                <option value="21:00">21:00</option>
+                <option value="22:00">22:00</option>
+                <option value="23:00">23:00</option>
+            </select>
+            <div id="" class="form-text">Cambia l'orario di arrivo</div>
         </div>
 
         <br>
 
         <div class="form-group">
-            <label for="reservation_time" class="form-label">Tempo di permanenza (in minuti)</label>
-            <input type="number" class="form-control" name="reservation_time" value="{{ $booking->reservation_time }}">
-            <div id="" class="form-text">Cambia il tempo di permanenza</div>
+            <label for="departure_date" class="form-label">Data di partenza</label>
+            <select name="departure_date" id="formatted_departure_date" class="form-control">
+                <option value="" selected disabled></option>
+                <!-- Le opzioni si aggiornano con Javascript dinamicamente in base alla data di arrivo -->
+            </select>
+            <input type="hidden" name="departure_date" id="departure_date">
+            <div id="" class="form-text">Cambia la data di partenza</div>
+        </div>
+
+        <br>
+
+        <div class="form-group">
+            <label for="departure_time" class="form-label">Orario di partenza</label>
+            <select name="departure_time" id="departure_time" class="form-control">
+                <option value="{{ \Carbon\Carbon::parse($booking->departure_time)->format('H:i') }}">{{ \Carbon\Carbon::parse($booking->departure_time)->format('H:i') }}</option>
+                <option value="09:00">09:00</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+            </select>
+            <div id="" class="form-text">Cambia l'orario di partenza</div>
         </div>
 
         <br>
@@ -79,7 +108,7 @@
             });
         </script>
 
-        <input type="hidden" name="room_name" id="room_name" value="{{ $room->name }}">
+        <input type="hidden" name="user_id" value="{{ optional(Auth::user())->id }}">
 
         <button type="submit" class="btn btn-primary">Salva modifiche</button>
 
@@ -131,5 +160,91 @@
                 }
             })
         }
+    });
+</script>
+
+<!-- Script per rendere il pulsante di prenotazione non cliccabile se il numero di 
+persone che vogliono occupare l'aula è superiore al numero di posti disponibili 
+e se tutti gli altri campi non sono compilati -->
+<script>
+    $(document).ready(function() {
+        function updateBookingButton() {
+            var roomId = $('#room_id').val();
+            var peopleCount = $('#people').val();
+            var arrivalDate = $('#arrival_date').val();
+            var arrivalTime = $('#arrival_time').val();
+            var departureDate = $('#formatted_departure_date').val();
+            var departureTime = $('#departure_time').val();
+
+            /* Richiesta AJAX per verificare se i posti richiesti sono maggiori di quelli disponibili.
+            In caso positivo disabilitare il pulsante di prenotazione. */
+            if (roomId && peopleCount && arrivalDate && arrivalTime && departureDate && departureTime) {
+                $.ajax({
+                    url: '/api/rooms/' + roomId,
+                    method: 'GET',
+                    success: function(response) {
+                        var availableSeats = response.available_seats;
+                        $('#bookingButton').prop('disabled', peopleCount > availableSeats);
+                    },
+                    error: function() {
+                        console.error('Errore nell\'ottenimento dei dati sui posti disponibili');
+                        $('#bookingButton').prop('disabled', true);
+                    }
+                });
+            } else {
+                $('#bookingButton').prop('disabled', true);
+            }
+        }
+
+        // Controlla se viene inserito il numero di persone che prenota l'aula
+        $('#people').on('input', updateBookingButton);
+
+        // Controlla se viene inserito un input in tutti gli altri form
+        $('#room_id, #arrival_date, #arrival_time, #formatted_departure_date, #departure_time').change(updateBookingButton);
+
+        // Aggiornamento iniziale al caricamento della pagina
+        updateBookingButton();
+    });
+</script>
+
+<!-- Script per fare in modo che la data di partenza si popoli in automatico con i due giorni successivi rispetto alla data di arrivo -->
+<script>
+    $(document).ready(function() {
+        // Funzione per aggiornare la data di partenza in base alla data selezionata
+        function updateDepartureDateOptions() {
+            var arrivalDate = $('#arrival_date').val();
+
+            if (arrivalDate) {
+                // Clear existing options
+                $('#formatted_departure_date').empty();
+
+                // Aggiungi opzioni in base alla data di arrivo selezionata
+                for (var i = 1; i <= 2; i++) { // You can adjust the range based on your requirements
+                    var newDate = new Date(arrivalDate);
+                    newDate.setDate(newDate.getDate() + i);
+
+                    var formattedDate = newDate.toLocaleDateString('it-IT');
+
+                    $('#formatted_departure_date').append('<option value="' + formattedDate + '">' + formattedDate + '</option>');
+
+                    var parts = formattedDate.split('/');
+                    var day = parts[0];
+                    var month = parts[1];
+                    var year = parts[2];
+
+                    var formattedDateWithLines = new Date(`${year}-${month}-${day}`).toISOString().slice(0, 10);
+
+                    $('#departure_date').val(formattedDateWithLines);
+                }
+            }
+        }
+
+        // Controlla se ci sono modifiche al form arrival date
+        $('#arrival_date').change(function() {
+            updateDepartureDateOptions();
+        });
+
+        // Aggiornamento iniziale al caricamento della pagina
+        updateDepartureDateOptions();
     });
 </script>

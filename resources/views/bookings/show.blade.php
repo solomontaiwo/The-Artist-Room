@@ -7,11 +7,16 @@
     <h1>Dettagli prenotazione</h1>
     <br>
     <p><strong>Aula:</strong> {{ $booking->room->name }}</p>
-    <p><strong>Giorno:</strong> {{ $booking->reservation_date }}</p>
-    <p><strong>Ora:</strong> {{ \Carbon\Carbon::parse($booking->reservation_hour)->format('H:i') }}</p>
-    <p><strong>Tempo:</strong> {{ $booking->reservation_time }} minuti</p> 
-    <p><strong>Giorno e ora di prenotazione:</strong> {{ $booking->created_at }}</p>
+    <p><strong>Giorno di arrivo:</strong> {{ \Carbon\Carbon::parse($booking->arrival_date)->format('d/m/Y') }}</p>
+    <p><strong>Orario di arrivo:</strong> {{ \Carbon\Carbon::parse($booking->arrival_time)->format('H:i') }}</p>
+    <p><strong>Giorno di partenza:</strong> {{ \Carbon\Carbon::parse($booking->departure_date)->format('d/m/Y') }}</p>
+    <p><strong>Orario di partenza:</strong> {{ \Carbon\Carbon::parse($booking->departure_time)->format('H:i') }}</p>
     <p><strong>Numero di persone:</strong> {{ $booking->people }}</p>
+
+    @admin
+    <br>
+    <p><strong>Data e ora creazione prenotazione:</strong> {{ $booking->created_at }}</p>
+    @endadmin
 
     <hr>
     <p><a href="{{ route('booking.edit', $booking->id) }}">Modifica prenotazione</a></p>
@@ -19,4 +24,5 @@
     <p><a href="{{ route('home') }}">Torna alla homepage</a></p>
 
 </div>
+
 @endsection

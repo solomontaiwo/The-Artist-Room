@@ -99,16 +99,16 @@ class BookingController extends Controller
     public function update(Request $request, Booking $booking)
     {
         // Validazione dei dati
-        $rules = [
+        $request->validate([
             'room_id' => 'required|exists:rooms,id',
-            'reservation_date' => 'required|date',
-            'reservation_hour' => 'required|date_format:H:i:s',
-            'reservation_time' => 'required|integer|min:1',
+            'arrival_date' => 'required|date',
+            'arrival_time' => 'required|date_format:H:i',
+            'departure_date' => 'required|date',
+            'departure_time' => 'required|date_format:H:i',
+            'original_people' => 'required|integer|min:1',
             'people' => 'required|integer|min:1',
             'user_id' => 'required|exists:users,id',
-        ];
-
-        $request->validate($rules);
+        ]);
 
         // Per verificare se l'aula è cambiata o meno
         $originalRoomId = $booking->room_id;
