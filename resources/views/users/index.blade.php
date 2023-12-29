@@ -33,4 +33,35 @@
     @endif
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $('.btn.btn-elimina').bind('click', function(event) {
+        event.preventDefault();
+
+        let id = $(this).attr('data-id');
+        let token = $('input[name="_token"]').val();
+
+        console.log(id);
+
+        $.ajax({
+            url: "/user/" + id,
+            type: "DELETE",
+            dataType: 'json',
+            data: {
+                '_token': token,
+            },
+            success: function(response) {
+                // Il mio codice success
+                console.log('Response:', response);
+                location.reload();
+            },
+            error: function(response, status) {
+                // Il mio codice error
+                console.log('Errore nell\'eliminazione dell\'utente');
+            }
+        });
+    });
+</script>
+
 @endsection

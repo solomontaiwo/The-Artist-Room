@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -21,20 +22,12 @@ class UserController extends Controller
         return view('users.show', compact('user'));
     }
 
-    public function getPrenotazioni(User $user){
-
-        $bookings = $user->bookings();
-
-        return view('users.show', compact('bookings'));
-    }
-
     public function destroy(User $user)
     {
         $user->delete(); // cancella il record dal database
 
         return response()->json([
-            'message' => 'ok!',
-            'data' => $user,
+            'success' => true,
         ], 200);
     }
 }
