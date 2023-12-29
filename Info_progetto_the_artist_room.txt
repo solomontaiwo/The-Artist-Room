@@ -169,9 +169,7 @@ e poi modificare opportunamente i seguenti file appena creati con gli attributi 
 
     php artisan serve
 
-
-
- ---- CONTROLLER e funzioni relative ----
+---- CONTROLLER e funzioni relative ----
 
 BookingController 
     1. construct: per permettere l'utilizzo delle funzioni solo ad un utente autenticato;
@@ -190,8 +188,59 @@ BookingController
 HomeController
     1. index: visualizza la home
 
+RoomController
+    1. index;
+    2. create;
+    3. store;
+    4. edit;
+    5. update;
+    6. show;
+    7. destroy.
+    8. getRoomInfo.
 
+UserController
+    1. index
+    2. show;
+    3. promoteToAdmin;
+    4. destroy.
 
+WhoAreWeController
+    1. WhoAreWeController.
+
+---- MODELLI e attributi ----
+
+Booking:
+    'room_id',
+    'room_name',
+    'user_id',
+    'name',
+    'surname',
+    'arrival_date',
+    'arrival_time',
+    'departure_date',
+    'departure_time',
+    'people'
+
+    Relazione belongsTo(User) e belongsTo(Room)
+
+Room:
+    'room_id',
+    'name', 
+    'description', 
+    'address',
+    'size',
+    'available_seats'
+
+    Relazione hasMany(Booking)
+
+User:
+    'name',
+    'surname',
+    'email',
+    'password',
+    'is_admin'
+
+    Relazione hasMany(Booking)
 
  ---- REQUISITI MINIMI e ASPETTI DA IMPLEMENTARE ----
 
@@ -223,3 +272,4 @@ implementata impossibilità di premere pulsante di prenotazione se i posti non s
 
 - [x] Rivedere RoomController 
 -> rivisto inserendo logiche di creazione e modifica aula
+
