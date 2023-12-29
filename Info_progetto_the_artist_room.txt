@@ -204,13 +204,13 @@ Requisiti minimi del progetto:
 Aspetti da implementare:
 - [x] Inserire tempo di arrivo e partenza come parametri delle prenotazioni
 
-- [ ] Fare logica per permettere agli amministratori di rendere admin altri utenti 
+- [x] Fare logica per permettere agli amministratori di rendere admin altri utenti 
 -> da view utenti visibile solo agli admin; in questa view si vedono tutti gli utenti , con le loro prenotazioni e la possibilità di eliminarli con 
 una AJAX request
 
 - [ ] Fare in modo che gli utenti amministratori possano vedere tutte le prenotazioni eseguite da tutti gli utenti
 
-- [ ] Implementare AJAX -> implementare una JQuery (fatto) -> creare una AJAX request con JQuery
+- [x] Implementare AJAX -> implementare una JQuery (fatto) -> creare una AJAX request con JQuery (fatto)
 
 - [ ] Implementare animazioni con JQuery
 

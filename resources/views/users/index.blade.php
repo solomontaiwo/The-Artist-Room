@@ -22,6 +22,9 @@
 
             <!-- Pulsante per vedere le prenotazioni dell'utente -->
             <a href="{{ route('user.show', $user->id) }}">Prenotazioni</a>
+            @if (!$user->is_admin)
+            <button role="button" class="btn btn-success btn-sm btn-promuovi" data-id="{{ $user->id }}" data-token="{{ csrf_token() }}">Promuovi ad admin</button>
+            @endif
             <button role="button" class="btn btn-danger btn-sm btn-elimina" data-id="{{ $user->id }}" data-token="{{ csrf_token() }}">Elimina utente</button>
 
             <br>
@@ -35,6 +38,11 @@
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
+<!-- Script per promuovere utente ad admin -->
+
+
+
+<!-- Script per eliminare utente -->
 <script>
     $('.btn.btn-elimina').bind('click', function(event) {
         event.preventDefault();
@@ -60,6 +68,35 @@
                 error: function(response, status) {
                     // Il mio codice error
                     console.log('Errore nell\'eliminazione dell\'utente');
+                }
+            });
+        }
+    });
+
+    // Codice per promuovere un utente ad admin
+    $('.btn-promuovi').bind('click', function() {
+        var userId = $(this).data('id');
+        var token = $(this).data('token');
+
+        // Ask for confirmation before proceeding with the promotion
+        var confirmation = window.confirm('Sei sicuro di voler promuovere questo utente ad admin?');
+
+        if (confirmation) {
+            // Perform AJAX request to update user as admin
+            $.ajax({
+                url: '/users/' + userId + '/promote',
+                type: 'PUT', // Use PUT or POST method based on your implementation
+                data: {
+                    _token: token
+                },
+                success: function(response) {
+                    if (response.success) {
+                        // Update the admin status in the UI
+                        location.reload();
+                    }
+                },
+                error: function(error) {
+                    console.error('Fallimento nella promozione dell\'utente ad admin', error);
                 }
             });
         }

@@ -22,12 +22,23 @@ class UserController extends Controller
         return view('users.show', compact('user'));
     }
 
+    public function promoteToAdmin(User $user)
+    {
+        $user->update(['is_admin' => true]);
+
+        return response()->json([
+            'success' => true,
+            'data' => $user,
+        ], 200);
+    }
+
     public function destroy(User $user)
     {
         $user->delete(); // cancella il record dal database
 
         return response()->json([
             'success' => true,
+            'data' => $user,
         ], 200);
     }
 }

@@ -41,6 +41,8 @@ Route::get('/booking/{booking}/confirm-booking', [App\Http\Controllers\BookingCo
 
 // Rotta per controllo utenti
 Route::resource('/user', App\Http\Controllers\UserController::class);
+Route::put('/users/{user}/promote', [App\Http\Controllers\UserController::class, 'promoteToAdmin'])->name('users.promoteToAdmin');
+
 
 // Rotta per ottenere con script Javascript il numero di stanze disponibili
 Route::get('/api/users/{id}', [App\Http\Controllers\UserController::class, 'getUserInfo']);
