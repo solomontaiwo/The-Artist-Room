@@ -9,7 +9,7 @@
 
     <form action="{{ route('booking.store') }}" method="POST">
         @csrf
-        
+
         <div class="form-group">
             <label for="room_id" class="form-label">Stanza</label>
             <select name="room_id" id="room_id" class="form-control">
@@ -177,11 +177,11 @@ e se tutti gli altri campi non sono compilati -->
             var arrivalDate = $('#arrival_date').val();
 
             if (arrivalDate) {
-                // Clear existing options
+                // Svuota l'attributo, per sicurezza
                 $('#formatted_departure_date').empty();
 
                 // Aggiungi opzioni in base alla data di arrivo selezionata
-                for (var i = 1; i <= 2; i++) { // You can adjust the range based on your requirements
+                for (var i = 1; i <= 2; i++) {
                     var newDate = new Date(arrivalDate);
                     newDate.setDate(newDate.getDate() + i);
 
