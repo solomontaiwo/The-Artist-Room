@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations. PARTE 2 DOCUMENTAZIONE PUNTO 2
      */
     public function up(): void
     {
@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('address');
             $table->integer('size');
-            $table->unsignedInteger('available_seats'); // non-negative seats
+            $table->unsignedInteger('available_seats'); // POSTI disponibili non negativi
             $table->timestamps();
         });
     }

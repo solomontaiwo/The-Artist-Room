@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations. PARTE 2 DOCUMENTAZIONE PUNTO 2
      */
     public function up()
     {
@@ -25,7 +25,17 @@ return new class extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     Piccolo appunto:
+    cosa rappresenta "remember_token" di Laravel? (riga 21)
+    In Laravel introduce miglioramenti alla sicurezza per i cookie "ricordami".
+    Prima di questo aggiornamento, se un cookie di memorizzazione veniva violato da un altro utente malintenzionato, 
+    il cookie rimaneva valido per un lungo periodo di tempo, anche dopo che il vero proprietario dell'account reimpostava la password, si disconnetteva, ecc.
+
+    Questa modifica richiede l'aggiunta di una nuova remember_tokencolonna alla userstabella del database (o equivalente).
+    Dopo questa modifica, all'utente verrà assegnato un nuovo token ogni volta che accede alla tua applicazione. 
+    Il token verrà aggiornato anche quando l'utente si disconnette dall'applicazione. Le implicazioni di questa modifica sono le seguenti: 
+    se un cookie "ricordami" viene violato, il semplice logout dall'applicazione invaliderà il cookie.
+
      */
     public function down()
     {
