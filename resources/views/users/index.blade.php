@@ -18,6 +18,7 @@
             <p><strong>Nome:</strong> {{ $user->name }}</p>
             <p><strong>Cognome:</strong> {{ $user->surname }}</p>
             <p><strong>Email:</strong> {{ $user->email }}</p>
+            <p><strong>Numero di prenotazioni:</strong> {{ $user->bookings->count() }}</p>
             <p><strong>Admin:</strong> {{ $user->is_admin ? 'Sì' : 'No' }}</p>
 
             <!-- Pulsante per vedere le prenotazioni dell'utente -->
