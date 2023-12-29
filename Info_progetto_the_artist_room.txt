@@ -1,3 +1,7 @@
+## The Artist Room
+
+Link presentazione progetto: https://www.canva.com/design/DAF2Sa5JzyI/rRurYLQjj4uAHAvgEtEwiA/edit
+
 0. Eseguire i seguenti comandi dopo aver clonato la repository:
     
     cd <nome_progetto>
@@ -6,16 +10,7 @@
     php artisan key:generate
     php artisan config:cache
 
-1. Inizializzare l'applicazione seguendo il manuale laravel e creare repository su github --> fatto 
-	
-	1.1. Creare base dati con relazioni e schema che ci serviranno:
-		ROOM con attributi DIMENSIONI, COSTO, DISPONIBILITÀ, ..., 
-		USER con attributi CORSO DI LAUREA, ..., 
-		BOOKING con attributi DATA PRENOTAZIONE, TEMPO PRENOTAZIONE, ...,
-		... 
-		[convenzione sui nomi nel piccolo manuale pubblicato dal professore]
-
-2. Creare schema del progetto con Mysql Workbench (o simili) utilizzando il seguente comando:
+1. Creare schema del progetto con Mysql Workbench (o simili) utilizzando il seguente comando:
 	
 	CREATE SCHEMA `The_Artist_Room`;
 
@@ -27,9 +22,6 @@
 		php artisan make:seeder UsersTableSeeder
 		
 		php artisan make:seeder RoomsTableSeeder
-
-        php artisan db:seed
-        (per caricare tutti i seed)
 	
 	e inserire i seguenti dati nella funzione run() dei vari file creati in app/database/seeders/*.php: 
 
@@ -143,22 +135,24 @@
             'created_at'    => date('Y-m-d h:i:s')
         ]]);
 	
-	Una volta modificati i file, usare i seguenti comandi per creare le tabelle e popolarle:
+	Usare i seguenti comandi per popolare le tabelle con i dati già presenti nei file app/database/seeders/*.php::
 
 		composer dump-autoload   
 		php artisan db:seed
-		[ Comando per singoli seed, non tutti: php artisan db:seed --class=UsersTableSeeder ]
+		[ Comando per singoli seed, non tutti: php artisan db:seed --class=UsersTableSeeder, 
+                                               php artisan db:seed --class=AdminSeeder
+                                               php artisan db:seed --class=RoomTableSeeder 
+        ]
 
 	Per vedere se i dati sono stati correttamente inseriti nel database, usare il seguente comando in Mysql Workbench:
 
 		SELECT * FROM the_artist_room.rooms;
 		SELECT * FROM the_artist_room.users;
+        Ecc.
 
-	[Usare il seguente comando per pulire e ricreare le tabelle:
-		php artisan migrate:fresh
-	]
+	[Usare il seguente comando per pulire e ricreare le tabelle: php artisan migrate:fresh]
 
-3. Creazione modelli con migrazione e controllo per utenti, stanze e prenotazioni con il seguente comando:
+3. Creazione modelli con migrazione e controllo per utenti, stanze e prenotazioni con i seguenti comandi:
 
 	php artisan make:model User -m -c --resource
 	php artisan make:model Room -m -c --resource
@@ -170,23 +164,10 @@ e poi modificare opportunamente i seguenti file appena creati con gli attributi 
 	/database/migrations/*_create_rooms_table.php
 	/database/migrations/*_create_users_table.php
 
-Modifcare poi il routing in web.php
-
-	/routes/web.php
-
-affinchè la pagina di home sia quella delle prenotazioni (o un'altra a scelta). 
-A tal proposito, occorre aggiungere nel Controller.php interessato (es. 'BookingsController.php' 
-in app/Http/Controllers) la seguente linea nella funzione index() per poter visualizzare 
-la pagina desiderata:
-
-	return view('bookings.index');
 
 
 
-
-
-
-
+ ---- REQUISITI MINIMI e ASPETTI DA IMPLEMENTARE ----
 
 Requisiti minimi del progetto: 
 1. Gestione di più livelli di utenti: amministratori, utenti, ospiti ... --> fatto
@@ -194,7 +175,36 @@ Requisiti minimi del progetto:
 3. Gestione della validazione dei dati inseriti --> fatto (modifica delle prenotazioni) 
 4. Almeno un inserimento o modifica di una entità sviluppato in AJAX --> modifica della stanza da parte di un admin?
 
+Aspetti da implementare:
+- [ ] Inserire tempo di arrivo e partenza come parametri delle prenotazioni
 
-99. tradurre completamente l'app in italiano/inglese
+- [ ] Fare logica per permettere agli amministratori di rendere admin altri utenti 
+-> view utenti visibile solo agli admin, in cui si vedono tutti gli utenti e si possono modificare?
 
-Link presentazione progetto: https://www.canva.com/design/DAF2Sa5JzyI/rRurYLQjj4uAHAvgEtEwiA/edit
+- [ ] Fare in modo che gli utenti amministratori possano vedere tutte le prenotazioni eseguite da tutti gli utenti
+
+- [ ] Implementare AJAX -> implementare una JQuery (fatto) -> creare una AJAX request con JQuery
+
+- [ ] Implementare animazioni con JQuery
+
+- [ ] Implementare homepage di Giorgia
+
+- [ ] Implementare codice per “che cosa dicono di noi”
+
+- [x] Implementare avviso di errore di prenotazione stanza quando non ci sono posti disponibili -> 
+implementata impossibilità di premere pulsante di prenotazione se i posti non sono disponibili
+
+- [x] Rivedere RoomController 
+-> rivisto inserendo logiche di creazione e modifica aula
+
+- [ ] Tradurre completamente l'app in italiano/inglese (SUPER OPZIONALE)
+
+
+
+
+
+ ---- CONTROLLER e funzioni relative ----
+
+BookingController 
+    1. construct: per permettere l'utilizzo delle funzioni solo ad un utente autenticato;
+    2. index:
