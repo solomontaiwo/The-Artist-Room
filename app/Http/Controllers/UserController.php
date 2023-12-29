@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -17,11 +16,10 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        // $users = User::all(); // Trova tutti gli utenti e li inserisce nella variabile $users
-
         return view('users.show', compact('user'));
     }
 
+    // Funzione per il pulsante di promozione utente normale ad admin
     public function promoteToAdmin(User $user)
     {
         $user->update(['is_admin' => true]);
@@ -34,7 +32,8 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
-        $user->delete(); // cancella il record dal database
+        // Cancella il record dal database
+        $user->delete();
 
         return response()->json([
             'success' => true,

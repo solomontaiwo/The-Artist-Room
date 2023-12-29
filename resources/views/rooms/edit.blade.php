@@ -55,6 +55,8 @@
 
     </form>
 
+    <br>
+
     <!-- Form per eliminare la prenotazione -->
     <form method="POST" action="{{ route('room.destroy', $room->id) }}" style="display: inline-block;">
         @csrf
@@ -65,17 +67,14 @@
 
 </div>
 
-@endsection
-
-<!-- javascript per verificare la disponibilità della stanza -->
-
+<!-- Javascript per verificare la disponibilità della stanza -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     $(document).ready(function() {
-        // Fetch the available seats for the selected room using an AJAX request on page load
+        // Cerca i posti disponibili per l'aula selezionata usando una AJAX request al caricamento della pagina
         fetchRoomInfo();
 
-        // Listen for changes in the selected room
+        // Controlla se viene cambiata l'aula selezionata
         $('#room_id').change(function() {
             fetchRoomInfo();
         });
@@ -85,14 +84,14 @@
 
             console.log('Fetching room information for room ID:', roomId);
 
-            // Fetch the available seats for the selected room using an AJAX request
+            // Cerca i posti disponibili per l'aula selezionata usando una AJAX request 
             $.ajax({
-                url: '/api/rooms/' + roomId, // Adjust the URL to your API endpoint
+                url: '/api/rooms/' + roomId,
                 method: 'GET',
                 success: function(response) {
                     console.log('Received response:', response);
 
-                    // Update the availableSeatsInfo element with the fetched data
+                    // Aggiorna availableSeatsInfo con i dati trovati
                     $('#availableSeatsInfo').html('Posti disponibili nell\'aula selezionata: ' + response.available_seats);
                 },
                 error: function(error) {
@@ -103,3 +102,5 @@
         }
     });
 </script>
+
+@endsection

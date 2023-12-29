@@ -24,7 +24,8 @@
             <p><strong>Orario di partenza:</strong> {{ \Carbon\Carbon::parse($booking->departure_time)->format('H:i') }}</p>
             <p><strong>Persone:</strong> {{ $booking->people }}</p>
 
-            <a href="{{ route('booking.edit', $booking->id) }}" class="btn btn-warning">Modifica prenotazione</a> <!-- Pulsante per modificare la prenotazione -->
+            <!-- Pulsante per modificare la prenotazione -->
+            <a href="{{ route('booking.edit', $booking->id) }}" class="btn btn-warning">Modifica prenotazione</a>
 
             <br> <br>
             <hr>

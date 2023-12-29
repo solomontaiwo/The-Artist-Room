@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations. PARTE 2 DOCUMENTAZIONE PUNTO 2
+     PARTE 2 DOCUMENTAZIONE PUNTO 2
      */
     public function up()
     {
@@ -25,7 +25,7 @@ return new class extends Migration
     }
 
     /**
-     Piccolo appunto:
+    Piccolo appunto:
     cosa rappresenta "remember_token" di Laravel? (riga 21)
     In Laravel introduce miglioramenti alla sicurezza per i cookie "ricordami".
     Prima di questo aggiornamento, se un cookie di memorizzazione veniva violato da un altro utente malintenzionato, 
@@ -37,6 +37,7 @@ return new class extends Migration
     se un cookie "ricordami" viene violato, il semplice logout dall'applicazione invaliderà il cookie.
 
      */
+
     public function down()
     {
         Schema::dropIfExists('users');

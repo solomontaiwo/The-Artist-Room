@@ -8,12 +8,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Validator;
-
 
 class BookingController extends Controller
 {
-    // Per rendere i metodi di booking solo accessibili agli utenti registrati e autenticati
+    // Per rendere i metodi di booking solo accessibili agli utenti  autenticati
     public function __construct()
     {
         $this->middleware('auth');

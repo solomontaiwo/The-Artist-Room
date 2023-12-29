@@ -28,8 +28,10 @@
             @admin
             <a href="{{ route('room.edit', $room->id) }}" class="btn btn-warning btn-sm">Modifica aula</a>
             @endadmin
-            
-            <br><hr>
+
+            <br>
+            <hr>
+
             </form>
         </div>
         @endforeach

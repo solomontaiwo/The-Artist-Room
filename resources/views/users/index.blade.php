@@ -39,12 +39,9 @@
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-<!-- Script per promuovere utente ad admin -->
-
-
-
-<!-- Script per eliminare utente -->
+<!-- Script con AJAX requests -->
 <script>
+    // Codice per eliminare un utente
     $('.btn.btn-elimina').bind('click', function(event) {
         event.preventDefault();
 
@@ -62,12 +59,12 @@
                     '_token': token,
                 },
                 success: function(response) {
-                    // Il mio codice success
+                    // Codice di successo mostrato a log e ricarica della pagina
                     console.log('Response:', response);
                     location.reload();
                 },
                 error: function(response, status) {
-                    // Il mio codice error
+                    // Codice di errore mostrato a log
                     console.log('Errore nell\'eliminazione dell\'utente');
                 }
             });
@@ -79,20 +76,20 @@
         var userId = $(this).data('id');
         var token = $(this).data('token');
 
-        // Ask for confirmation before proceeding with the promotion
+        // Chiedi conferma prima di promuovere un utente ad admin
         var confirmation = window.confirm('Sei sicuro di voler promuovere questo utente ad admin?');
 
         if (confirmation) {
-            // Perform AJAX request to update user as admin
+            // AJAX request per promuovere un utente ad admin
             $.ajax({
                 url: '/users/' + userId + '/promote',
-                type: 'PUT', // Use PUT or POST method based on your implementation
+                type: 'PUT',
                 data: {
                     _token: token
                 },
                 success: function(response) {
                     if (response.success) {
-                        // Update the admin status in the UI
+                        // Ricarica la pagina per vedere le modifiche
                         location.reload();
                     }
                 },

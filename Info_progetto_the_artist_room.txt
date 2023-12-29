@@ -272,4 +272,3 @@ implementata impossibilità di premere pulsante di prenotazione se i posti non s
 
 - [x] Rivedere RoomController 
 -> rivisto inserendo logiche di creazione e modifica aula
-

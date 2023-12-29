@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class RoomController extends Controller
 {
@@ -22,7 +21,8 @@ class RoomController extends Controller
      */
     public function create()
     {
-        $rooms = Room::all(); // Trova tutte le stanze e le inserisce nella variabile $rooms
+        // Trova tutte le stanze e le inserisce nella variabile $rooms
+        $rooms = Room::all();
 
         return view('rooms.create', compact('rooms'));
     }
@@ -64,7 +64,7 @@ class RoomController extends Controller
      * @return \Illuminate\View\View
      */
 
-     
+
     // Funzione per visualizzare la pagina di edit
     public function edit(Room $room)
     {

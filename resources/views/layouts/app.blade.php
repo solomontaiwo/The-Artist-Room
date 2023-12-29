@@ -35,12 +35,12 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                    <!-- Parte sinistra della navbar -->
                     <ul class="navbar-nav me-auto">
 
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
+                    <!-- Parte sinistra della navbar -->
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('room.index') }}">{{ __('Aule') }}</a>
@@ -58,7 +58,7 @@
                             <a class="nav-link" href="{{ route('who-are-we.index') }}">{{ __('Chi siamo') }}</a>
                         </li>
 
-                        <!-- Authentication Links -->
+                        <!-- Link di autenticazione -->
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
@@ -91,13 +91,13 @@
 
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                    {{ __('Logout') }}
+                                </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
                         </li>
                         @endguest
                     </ul>
@@ -110,18 +110,6 @@
         </main>
 
     </div>
-
-    <!-- Javascript event listener che aggiorna il valore dell'hidden input in create.blade.app in /resources/views/bookings
-    in base all'aula selezionata dal menu dropdown -->
-    <script>
-        // Check if the element with ID 'room' exists before adding the event listener
-        var roomDropdown = document.getElementById('room');
-        if (roomDropdown) {
-            roomDropdown.addEventListener('change', function() {
-                document.getElementById('room_id').value = this.value;
-            });
-        }
-    </script>
 
 </body>
 

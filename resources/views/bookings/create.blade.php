@@ -95,8 +95,6 @@
     </form>
 </div>
 
-@endsection
-
 <!-- Javascript -->
 <!-- Per far funzionare le JQuery  -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -210,3 +208,5 @@ e se tutti gli altri campi non sono compilati -->
         updateDepartureDateOptions();
     });
 </script>
+
+@endsection

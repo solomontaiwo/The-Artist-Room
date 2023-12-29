@@ -41,14 +41,12 @@ Route::get('/booking/{booking}/confirm-booking', [App\Http\Controllers\BookingCo
 
 // Rotta per controllo utenti
 Route::resource('/user', App\Http\Controllers\UserController::class);
+// Rotta per promuovere gli utenti normali ad admin
 Route::put('/users/{user}/promote', [App\Http\Controllers\UserController::class, 'promoteToAdmin'])->name('users.promoteToAdmin');
-
-
 // Rotta per ottenere con script Javascript il numero di stanze disponibili
 Route::get('/api/users/{id}', [App\Http\Controllers\UserController::class, 'getUserInfo']);
 
 Route::resource('/room', App\Http\Controllers\RoomController::class);
-
 // Rotta per ottenere con script Javascript il numero di stanze disponibili
 Route::get('/api/rooms/{id}', [App\Http\Controllers\RoomController::class, 'getRoomInfo']);
 
