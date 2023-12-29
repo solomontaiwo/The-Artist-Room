@@ -198,8 +198,8 @@ HomeController
 Requisiti minimi del progetto: 
 1. Gestione di più livelli di utenti: amministratori, utenti, ospiti ... --> fatto
 2. Almeno una entità con CRUD completo --> fatto (prenotazioni)
-3. Gestione della validazione dei dati inseriti --> fatto (modifica delle prenotazioni) 
-4. Almeno un inserimento o modifica di una entità sviluppato in AJAX --> modifica della stanza da parte di un admin?
+3. Gestione della validazione dei dati inseriti --> fatto (creazione e modifica delle prenotazioni, creazione aula) 
+4. Almeno un inserimento o modifica di una entità sviluppato in AJAX --> modifica della stanza da parte di un admin? --> fatto con promozione ad admin e eliminazione utente
 
 Aspetti da implementare:
 - [x] Inserire tempo di arrivo e partenza come parametri delle prenotazioni
@@ -208,7 +208,7 @@ Aspetti da implementare:
 -> da view utenti visibile solo agli admin; in questa view si vedono tutti gli utenti , con le loro prenotazioni e la possibilità di eliminarli con 
 una AJAX request
 
-- [ ] Fare in modo che gli utenti amministratori possano vedere tutte le prenotazioni eseguite da tutti gli utenti
+- [x] Fare in modo che gli utenti amministratori possano vedere tutte le prenotazioni eseguite da tutti gli utenti
 
 - [x] Implementare AJAX -> implementare una JQuery (fatto) -> creare una AJAX request con JQuery (fatto)
 

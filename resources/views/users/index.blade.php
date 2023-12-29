@@ -21,7 +21,7 @@
             <p><strong>Admin:</strong> {{ $user->is_admin ? 'Sì' : 'No' }}</p>
 
             <!-- Pulsante per vedere le prenotazioni dell'utente -->
-            <a href="{{ route('user.show', $user->id) }}">Prenotazioni</a>
+            <a href="{{ route('user.show', $user->id) }}" class="btn btn-primary btn-sm">Prenotazioni</a>
             @if (!$user->is_admin)
             <button role="button" class="btn btn-success btn-sm btn-promuovi" data-id="{{ $user->id }}" data-token="{{ csrf_token() }}">Promuovi ad admin</button>
             @endif
