@@ -9,6 +9,7 @@
     <p><strong>Aula:</strong> {{ $booking->room->name }}</p>
     <p><strong>Giorno di arrivo:</strong> {{ $booking->arrival_date }}</p>
     <p><strong>Orario di partenza:</strong> {{ \Carbon\Carbon::parse($booking->arrival_time)->format('H:i') }}</p>
+    <!--l pacchetto Carbon può aiutare a rendere la gestione della data e dell'ora in PHP molto più semplice e semantica, in modo che il nostro codice possa diventare più leggibile e gestibile.-->
     <p><strong>Giorno di partenza:</strong> {{ $booking->departure_date }}</p>
     <p><strong>Orario di partenza:</strong> {{ $booking->departure_time }}</p>
     <p><strong>Numero di persone:</strong> {{ $booking->people }}</p>
