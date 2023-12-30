@@ -34,7 +34,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
-
+//rotta controllo prenotazioni
 Route::resource('/booking', App\Http\Controllers\BookingController::class);
 // Rotta per pagina di conferma della prenotazione
 Route::get('/booking/{booking}/confirm-booking', [App\Http\Controllers\BookingController::class, 'confirmBooking'])->name('confirm-booking');
