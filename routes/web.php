@@ -34,19 +34,30 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
 //rotta controllo prenotazioni
 Route::resource('/booking', App\Http\Controllers\BookingController::class);
 // Rotta per pagina di conferma della prenotazione
 Route::get('/booking/{booking}/confirm-booking', [App\Http\Controllers\BookingController::class, 'confirmBooking'])->name('confirm-booking');
 
-// Rotta per controllo utenti
-Route::resource('/user', App\Http\Controllers\UserController::class);
-// Rotta per promuovere gli utenti normali ad admin
-Route::put('/users/{user}/promote', [App\Http\Controllers\UserController::class, 'promoteToAdmin'])->name('users.promoteToAdmin');
+// Rotta per controllo utenti - Middleware per assicurarsi che solo un admin possa accedere alle pagine
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('/user', App\Http\Controllers\UserController::class);
+    // Rotta per promuovere gli utenti normali ad admin
+    Route::put('/users/{user}/promote', [App\Http\Controllers\UserController::class, 'promoteToAdmin'])->name('users.promoteToAdmin');
+});
+
 // Rotta per ottenere con script Javascript il numero di stanze disponibili
 Route::get('/api/users/{id}', [App\Http\Controllers\UserController::class, 'getUserInfo']);
 
-Route::resource('/room', App\Http\Controllers\RoomController::class);
+// Rotta per pagine accessibili solo da admin
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/room/create', [App\Http\Controllers\RoomController::class, 'create'])->name('room.create');
+    Route::post('/room', [App\Http\Controllers\RoomController::class, 'store'])->name('room.store');
+});
+// Rotta per tutte le altre pagine di room
+Route::resource('/room', App\Http\Controllers\RoomController::class)->except(['create', 'store']);
+
 // Rotta per ottenere con script Javascript il numero di stanze disponibili
 Route::get('/api/rooms/{id}', [App\Http\Controllers\RoomController::class, 'getRoomInfo']);
 
