@@ -2,29 +2,147 @@
 
 @section('content')
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+<!DOCTYPE html>
+<html lang="it">
 
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .card {
+            max-width: 33rem;
+            background: #fff;
+            margin: 0 1rem;
+            padding: 1rem;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            border-radius: 0.5rem;
+        }
+
+        .star-container {
+            white-space: nowrap;
+        }
+
+        .star {
+            font-size: 10vh;
+            cursor: pointer;
+            white-space: nowrap;
+            align-items: center;
+        }
+
+        .one {
+            color: rgb(255, 0, 0);
+        }
+
+        .two {
+            color: rgb(255, 106, 0);
+        }
+
+        .three {
+            color: rgb(251, 255, 120);
+        }
+
+        .four {
+            color: rgb(255, 255, 0);
+        }
+
+        .five {
+            color: rgb(24, 159, 14);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <section id="gallery">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <img src="{{ asset('images/sculture.jpg') }}" alt="" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Scultori</h5>
+                            <p class="card-text">Scalpello alle mani: diamo forma alle tue idee, dandoti la possibilità di modellare e creare le tue sculture</p>
+                            <a href="{{ route('booking.create') }}" class="btn btn-outline-success btn-sm">Prenota ora</a>
+
+                        </div>
                     </div>
-                    @endif
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <img src="{{ asset('images/pittore.jpg') }}" alt="" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Pittori e Disegnatori</h5>
+                            <p class="card-text">Lascia libero spazio alla tua creatività: adesso hai a disposizione materiale e spazi adatti per esprimerti al meglio</p>
+                            <a href="{{ route('booking.create') }}" class="btn btn-outline-success btn-sm">Prenota ora</a>
 
-                    <li><a href="{{ route('room.index') }}">Tutte le aule</a></li>
-                    <li><a href="{{ route('booking.index') }}">Visualizza le tue prenotazioni</a></li>
-                    <li><a href="{{ route('booking.create') }}">Fai una prenotazione</a></li>
-                    <li><a href="{{ route('who-are-we.index') }}">Chi siamo</a></li>
-
-                    <!-- {{ __('Sei loggato!') }} -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <img src="{{ asset('images/camera_oscura.jpg') }}" alt="" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Camera Oscura</h5>
+                            <p class="card-text">Ritorno alla fotografia analogica: ambiente idoneo nel quale poter sviluppare e stampare i negativi fotografici</p>
+                            <a href="{{ route('booking.create') }}" class="btn btn-outline-success btn-sm">Prenota ora</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
+    <hr> <br>
+    <section>
+        <section id="gallery">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Giulia ha messo 5 stelle</h5>
+                                <p class="card-text">Finalmente gli artisti hanno un posto in cui potersi esprimere</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Giacomo ha messo 30 e lode</h5>
+                                <p class="card-text">Che ragazzi fenomenali</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Vincent Van Gogh ha messo 4 stelle</h5>
+                                <p class="card-text">Non trovo il mio orecchio</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Henry Cartier Bresson ha messo 5 stelle</h5>
+                                <p class="card-text">Il sito del secolo (io ho buon occhio per queste cose)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+
+
+
+
+</body>
+
+</html>
 
 @endsection

@@ -263,9 +263,11 @@ una AJAX request
 
 - [ ] Implementare animazioni con JQuery
 
-- [ ] Implementare homepage di Giorgia
+- [x] Implementare homepage di Giorgia
 
-- [ ] Implementare codice per “che cosa dicono di noi”
+- [x] Implementare codice per “che cosa dicono di noi”
+
+- [ ] Aggiungere stelle?
 
 - [x] Implementare avviso di errore di prenotazione stanza quando non ci sono posti disponibili -> 
 implementata impossibilità di premere pulsante di prenotazione se i posti non sono disponibili
