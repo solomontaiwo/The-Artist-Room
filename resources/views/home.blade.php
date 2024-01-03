@@ -114,7 +114,7 @@
                                 <div class="col-md-8">
                                     <div class="card-body">
                                         <h5 class="card-title">Giacomo Piva ha dato 30 e lode</h5>
-                                        <p class="card-text">Ragazzi fenomenali, avete imparato bene!</p>
+                                        <p class="card-text">"Ragazzi fenomenali, avete imparato bene!"</p>
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +130,7 @@
                                 <div class="col-md-8">
                                     <div class="card-body">
                                         <h5 class="card-title">Vincent Van Gogh ha dato 4 stelle</h5>
-                                        <p class="card-text">Non ho trovato il mio orecchio, ma aula perfetta</p>
+                                        <p class="card-text">"Non ho trovato l'orecchio, ma l'aula era perfetta"</p>
                                     </div>
                                 </div>
                             </div>
@@ -146,7 +146,7 @@
                                 <div class="col-md-8">
                                     <div class="card-body">
                                         <h5 class="card-title">Henry Cartier-Bresson ha dato 5 stelle</h5>
-                                        <p class="card-text">Il sito del secolo (ho occhio per queste cose 😉)</p>
+                                        <p class="card-text">"Il sito del secolo (ho occhio per queste cose 😉)"</p>
                                     </div>
                                 </div>
                             </div>
