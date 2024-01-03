@@ -84,7 +84,7 @@
                 </div>
                 <div class="col-lg-4 mb-4">
                     <div class="card">
-                        <img src="{{ asset('images/camera_oscura.jpg') }}" alt="" class="card-img-top">
+                        <img src="{{ asset('images/camera-oscura.jpg') }}" alt="" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Camera Oscura</h5>
                             <p class="card-text">Ritorno alla fotografia analogica: ambiente idoneo nel quale poter sviluppare e stampare i negativi fotografici</p>
