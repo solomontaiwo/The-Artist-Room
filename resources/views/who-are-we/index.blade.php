@@ -83,7 +83,7 @@
                 </div>
                 <div class="col-lg-3 mb-3">
                     <div class="card">
-                        <img src="{{ asset('images/taiwo-solomon.jpg') }}" alt="" class="card-img-top">
+                        <img src="{{ asset('images/pirelli-giorgia.jpg') }}" alt="" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Pirelli Giorgia</h5>
                             <p class="card-text">Non produce gomme</p>
