@@ -95,7 +95,9 @@
             </div>
         </div>
     </section>
+
     <hr> <br>
+
     <section>
         <section id="gallery">
             <div class="container">
@@ -103,7 +105,7 @@
                     <div class="col-lg-3 mb-3">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Giulia ha messo 5 stelle</h5>
+                                <h5 class="card-title">Giulia Marcantoni ha messo 5 stelle</h5>
                                 <p class="card-text">Finalmente gli artisti hanno un posto in cui potersi esprimere</p>
                             </div>
                         </div>
@@ -112,7 +114,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Giacomo ha messo 30 e lode</h5>
-                                <p class="card-text">Che ragazzi fenomenali</p>
+                                <p class="card-text">Ragazzi fenomenali, avete imparato bene</p>
                             </div>
                         </div>
                     </div>
@@ -120,15 +122,15 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Vincent Van Gogh ha messo 4 stelle</h5>
-                                <p class="card-text">Non trovo il mio orecchio</p>
+                                <p class="card-text">Non ho trovato il mio orecchio, ma l'aula era perfetta</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 mb-3">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Henry Cartier Bresson ha messo 5 stelle</h5>
-                                <p class="card-text">Il sito del secolo (io ho buon occhio per queste cose)</p>
+                                <h5 class="card-title">Henry Cartier-Bresson ha messo 5 stelle</h5>
+                                <p class="card-text">Il sito del secolo (ed io ho buon occhio per queste cose)</p>
                             </div>
                         </div>
                     </div>
