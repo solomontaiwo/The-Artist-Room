@@ -99,49 +99,63 @@
     <hr> <br>
 
     <section>
-        <section id="gallery">
+        <section id="gallery-reviews">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3 mb-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Giulia Marcantoni ha messo 5 stelle</h5>
-                                <p class="card-text">Finalmente gli artisti hanno un posto in cui potersi esprimere</p>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card" style="max-width: 400px;">
+                            <div class="row g-0">
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <img src="{{ asset('images/piva-giacomo.jpg') }}" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Giacomo Piva ha dato 30 e lode</h5>
+                                        <p class="card-text">Ragazzi fenomenali, avete imparato bene!</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 mb-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Giacomo ha messo 30 e lode</h5>
-                                <p class="card-text">Ragazzi fenomenali, avete imparato bene</p>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card" style="max-width: 400px;">
+                            <div class="row g-0">
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <img src="{{ asset('images/van-gogh-vincent.jpg') }}" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Vincent Van Gogh ha dato 4 stelle</h5>
+                                        <p class="card-text">Non ho trovato il mio orecchio, ma aula perfetta</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 mb-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Vincent Van Gogh ha messo 4 stelle</h5>
-                                <p class="card-text">Non ho trovato il mio orecchio, ma l'aula era perfetta</p>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card" style="max-width: 400px;">
+                            <div class="row g-0">
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <img src="{{ asset('images/cartier-bresson-henry.jpg') }}" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Henry Cartier-Bresson ha dato 5 stelle</h5>
+                                        <p class="card-text">Il sito del secolo (ho occhio per queste cose 😉)</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 mb-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Henry Cartier-Bresson ha messo 5 stelle</h5>
-                                <p class="card-text">Il sito del secolo (ed io ho buon occhio per queste cose)</p>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
 
         </section>
-
-
-
 
 </body>
 

@@ -128,9 +128,10 @@
                         <hr style="background-color: #b659ef; height: 2px" />
                         <p>
                             Il primo sito in Italia per la prenotazione di
-                            stanze adibite per artisti
+                            stanze adibite per artisti.
                         </p>
-
+                        <p><a href="/home" class="fw-bold" style="text-decoration: none">Home</a></p>
+                        <p><a href="/who-are-we" class="fw-bold" style="text-decoration: none">Chi siamo</a></p>
                     </div>
                     <!-- Grid column -->
 
@@ -153,13 +154,13 @@
 
                     </div>
 
-
-
                     <!-- Copyright -->
-                    <div style="width: 100%; background-color: #67e86a; padding: 20px; text-align: center;">
-                        © 2023 Copyright: The Artist Room - La Stanza Per Artisti
-                    </div>
-                    <!-- Copyright -->
+
+                    <hr style="background-color: #b659ef; height: 2px" />
+                    <div style="text-align: center; font-size:small">©2024 The Artist Room SRLS - Sede Legale: Via degli Artisti 1, 01234 Artistilandia (AL)</div>
+                </div>
+                <br>
+                <!-- Copyright -->
     </footer>
 
 </body>
