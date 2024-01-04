@@ -20,37 +20,6 @@
             width: 100%;
             border-radius: 0.5rem;
         }
-
-        .star-container {
-            white-space: nowrap;
-        }
-
-        .star {
-            font-size: 10vh;
-            cursor: pointer;
-            white-space: nowrap;
-            align-items: center;
-        }
-
-        .one {
-            color: rgb(255, 0, 0);
-        }
-
-        .two {
-            color: rgb(255, 106, 0);
-        }
-
-        .three {
-            color: rgb(251, 255, 120);
-        }
-
-        .four {
-            color: rgb(255, 255, 0);
-        }
-
-        .five {
-            color: rgb(24, 159, 14);
-        }
     </style>
 
 </head>
@@ -59,6 +28,18 @@
 
     <section id="gallery">
         <div class="container">
+
+            @if (Auth::check())
+            <h1 style="text-align: center">Rieccoti, {{ Auth::user()->name }}!</h1>
+            <p style="text-align: center">"{{ $quote->phrase }}" - {{ $quote->author }} </p>
+            <br>
+            @else
+            <h1 style="text-align: center" ;>Ciao, <a style="text-decoration:none" href="{{ route('register') }}">registrati</a> o
+                <a style="text-decoration:none" href="{{ route('login') }}">loggati</a> per usufruire del servizio!
+            </h1>
+            <br>
+            @endif
+
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <div class="card">
