@@ -1,16 +1,4 @@
 ## The Artist Room
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-# 
->>>>>>> 5bd80df (Prova di utilizzo branch testing)
-=======
-# Test di utilizzo branch testing
->>>>>>> f3ae208 (Altra prova utilizzo branch testing)
-=======
-# Test di utilizzo branch testing
->>>>>>> f3ae20810904a52a69d641ef84b671f4def46a07
 
 Link presentazione progetto: https://www.canva.com/design/DAF2Sa5JzyI/rRurYLQjj4uAHAvgEtEwiA/edit
 
