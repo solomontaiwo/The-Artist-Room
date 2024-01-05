@@ -261,7 +261,7 @@ una AJAX request
 
 - [x] Implementare AJAX -> implementare una JQuery (fatto) -> creare una AJAX request con JQuery (fatto)
 
-- [ ] Implementare animazioni con JQuery
+- [x] Implementare animazioni con JQuery
 
 - [x] Implementare homepage di Giorgia
 
@@ -272,3 +272,9 @@ implementata impossibilità di premere pulsante di prenotazione se i posti non s
 
 - [x] Rivedere RoomController 
 -> rivisto inserendo logiche di creazione e modifica aula
+
+- [ ] Rivedere pagina Mostre (VueJS)
+
+- [ ] Vedere presentazione 
+
+- [ ] Pensare a percorso guidato 
