@@ -5,7 +5,7 @@
 <div class="container">
     <h1>Crea un'aula</h1>
 
-    <br>
+    <hr>
 
     <form action="{{ route('room.store') }}" method="POST" id="createRoomForm">
         @csrf
@@ -54,6 +54,8 @@
     </form>
 </div>
 
+@endsection
+
 <!-- Script per rendere il pulsante di creazione non cliccabile se tutti gli altri campi non sono compilati -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
@@ -73,5 +75,3 @@
         });
     });
 </script>
-
-@endsection

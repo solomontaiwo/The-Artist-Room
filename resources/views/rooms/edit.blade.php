@@ -5,7 +5,7 @@
 <div class="container">
     <h1>Modifica "{{ $room->name }}"</h1>
 
-    <br>
+    <hr>
 
     <form method="POST" action="{{ route('room.update', $room->id) }}">
         @csrf
@@ -55,10 +55,8 @@
 
     </form>
 
-    <br>
-
     <!-- Form per eliminare la prenotazione -->
-    <form method="POST" action="{{ route('room.destroy', $room->id) }}" style="display: inline-block;">
+    <form method="POST" action="{{ route('room.destroy', $room->id) }}">
         @csrf
         @method('DELETE')
 
@@ -66,6 +64,8 @@
     </form>
 
 </div>
+
+@endsection
 
 <!-- Javascript per verificare la disponibilità della stanza -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -81,8 +81,6 @@
 
         function fetchRoomInfo() {
             var roomId = $('#room_id').val();
-
-            console.log('Fetching room information for room ID:', roomId);
 
             // Cerca i posti disponibili per l'aula selezionata usando una AJAX request 
             $.ajax({
@@ -102,5 +100,3 @@
         }
     });
 </script>
-
-@endsection

@@ -5,7 +5,7 @@
 <div class="container">
     <h1>Tutte le aule</h1>
 
-    <br>
+    <hr>
 
     <h3> Aule totali: {{ $rooms->count() }} </h3>
 
@@ -15,6 +15,7 @@
     <ul>
         @foreach($rooms as $room)
         <div>
+
             <br>
 
             <!-- Informazioni sull'aula -->
@@ -29,6 +30,7 @@
             <a href="{{ route('room.edit', $room->id) }}" class="btn btn-warning btn-sm">Modifica aula</a>
             @endadmin
 
+            <br>
             <br>
             <hr>
 

@@ -5,7 +5,9 @@
 <div class="container">
 
     <h1>Prenotazione dell'aula eseguita</h1>
-    <br>
+
+    <hr>
+    
     <p><strong>Aula:</strong> {{ $booking->room->name }}</p>
     <p><strong>Giorno di arrivo:</strong> {{ $booking->arrival_date }}</p>
     <p><strong>Orario di partenza:</strong> {{ \Carbon\Carbon::parse($booking->arrival_time)->format('H:i') }}</p>

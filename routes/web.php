@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -65,4 +64,4 @@ Route::get('/api/rooms/{id}', [App\Http\Controllers\RoomController::class, 'getR
 Route::get('/exhibition', [App\Http\Controllers\ExhibitionController::class, 'index'])->name('exhibition');
 
 // Rotta per la pagina "Chi siamo"
-Route::get('/who-are-we', [App\Http\Controllers\WhoAreWeController::class, 'index'])->name('who-are-we.index');
+Route::get('/who-we-are', [App\Http\Controllers\WhoWeAreController::class, 'index'])->name('who-we-are');

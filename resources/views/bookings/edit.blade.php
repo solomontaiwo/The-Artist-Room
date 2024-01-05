@@ -5,7 +5,9 @@
 <div class="container">
 
     <h1>Modifica la prenotazione di "{{ $booking->room->name }}" del {{ \Carbon\Carbon::parse($booking->arrival_date)->format('d/m/Y') }} alle ore {{ \Carbon\Carbon::parse($booking->arrival_time)->format('H:i') }}</h1>
-
+    
+    <hr>
+    
     <form method="POST" action="{{ route('booking.update', $booking) }}">
         @csrf
         @method('PATCH')
@@ -123,6 +125,8 @@
     </form>
 
 </div>
+
+@endsection
 
 <!-- Javascript per verificare la disponibilità della stanza -->
 
@@ -246,5 +250,3 @@ e se tutti gli altri campi non sono compilati -->
         updateDepartureDateOptions();
     });
 </script>
-
-@endsection

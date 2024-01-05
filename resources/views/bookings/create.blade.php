@@ -5,7 +5,7 @@
 <div class="container">
     <h1>Inserisci una nuova prenotazione</h1>
 
-    <br>
+    <hr>
 
     <form action="{{ route('booking.store') }}" method="POST">
         @csrf
@@ -94,6 +94,8 @@
 
     </form>
 </div>
+
+@endsection
 
 <!-- Javascript -->
 <!-- Per far funzionare le JQuery  -->
@@ -212,5 +214,3 @@ e se tutti gli altri campi non sono compilati -->
         updateDepartureDateOptions();
     });
 </script>
-
-@endsection

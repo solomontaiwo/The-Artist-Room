@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('content')
-
 <!DOCTYPE html>
 <html lang="it">
 
@@ -21,20 +19,29 @@
             width: 100%;
             border-radius: 0.5rem;
         }
+
+        #card-one,
+        #card-two,
+        #card-three,
+        #card-four {
+            opacity: 0;
+        }
     </style>
 
 </head>
+
+@section('content')
 
 <body>
     <div class="container">
         <h1>Chi siamo</h1>
 
-        <br>
+        <hr>
 
         <section id="gallery">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3 mb-3 card-one">
+                    <div class="col-lg-3 mb-3" id="card-one">
                         <div class="card">
                             <img src="{{ asset('images/gaudenzi-luca.jpg') }}" alt="" class="card-img-top">
                             <div class="card-body">
@@ -43,7 +50,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 mb-3 card-two">
+                    <div class="col-lg-3 mb-3" id="card-two">
                         <div class="card">
                             <img src="{{ asset('images/marzola-gaia.jpg') }}" alt="" class="card-img-top">
                             <div class="card-body">
@@ -52,7 +59,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 mb-3 card-three">
+                    <div class="col-lg-3 mb-3" id="card-three">
                         <div class="card">
                             <img src="{{ asset('images/pirelli-giorgia.jpg') }}" alt="" class="card-img-top">
                             <div class="card-body">
@@ -61,7 +68,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 mb-3 card-four">
+                    <div class="col-lg-3 mb-3" id="card-four">
                         <div class="card">
                             <img src="{{ asset('images/taiwo-solomon.jpg') }}" alt="" class="card-img-top">
                             <div class="card-body">
@@ -77,16 +84,16 @@
 
 </body>
 
+@endsection
+
 </html>
 
 <!-- Animazioni -->
 <script>
     $(document).ready(function() {
-        $('.card-one').hide().fadeIn(1000);
-        $('.card-two').hide().fadeIn(1000);
-        $('.card-three').hide().fadeIn(2000);
-        $('.card-four').hide().fadeIn(2000);
+        $('#card-one').fadeTo(1000, 1);
+        $('#card-two').fadeTo(1150, 1);
+        $('#card-three').fadeTo(1250, 1);
+        $('#card-four').fadeTo(1350, 1);
     });
 </script>
-
-@endsection

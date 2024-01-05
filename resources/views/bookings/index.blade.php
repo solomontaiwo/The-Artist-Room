@@ -4,7 +4,7 @@
 
 <div class="container">
     <h1>Le tue prenotazioni</h1>
-    <br>
+    <hr>
     <h3>Prenotazioni totali: {{ $bookings->count() }} </h3>
 
     @if($bookings->isEmpty())
@@ -22,7 +22,7 @@
             <p><strong>Orario di arrivo:</strong> {{ \Carbon\Carbon::parse($booking->arrival_time)->format('H:i') }}</p>
 
             <!-- Pulsante per modificare la prenotazione -->
-            <a href="{{ route('booking.show', $booking->id) }}" class="btn btn-primary btn-sm">Dettagli</a>
+            <a href="{{ route('booking.show', $booking->id) }}" class="btn btn-primary btn-sm me-2">Dettagli</a>
             <!-- Pulsante per modificare la prenotazione -->
             <a href="{{ route('booking.edit', $booking->id) }}" class="btn btn-warning btn-sm">Modifica prenotazione</a>
 

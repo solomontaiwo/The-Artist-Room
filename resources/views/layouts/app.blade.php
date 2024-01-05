@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="it">
 
 <head>
     <meta charset="utf-8">
@@ -62,7 +62,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('who-are-we.index') }}">{{ __('Chi siamo') }}</a>
+                            <a class="nav-link" href="{{ route('who-we-are') }}">{{ __('Chi siamo') }}</a>
                         </li>
 
                         <!-- Link di autenticazione -->

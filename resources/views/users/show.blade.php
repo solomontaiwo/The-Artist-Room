@@ -3,7 +3,6 @@
 @section('content')
 
 <div class="container">
-
     <h1>Prenotazioni di {{ $user->name }} {{ $user->surname }}</h1>
     <br>
     <h3>Prenotazioni totali: {{ $user->bookings->count() }} </h3>

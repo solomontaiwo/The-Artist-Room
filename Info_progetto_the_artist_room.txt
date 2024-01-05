@@ -273,7 +273,7 @@ implementata impossibilità di premere pulsante di prenotazione se i posti non s
 - [x] Rivedere RoomController 
 -> rivisto inserendo logiche di creazione e modifica aula
 
-- [ ] Rivedere pagina Mostre (VueJS)
+- [x] Rivedere pagina Mostre (VueJS)
 
 - [ ] Vedere presentazione 
 

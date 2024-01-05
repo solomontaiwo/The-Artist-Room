@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('content')
-
 <!DOCTYPE html>
 <html lang="it">
 
@@ -23,9 +21,22 @@
             width: 100%;
             border-radius: 0.5rem;
         }
+
+        #quote-text,
+        #quote-name,
+        #card-one,
+        #card-two,
+        #card-three,
+        #card-four,
+        #card-five,
+        #card-six {
+            opacity: 0;
+        }
     </style>
 
 </head>
+
+@section('content')
 
 <body>
 
@@ -34,7 +45,7 @@
 
             <!-- Funzione per mostrare frase casuale in cima alla home, se l'utente è loggato -->
             @if (Auth::check())
-            <h1 style="text-align: center">Rieccoti, {{ Auth::user()->name }}!</h1>
+            <h1 style="text-align: center" id="quote-name">Rieccoti, {{ Auth::user()->name }}!</h1>
             <p id="quote-text" style="text-align: center">"{{ $quote->phrase }}" - {{ $quote->author }}</p>
             <br>
             @else
@@ -46,7 +57,7 @@
 
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <div class="card">
+                    <div class="card" id="card-one">
                         <img src="{{ asset('images/sculture.jpg') }}" alt="" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Scultori</h5>
@@ -57,7 +68,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 mb-4">
-                    <div class="card">
+                    <div class="card" id="card-two">
                         <img src="{{ asset('images/pittore.jpg') }}" alt="" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Pittori e Disegnatori</h5>
@@ -68,7 +79,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 mb-4">
-                    <div class="card">
+                    <div class="card" id="card-three">
                         <img src="{{ asset('images/camera-oscura.jpg') }}" alt="" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Camera Oscura</h5>
@@ -91,7 +102,7 @@
                 <div class="row">
 
                     <div class="col-md-4 mb-4">
-                        <div class="card" style="max-width: 400px;">
+                        <div class="card" id="card-four" style="max-width: 400px;">
                             <div class="row g-0">
                                 <div class="col-md-4 d-flex align-items-center">
                                     <img src="{{ asset('images/piva-giacomo.jpg') }}" class="img-fluid rounded-start" alt="...">
@@ -107,7 +118,7 @@
                     </div>
 
                     <div class="col-md-4 mb-4">
-                        <div class="card" style="max-width: 400px;">
+                        <div class="card" id="card-five" style="max-width: 400px;">
                             <div class="row g-0">
                                 <div class="col-md-4 d-flex align-items-center">
                                     <img src="{{ asset('images/van-gogh-vincent.jpg') }}" class="img-fluid rounded-start" alt="...">
@@ -123,7 +134,7 @@
                     </div>
 
                     <div class="col-md-4 mb-4">
-                        <div class="card" style="max-width: 400px;">
+                        <div class="card" id="card-six" style="max-width: 400px;">
                             <div class="row g-0">
                                 <div class="col-md-4 d-flex align-items-center">
                                     <img src="{{ asset('images/cartier-bresson-henry.jpg') }}" class="img-fluid rounded-start" alt="...">
@@ -147,19 +158,20 @@
 
 </body>
 
+@endsection
+
 </html>
 
-<!-- Script per animazione fade in delle citazioni -->
+<!-- Script per animazione fade delle citazioni e delle card-->
 <script>
     $(document).ready(function() {
-        $('#quote-text').hide().fadeIn(2000);
+        $('#quote-text').fadeTo(1000, 1);
+        $('#quote-name').fadeTo(1000, 1);
+        $('#card-one').fadeTo(1000, 1);
+        $('#card-two').fadeTo(1000, 1);
+        $('#card-three').fadeTo(1000, 1);
+        $('#card-four').fadeTo(1000, 1);
+        $('#card-five').fadeTo(1000, 1);
+        $('#card-six').fadeTo(1000, 1);
     });
 </script>
-
-<script>
-    $(document).ready(function() {
-        $('.card').hide().fadeIn(1500);
-    });
-</script>
-
-@endsection

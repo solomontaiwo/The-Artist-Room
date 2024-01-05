@@ -16,21 +16,20 @@
 </template>
   
 <script>
-import { ref } from 'vue';
 
 export default {
     data() {
         return {
             mostre: [
                 {
-                    nome: 'ACHILLE FUNI. UN MAESTRO DEL NOVECENTO TRA STORIA E MITO',
+                    nome: 'Achille Funi. Un maestro del Novecento tra storia e mito',
                     descrizione:
                         "Virgilio Socrate Achille Funi (Ferrara, 1890 – Appiano Gentile, 1972) ha attraversato da protagonista i principali movimenti che hanno caratterizzato la cultura italiana della prima metà del Novecento. Dopo essersi distinto nell’ala moderata del Futurismo, si è affermato come uno tra i grandi interpreti del Realismo magico, del moderno classicismo di “Novecento” e del muralismo degli anni Trenta, pur mantenendo sempre una spiccata autonomia.",
                     immagine: '/images/achille.jpg',
                     mostraDettagli: false,
                 },
                 {
-                    nome: 'RITORNO A FERRARA. L’UNIVERSO DI LEO CONTINI LAMPRONTI',
+                    nome: 'Ritorno a Ferrara. L\'universo di Leo Contini Lampronti',
                     descrizione:
                         'Dal 9 novembre, il Museo Nazionale dell’Ebraismo Italiano e della Shoah - MEIS ospita la mostra Ritorno a Ferrara. L’universo di Leo Contini Lampronti, curata da Hava Contini e Yael Sonnino-Levy. Un percorso che vuole riscoprire un artista curioso ed eclettico, alla costante ricerca di un dialogo intimo tra sperimentazione artistica e ispirazione religiosa.',
                     immagine: '/images/ebraismo.jpg',
@@ -49,7 +48,6 @@ export default {
   
 <style>
 .funky-title {
-    margin: 0;
     transform: rotate(-10deg);
     animation: bounce 2s infinite;
 }

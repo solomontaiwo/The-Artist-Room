@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('content')
-
 <!DOCTYPE html>
 <html lang="it">
 
@@ -15,6 +13,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
+@section('content')
+
 <body>
     <div class="container">
         <div id="app" class="col-lg-12 mb-12">
@@ -22,6 +22,8 @@
         </div>
     </div>
     </div>
+
+    <p style="text-align: center">Pagina realizzata in collaborazione con <a href="https://www.arte.it/" target="_blank">ARTE.it</a></p>
 
 </body>
 
