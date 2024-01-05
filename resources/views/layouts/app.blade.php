@@ -60,6 +60,10 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('exhibition') }}">{{ __('Mostre') }}</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('who-are-we.index') }}">{{ __('Chi siamo') }}</a>
                         </li>
 
@@ -116,9 +120,7 @@
 
     </div>
 
-
-
-    <footer class="text-center text-lg-start text-dark" style="background-color: rgb(197, 188, 197)">
+    <footer class="text-center text-lg-start text-dark" style="background-color: rgb(197, 188, 197); position:relative; width:100%">
         <section class="">
             <div class="container text-center text-md-start mt-5">
                 <!-- Grid row -->

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -60,6 +60,11 @@ Route::resource('/room', App\Http\Controllers\RoomController::class)->except(['c
 
 // Rotta per ottenere con script Javascript il numero di stanze disponibili
 Route::get('/api/rooms/{id}', [App\Http\Controllers\RoomController::class, 'getRoomInfo']);
+
+// Rotta per pagina mostre
+Route::get('/exhibition', function () {
+    return File::get(public_path('exhibition.html'));
+})->name('exhibition');
 
 // Rotta per la pagina "Chi siamo"
 Route::get('/who-are-we', [App\Http\Controllers\WhoAreWeController::class, 'index'])->name('who-are-we.index');
