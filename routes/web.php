@@ -62,9 +62,7 @@ Route::resource('/room', App\Http\Controllers\RoomController::class)->except(['c
 Route::get('/api/rooms/{id}', [App\Http\Controllers\RoomController::class, 'getRoomInfo']);
 
 // Rotta per pagina mostre
-Route::get('/exhibition', function () {
-    return File::get(public_path('exhibition.html'));
-})->name('exhibition');
+Route::get('/exhibition', [App\Http\Controllers\ExhibitionController::class, 'index'])->name('exhibition');
 
 // Rotta per la pagina "Chi siamo"
 Route::get('/who-are-we', [App\Http\Controllers\WhoAreWeController::class, 'index'])->name('who-are-we.index');
