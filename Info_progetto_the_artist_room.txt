@@ -267,8 +267,6 @@ una AJAX request
 
 - [x] Implementare codice per “che cosa dicono di noi”
 
-- [ ] Aggiungere stelle?
-
 - [x] Implementare avviso di errore di prenotazione stanza quando non ci sono posti disponibili -> 
 implementata impossibilità di premere pulsante di prenotazione se i posti non sono disponibili
 

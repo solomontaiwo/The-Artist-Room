@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" style="display:flex; flex-direction:column; min-height:65vh">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -120,7 +120,7 @@
 
     </div>
 
-    <footer class="text-center text-lg-start text-dark" style="background-color: rgb(197, 188, 197); position:relative; width:100%">
+    <footer class="text-center text-lg-start text-dark" style="background-color: rgb(197, 188, 197); margin-top:auto; position:relative; width:100%">
         <section class="">
             <div class="container text-center text-md-start mt-5">
                 <!-- Grid row -->

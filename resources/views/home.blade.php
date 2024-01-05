@@ -8,6 +8,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
@@ -32,7 +35,7 @@
             <!-- Funzione per mostrare frase casuale in cima alla home, se l'utente è loggato -->
             @if (Auth::check())
             <h1 style="text-align: center">Rieccoti, {{ Auth::user()->name }}!</h1>
-            <p style="text-align: center">"{{ $quote->phrase }}" - {{ $quote->author }} </p>
+            <p id="quote-text" style="text-align: center">"{{ $quote->phrase }}" - {{ $quote->author }}</p>
             <br>
             @else
             <h1 style="text-align: center" ;>Ciao, <a style="text-decoration:none" href="{{ route('register') }}">registrati</a> o
@@ -140,9 +143,23 @@
 
 
         </section>
+    </section>
 
 </body>
 
 </html>
+
+<!-- Script per animazione fade in delle citazioni -->
+<script>
+    $(document).ready(function() {
+        $('#quote-text').hide().fadeIn(2000);
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('.card').hide().fadeIn(1500);
+    });
+</script>
 
 @endsection
