@@ -29,6 +29,7 @@
     <section id="gallery">
         <div class="container">
 
+            <!-- Funzione per mostrare frase casuale in cima alla home, se l'utente è loggato -->
             @if (Auth::check())
             <h1 style="text-align: center">Rieccoti, {{ Auth::user()->name }}!</h1>
             <p style="text-align: center">"{{ $quote->phrase }}" - {{ $quote->author }} </p>
