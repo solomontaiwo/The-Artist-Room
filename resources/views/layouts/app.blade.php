@@ -45,6 +45,9 @@
                     <!-- Parte sinistra della navbar -->
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('room.index') }}">{{ __('Aule') }}</a>
                         </li>
 

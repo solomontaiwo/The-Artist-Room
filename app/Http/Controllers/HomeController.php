@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Quote;
 
 class HomeController extends Controller
 {
@@ -19,6 +19,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // Per avere una citazione casuale in home
+        $quote = Quote::inRandomOrder()->first();
+        return view('home', compact('quote'));
     }
 }
