@@ -24,6 +24,8 @@
 
         #quote-text,
         #quote-name,
+        #greetings,
+        #registration-login-invitation,
         #card-one,
         #card-two,
         #card-three,
@@ -47,12 +49,14 @@
             @if (Auth::check())
             <h1 style="text-align: center" id="quote-name">Rieccoti, {{ Auth::user()->name }}!</h1>
             <p id="quote-text" style="text-align: center">"{{ $quote->phrase }}" - {{ $quote->author }}</p>
-            <br>
+            <hr>
             @else
-            <h1 style="text-align: center" ;>Ciao, <a style="text-decoration:none" href="{{ route('register') }}">registrati</a> o
-                <a style="text-decoration:none" href="{{ route('login') }}">loggati</a> per usufruire del servizio!
-            </h1>
-            <br>
+            <h1 style="text-align: center" id="greetings">Ciao!</h1>
+            <p id="registration-login-invitation" style="text-align: center">
+                <a style="text-decoration:none" href="{{ route('register') }}">Registrati</a>
+                o <a style="text-decoration:none" href="{{ route('login') }}">loggati</a> per usufruire del servizio
+            </p>
+            <hr>
             @endif
 
             <div class="row">
@@ -167,6 +171,8 @@
     $(document).ready(function() {
         $('#quote-text').fadeTo(1000, 1);
         $('#quote-name').fadeTo(1000, 1);
+        $('#greetings').fadeTo(1000, 1);
+        $('#registration-login-invitation').fadeTo(1000, 1);
         $('#card-one').fadeTo(1000, 1);
         $('#card-two').fadeTo(1000, 1);
         $('#card-three').fadeTo(1000, 1);

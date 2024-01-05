@@ -28,12 +28,11 @@
             <!-- Pulsante per modificare l'aula, si vede solo se l'utente è un admin -->
             @admin
             <a href="{{ route('room.edit', $room->id) }}" class="btn btn-warning btn-sm">Modifica aula</a>
+            <br>
             @endadmin
 
             <br>
-            <br>
             <hr>
-
             </form>
         </div>
         @endforeach

@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ mostra.nome }}</h5>
                     <p class="card-text" v-show="mostra.mostraDettagli">{{ mostra.descrizione }}</p>
-                    <button class="btn btn-success" @click="toggleDettagli(index)">Mostra Dettagli</button>
+                    <button class="btn btn-outline-success btn-sm" @click="toggleDettagli(index)">Mostra Dettagli</button>
                 </div>
             </div>
         </div>
