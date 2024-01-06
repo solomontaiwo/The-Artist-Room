@@ -47,7 +47,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('/users/{user}/promote', [App\Http\Controllers\UserController::class, 'promoteToAdmin'])->name('users.promoteToAdmin');
 });
 
-// Rotta per ottenere con script Javascript il numero di stanze disponibili
+// Rotta per ottenere con script Javascript il numero di stanze disponibili, RICHIAMA FUNZIONE GETUSERINFO DELLO UserController
 Route::get('/api/users/{id}', [App\Http\Controllers\UserController::class, 'getUserInfo']);
 
 // Rotta per pagine accessibili solo da admin
