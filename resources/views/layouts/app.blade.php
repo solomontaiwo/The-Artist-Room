@@ -85,6 +85,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <!--ECCO LE DIRETTIVE ADMIN E ENDADMIN DEFINITE in AdminProvider, che mi assicurano che le rotte per CREARE AULA e per CONTROLLO UTENTI sono accedute solo da utenti AMMINISTRATORI-->
                                 @admin
                                 <a class="dropdown-item" href="{{ route('room.create') }}">{{ __('Crea aula') }}
                                 </a>
