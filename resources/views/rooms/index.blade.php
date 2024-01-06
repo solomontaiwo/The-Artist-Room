@@ -13,6 +13,7 @@
     <p>Nessuna aula disponibile.</p>
     @else
     <ul>
+        <!--foreach per stmpare le aule -->
         @foreach($rooms as $room)
         <div>
 
