@@ -14,7 +14,9 @@ class BookingController extends Controller
     // Per rendere i metodi di booking solo accessibili agli utenti  autenticati
     public function __construct()
     {
+        //Il middleware viene specificato nel costruttore del controller
         $this->middleware('auth');
+        
     }
 
     public function index()
@@ -26,6 +28,7 @@ class BookingController extends Controller
         $bookings = $user->bookings;
 
         return view('bookings.index', compact('bookings'));
+        //Quando hai diverse variabili con dati salvati e vuoi analizzarli view, puoi utilizzare il metodo compact()
     }
 
     public function create()
@@ -49,8 +52,10 @@ class BookingController extends Controller
         ]);
 
         try {
+//
             DB::beginTransaction();
-
+//Riga 54 ci permette: se viene lanciata un'eccezione di qualsiasi tipo all'interno della chiusura, viene eseguito il rollback della transazione. Ciò significa che se si verifica un errore SQL (uno che normalmente non fallirebbe in modo silenzioso),
+            // viene eseguito il rollback della transazione. 
             // Cerca l'aula selezionata
             $room = Room::findOrFail($request->input('room_id'));
 
