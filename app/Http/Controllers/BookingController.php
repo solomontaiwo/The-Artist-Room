@@ -54,9 +54,12 @@ class BookingController extends Controller
         try {
 //
             DB::beginTransaction();
-//Riga 54 ci permette: se viene lanciata un'eccezione di qualsiasi tipo all'interno della chiusura, viene eseguito il rollback della transazione. Ciò significa che se si verifica un errore SQL (uno che normalmente non fallirebbe in modo silenzioso),
+//Riga 56 ci permette: se viene lanciata un'eccezione di qualsiasi tipo all'interno della chiusura, viene eseguito il rollback della transazione. Ciò significa che se si verifica un errore SQL (uno che normalmente non fallirebbe in modo silenzioso),
             // viene eseguito il rollback della transazione. 
+            
             // Cerca l'aula selezionata
+            //Il metodo findOrFail nel contesto di Laravel è utilizzato per recuperare un record 
+            //dal database in base a una chiave primaria specificata
             $room = Room::findOrFail($request->input('room_id'));
 
             // Verifica che ci siano abbastanza posti disponibili
@@ -66,7 +69,7 @@ class BookingController extends Controller
                     ->withInput(); // Torna alla pagina di prenotazione con gli stessi valori di prima
             }
 
-            // Crea una nuova prenotazione
+            // Crea una nuova prenotazione, INSERENDO I DATI CHE l'utente passa nel database
             $bookingData = $request->only(['arrival_date', 'arrival_time', 'departure_time', 'departure_date', 'people']);
             $bookingData['room_id'] = $room->id;
             $bookingData['user_id'] = auth()->user()->id; // Per assicurarsi che lo user id sia impostato correttamente
@@ -79,7 +82,15 @@ class BookingController extends Controller
             $room->save();
 
             DB::commit();
+            /*
+            In Laravel, il metodo DB::commit() fa parte della gestione delle transazioni database. 
+            Quando si utilizzano transazioni, si possono eseguire più query sul database e, in caso di eventuali errori,
+            è possibile annullare tutte le modifiche apportate fino a quel momento.
 
+Il metodo DB::commit() è utilizzato per confermare e applicare le modifiche apportate durante una transazione. 
+Se tutte le operazioni eseguite all'interno della transazione sono riuscite senza errori, si chiama DB::commit() 
+per applicare in modo definitivo le modifiche al database.
+*/
             // Redirezione alla pagina della conferma della prenotazione
             return redirect()->route('booking.show', $booking->id)->with('success', 'Prenotazione eseguita con successo.');
         } catch (\Exception $e) {
