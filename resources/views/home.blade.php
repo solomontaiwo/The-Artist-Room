@@ -169,10 +169,10 @@
 <!-- Script per animazione fade delle citazioni e delle card-->
 <script>
     $(document).ready(function() {
-        $('#quote-text').fadeTo(1000, 1);
-        $('#quote-name').fadeTo(1000, 1);
-        $('#greetings').fadeTo(1000, 1);
-        $('#registration-login-invitation').fadeTo(1000, 1);
+        $('#quote-text').fadeTo(1000, 1); //51
+        $('#quote-name').fadeTo(1000, 1); //50
+        $('#greetings').fadeTo(1000, 1); //RIGA 54
+        $('#registration-login-invitation').fadeTo(1000, 1); //RIGA 55
         $('#card-one').fadeTo(1000, 1);
         $('#card-two').fadeTo(1000, 1);
         $('#card-three').fadeTo(1000, 1);
