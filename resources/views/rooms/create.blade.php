@@ -61,16 +61,18 @@
 <script>
     $(document).ready(function() {
         // Abilita o disabilita il bottone a seconda dell'input dei form
+        //stia verificando se tutti gli input richiesti del form sono stati compilati per decidere se abilitare o disabilitare il bottone.
         $('#createRoomForm input').on('input', function() {
             var isFormValid = true;
-
+// Itera attraverso tutti gli input obbligatori nel form
             $('#createRoomForm input[required]').each(function() {
+                // Se l'input è vuoto, il form non è valido
                 if ($(this).val() === '') {
                     isFormValid = false;
                     return false; // Esci dal loop prima se un input è vuoto
                 }
             });
-
+// Imposta lo stato del bottone a seconda della validità del form
             $('#createRoomButton').prop('disabled', !isFormValid);
         });
     });
