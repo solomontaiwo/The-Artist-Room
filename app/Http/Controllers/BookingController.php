@@ -65,7 +65,6 @@ class BookingController extends Controller
             // Verifica che ci siano abbastanza posti disponibili
             if ($room->available_seats < $request->input('people')) {
                 return redirect()->back()
-                    ->with('error', 'Spazio non disponibile.')
                     ->withInput(); // Torna alla pagina di prenotazione con gli stessi valori di prima, in modo tale che utente riesca a correggerli meglio
             }
 
@@ -154,6 +153,17 @@ per applicare in modo definitivo le modifiche al database.
                 $room->available_seats += $peopleDifference;
                 $room->save();
             }
+//questa funzione da riga 147 a 156
+/*
+$peopleDifference = $originalPeople - $newPeople;: Calcola la differenza tra il numero di persone nella prenotazione
+originale e quello nella nuova prenotazione.
+Questo valore sarà utilizzato per aggiornare il numero di posti disponibili nella stanza.
+
+$room = $booking->room;: Recupera l'istanza del modello Eloquent associato alla stanza della prenotazione corrente.
+
+$room->available_seats += $peopleDifference;: Aggiorna il numero di posti disponibili nella stanza in base alla differenza calcolata. 
+Se $peopleDifference è positivo, significa che stanno prenotando più persone, quindi il numero di posti disponibili diminuirà. 
+Se è negativo, significa che stanno annullando la prenotazione di alcune persone, quindi il numero di posti disponibili aumenterà. */
         }
 
         $booking->update($request->all());
