@@ -24,10 +24,11 @@ class User extends Authenticatable
         'is_admin'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
+    /*
+     *Il comando hidden in Laravel è utilizzato per definire gli attributi di un modello che dovrebbero essere nascosti quando il m
+     odello viene convertito in un array o in formato JSON. 
+     Questa funzionalità è particolarmente utile per proteggere informazioni sensibili o attributi
+     che non devono essere visualizzati pubblicamente.
      */
     protected $hidden = [
         'password',
@@ -43,6 +44,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    /*
+'email_verified_at' => 'datetime': Questa riga indica che l'attributo email_verified_at
+dovrebbe essere convertito automaticamente in un oggetto di tipo DateTime quando viene letto dal database. 
+Questo è utile quando si vuole trattare l'attributo come un oggetto data e utilizzare le funzionalità date di Laravel.
+
+'password' => 'hashed': Questa riga indica che l'attributo password dovrebbe essere automaticamente cifrato (hashed)
+quando viene scritto nel database. Questo è spesso utilizzato per garantire che le password degli utenti siano memorizzate in modo sicuro nel database.
+
+L'utilizzo di $casts semplifica la gestione dei dati del modello, consentendo di trattare certi attributi come tipi specifici di dati 
+senza doverli convertire manualmente ogni volta. 
+    */
 
     // Funzione per determinare se un utente è un admin o meno
     public function isAdmin()
