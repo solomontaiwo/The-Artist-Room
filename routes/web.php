@@ -30,7 +30,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-//Auth::routes()è solo una classe helper che ti aiuta a generare tutti i percorsi richiesti per l'autenticazione dell'utente. 
+//Auth::routes() è solo una classe helper che ti aiuta a generare tutti i percorsi richiesti per l'autenticazione dell'utente. 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
