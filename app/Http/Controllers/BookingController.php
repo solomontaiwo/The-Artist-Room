@@ -169,6 +169,8 @@ per applicare in modo definitivo le modifiche al database.
     public function confirmBooking()
     {
         $booking = Booking::latest()->first();
+        //Questo metodo ordina le righe della tabella "bookings" in ordine decrescente rispetto alla colonna created_at.
+        //In altre parole, recupera le prenotazioni in base alla data di creazione, dalla più recente alla meno recente.
 
         return view('bookings.confirm-booking', compact('booking'));
     }
