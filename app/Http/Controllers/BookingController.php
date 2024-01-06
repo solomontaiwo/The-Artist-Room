@@ -66,7 +66,7 @@ class BookingController extends Controller
             if ($room->available_seats < $request->input('people')) {
                 return redirect()->back()
                     ->with('error', 'Spazio non disponibile.')
-                    ->withInput(); // Torna alla pagina di prenotazione con gli stessi valori di prima
+                    ->withInput(); // Torna alla pagina di prenotazione con gli stessi valori di prima, in modo tale che utente riesca a correggerli meglio
             }
 
             // Crea una nuova prenotazione, INSERENDO I DATI CHE l'utente passa nel database
