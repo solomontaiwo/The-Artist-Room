@@ -56,7 +56,7 @@
 
             if (confirmation) {
                 $.ajax({
-                    url: "/user/" + id,
+                    url: "/users/" + id,
                     type: "DELETE",
                     dataType: 'json',
                     data: {
