@@ -65,7 +65,7 @@ class RoomController extends Controller
      */
 
 
-    // Funzione per visualizzare la pagina di edit
+    // Funzione per visualizzare la pagina di edit PAGINA DI VISUALIZZAZIONE STANZE
     public function edit(Room $room)
     {
         $rooms = Room::all();
