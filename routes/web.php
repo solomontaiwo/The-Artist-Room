@@ -51,6 +51,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::get('/api/users/{id}', [App\Http\Controllers\UserController::class, 'getUserInfo']);
 
 // Rotta per pagine accessibili solo da admin
+/*
+Route::middleware(['auth', 'admin'])->group(function () { ... }): Questo codice crea un gruppo di rotte e applica il middleware ['auth', 'admin'] 
+a tutte le rotte incluse in questo gruppo. Il middleware auth assicura che l'utente sia autenticato, 
+mentre il middleware admin è probabilmente un middleware personalizzato che verifica se l'utente ha il ruolo di amministratore.
+*/
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/room/create', [App\Http\Controllers\RoomController::class, 'create'])->name('room.create');
     Route::post('/room', [App\Http\Controllers\RoomController::class, 'store'])->name('room.store');
