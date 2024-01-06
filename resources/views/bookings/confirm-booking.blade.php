@@ -7,7 +7,7 @@
     <h1>Prenotazione dell'aula eseguita</h1>
 
     <hr>
-    
+
     <p><strong>Aula:</strong> {{ $booking->room->name }}</p>
     <p><strong>Giorno di arrivo:</strong> {{ $booking->arrival_date }}</p>
     <p><strong>Orario di partenza:</strong> {{ \Carbon\Carbon::parse($booking->arrival_time)->format('H:i') }}</p>
@@ -21,8 +21,8 @@
     <p><strong>Data e ora creazione prenotazione:</strong> {{ $booking->created_at }}</p>
 
     <hr>
-    <p><a href="{{ route('booking.edit', $booking->id) }}" class="btn btn-warning">Modifica prenotazione</a></p>
-    <p><a href="{{ route('booking.index') }}" class="btn btn-primary">Vai alle tue prenotazioni</a></p>
+    <p><a href="{{ route('bookings.edit', $booking->id) }}" class="btn btn-warning">Modifica prenotazione</a></p>
+    <p><a href="{{ route('bookings.index') }}" class="btn btn-primary">Vai alle tue prenotazioni</a></p>
     <p><a href="{{ route('home') }}" class="btn btn-primary">Torna alla homepage</a></p>
 
 </div>

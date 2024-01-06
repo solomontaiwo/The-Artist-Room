@@ -20,8 +20,8 @@
     @endadmin
 
     <hr>
-    <a href="{{ route('booking.edit', $booking->id) }}" class="btn btn-warning btn-sm me-2">Modifica prenotazione</a>
-    <a href="{{ route('booking.index') }}" class="btn btn-primary btn-sm me-2">Vai alle tue prenotazioni</a>
+    <a href="{{ route('bookings.edit', $booking->id) }}" class="btn btn-warning btn-sm me-2">Modifica prenotazione</a>
+    <a href="{{ route('bookings.index') }}" class="btn btn-primary btn-sm me-2">Vai alle tue prenotazioni</a>
     <a href="{{ route('home') }}" class="btn btn-primary btn-sm">Torna alla homepage</a>
 
 </div>

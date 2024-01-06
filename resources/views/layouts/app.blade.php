@@ -46,19 +46,19 @@
                             <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('room.index') }}">{{ __('Aule') }}</a>
+                            <a class="nav-link" href="{{ route('rooms.index') }}">{{ __('Aule') }}</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('booking.index') }}">{{ __('Prenotazioni') }}</a>
+                            <a class="nav-link" href="{{ route('bookings.index') }}">{{ __('Prenotazioni') }}</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('booking.create') }}">{{ __('Prenota') }}</a>
+                            <a class="nav-link" href="{{ route('bookings.create') }}">{{ __('Prenota') }}</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('exhibition') }}">{{ __('Mostre') }}</a>
+                            <a class="nav-link" href="{{ route('exhibitions') }}">{{ __('Mostre') }}</a>
                         </li>
 
                         <li class="nav-item">
@@ -87,11 +87,11 @@
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <!--ECCO LE DIRETTIVE ADMIN E ENDADMIN DEFINITE in AdminProvider, che mi assicurano che le rotte per CREARE AULA e per CONTROLLO UTENTI sono accedute solo da utenti AMMINISTRATORI-->
                                 @admin
-                                <a class="dropdown-item" href="{{ route('room.create') }}">{{ __('Crea aula') }}
+                                <a class="dropdown-item" href="{{ route('rooms.create') }}">{{ __('Crea aula') }}
                                 </a>
                                 <div class="dropdown-divider"></div>
 
-                                <a class="dropdown-item" href="{{ route('user.index') }}">{{ __('Controllo utenti') }}
+                                <a class="dropdown-item" href="{{ route('users.index') }}">{{ __('Controllo utenti') }}
                                 </a>
                                 <div class="dropdown-divider"></div>
 

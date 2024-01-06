@@ -85,12 +85,12 @@ class BookingController extends Controller
             Quando si utilizzano transazioni, si possono eseguire più query sul database e, in caso di eventuali errori,
             è possibile annullare tutte le modifiche apportate fino a quel momento.
 
-Il metodo DB::commit() è utilizzato per confermare e applicare le modifiche apportate durante una transazione. 
-Se tutte le operazioni eseguite all'interno della transazione sono riuscite senza errori, si chiama DB::commit() 
-per applicare in modo definitivo le modifiche al database.
-*/
+            Il metodo DB::commit() è utilizzato per confermare e applicare le modifiche apportate durante una transazione. 
+            Se tutte le operazioni eseguite all'interno della transazione sono riuscite senza errori, si chiama DB::commit() 
+            per applicare in modo definitivo le modifiche al database.
+            */
             // Redirezione alla pagina della conferma della prenotazione
-            return redirect()->route('booking.show', $booking->id)->with('success', 'Prenotazione eseguita con successo.');
+            return redirect()->route('bookings.show', $booking->id)->with('success', 'Prenotazione eseguita con successo.');
         } catch (\Exception $e) {
             // Rollback in caso di exception
             DB::rollBack();
@@ -147,27 +147,27 @@ per applicare in modo definitivo le modifiche al database.
                 // Calcola la differenza del numero di persone prenotate
                 $peopleDifference = $originalPeople - $newPeople;
 
-                // Update the available seats in the room
+                // Aggiorna il numero di posti disponibili nella stanza
                 $room = $booking->room;
                 $room->available_seats += $peopleDifference;
                 $room->save();
             }
             //questa funzione da riga 147 a 156
             /*
-$peopleDifference = $originalPeople - $newPeople;: Calcola la differenza tra il numero di persone nella prenotazione
-originale e quello nella nuova prenotazione.
-Questo valore sarà utilizzato per aggiornare il numero di posti disponibili nella stanza.
+            $peopleDifference = $originalPeople - $newPeople;: Calcola la differenza tra il numero di persone nella prenotazione
+            originale e quello nella nuova prenotazione.
+            Questo valore sarà utilizzato per aggiornare il numero di posti disponibili nella stanza.
 
-$room = $booking->room;: Recupera l'istanza del modello Eloquent associato alla stanza della prenotazione corrente.
+            $room = $booking->room;: Recupera l'istanza del modello Eloquent associato alla stanza della prenotazione corrente.
 
-$room->available_seats += $peopleDifference;: Aggiorna il numero di posti disponibili nella stanza in base alla differenza calcolata. 
-Se $peopleDifference è positivo, significa che stanno prenotando più persone, quindi il numero di posti disponibili diminuirà. 
-Se è negativo, significa che stanno annullando la prenotazione di alcune persone, quindi il numero di posti disponibili aumenterà. */
+            $room->available_seats += $peopleDifference;: Aggiorna il numero di posti disponibili nella stanza in base alla differenza calcolata. 
+            Se $peopleDifference è positivo, significa che stanno prenotando più persone, quindi il numero di posti disponibili diminuirà. 
+            Se è negativo, significa che stanno annullando la prenotazione di alcune persone, quindi il numero di posti disponibili aumenterà. */
         }
 
         $booking->update($request->all());
 
-        return redirect()->route('booking.show', $booking->id)->with('success', 'Prenotazione modificata correttamente!');
+        return redirect()->route('bookings.show', $booking->id)->with('success', 'Prenotazione modificata correttamente!');
     }
     public function show(Booking $booking)
     {

@@ -7,7 +7,7 @@
 
     <hr>
 
-    <form method="POST" action="{{ route('room.update', $room->id) }}">
+    <form method="POST" action="{{ route('rooms.update', $room->id) }}">
         @csrf
         @method('PATCH')
         <!--Quando il form viene inviato, il server Laravel interpreterà la richiesta come un aggiornamento di un record esistente, 
@@ -61,7 +61,7 @@
     </form>
 
     <!-- Form per eliminare la prenotazione -->
-    <form method="POST" action="{{ route('room.destroy', $room->id) }}">
+    <form method="POST" action="{{ route('rooms.destroy', $room->id) }}">
         @csrf
         @method('DELETE')
         <!-- <form action="/example/{{ $example->id }}" method="POST">: Questo è l'inizio del tag del form. 

@@ -16,9 +16,9 @@
     <hr>
 
     @admin
-    <p><a href="{{ route('room.edit', $room->id) }}" class="btn btn-warning btn-sm">Modifica aula</a></p>
+    <p><a href="{{ route('rooms.edit', $room->id) }}" class="btn btn-warning btn-sm">Modifica aula</a></p>
     @endadmin
-    <p><a href="{{ route('room.index') }}" class="btn btn-primary btn-sm">Vedi tutte le aule</a></p>
+    <p><a href="{{ route('rooms.index') }}" class="btn btn-primary btn-sm">Vedi tutte le aule</a></p>
     <p><a href="{{ route('home') }}" class="btn btn-primary btn-sm">Torna alla homepage</a></p>
 
 </div>

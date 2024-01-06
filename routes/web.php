@@ -36,13 +36,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 //rotta controllo prenotazioni resouce:: inserisce tutte le rotte che servono per un CRUD COMPLETO
-Route::resource('/booking', App\Http\Controllers\BookingController::class);
+Route::resource('/bookings', App\Http\Controllers\BookingController::class);
 // Rotta per pagina di conferma della prenotazione
-Route::get('/booking/{booking}/confirm-booking', [App\Http\Controllers\BookingController::class, 'confirmBooking'])->name('confirm-booking');
+Route::get('/bookings/{booking}/confirm-booking', [App\Http\Controllers\BookingController::class, 'confirmBooking'])->name('confirm-booking');
 
 // Rotta per controllo utenti - Middleware per assicurarsi che solo un admin possa accedere alle pagine
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::resource('/user', App\Http\Controllers\UserController::class);
+    Route::resource('/users', App\Http\Controllers\UserController::class);
     // Rotta per promuovere gli utenti normali ad admin
     Route::put('/users/{user}/promote', [App\Http\Controllers\UserController::class, 'promoteToAdmin'])->name('users.promoteToAdmin');
 });
@@ -57,17 +57,17 @@ a tutte le rotte incluse in questo gruppo. Il middleware auth assicura che l'ute
 mentre il middleware admin è probabilmente un middleware personalizzato che verifica se l'utente ha il ruolo di amministratore.
 */
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/room/create', [App\Http\Controllers\RoomController::class, 'create'])->name('room.create');
-    Route::post('/room', [App\Http\Controllers\RoomController::class, 'store'])->name('room.store');
+    Route::get('/rooms/create', [App\Http\Controllers\RoomController::class, 'create'])->name('rooms.create');
+    Route::post('/rooms', [App\Http\Controllers\RoomController::class, 'store'])->name('rooms.store');
 });
 // Rotta per tutte le altre pagine di room
-Route::resource('/room', App\Http\Controllers\RoomController::class)->except(['create', 'store']);
+Route::resource('/rooms', App\Http\Controllers\RoomController::class)->except(['create', 'store']);
 
 // Rotta per ottenere con script Javascript il numero di stanze disponibili
 Route::get('/api/rooms/{id}', [App\Http\Controllers\RoomController::class, 'getRoomInfo']);
 
 // Rotta per pagina mostre
-Route::get('/exhibition', [App\Http\Controllers\ExhibitionController::class, 'index'])->name('exhibition');
+Route::get('/exhibitions', [App\Http\Controllers\ExhibitionController::class, 'index'])->name('exhibitions');
 
 // Rotta per la pagina "Chi siamo"
 Route::get('/who-we-are', [App\Http\Controllers\WhoWeAreController::class, 'index'])->name('who-we-are');

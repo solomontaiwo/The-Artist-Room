@@ -24,7 +24,7 @@
             <p><strong>Persone:</strong> {{ $booking->people }}</p>
 
             <!-- Pulsante per modificare la prenotazione -->
-            <a href="{{ route('booking.edit', $booking->id) }}" class="btn btn-warning">Modifica prenotazione</a>
+            <a href="{{ route('bookings.edit', $booking->id) }}" class="btn btn-warning">Modifica prenotazione</a>
 
             <br> <br>
             <hr>

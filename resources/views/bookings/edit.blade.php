@@ -5,10 +5,10 @@
 <div class="container">
 
     <h1>Modifica la prenotazione di "{{ $booking->room->name }}" del {{ \Carbon\Carbon::parse($booking->arrival_date)->format('d/m/Y') }} alle ore {{ \Carbon\Carbon::parse($booking->arrival_time)->format('H:i') }}</h1>
-    
+
     <hr>
-    
-    <form method="POST" action="{{ route('booking.update', $booking) }}">
+
+    <form method="POST" action="{{ route('bookings.update', $booking) }}">
         @csrf
         @method('PATCH')
 
@@ -117,7 +117,7 @@
     </form>
 
     <!-- Form per eliminare la prenotazione -->
-    <form method="POST" action="{{ route('booking.destroy', $booking->id) }}" style="display: inline-block;">
+    <form method="POST" action="{{ route('bookings.destroy', $booking->id) }}" style="display: inline-block;">
         @csrf
         @method('DELETE')
 

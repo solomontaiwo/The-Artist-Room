@@ -7,7 +7,7 @@
 
     <hr>
 
-    <form action="{{ route('room.store') }}" method="POST" id="createRoomForm">
+    <form action="{{ route('rooms.store') }}" method="POST" id="createRoomForm">
         @csrf
 
         <div class="form-group">
@@ -64,7 +64,7 @@
         //stia verificando se tutti gli input richiesti del form sono stati compilati per decidere se abilitare o disabilitare il bottone.
         $('#createRoomForm input').on('input', function() {
             var isFormValid = true;
-// Itera attraverso tutti gli input obbligatori nel form
+            // Itera attraverso tutti gli input obbligatori nel form
             $('#createRoomForm input[required]').each(function() {
                 // Se l'input è vuoto, il form non è valido
                 if ($(this).val() === '') {
@@ -72,7 +72,7 @@
                     return false; // Esci dal loop prima se un input è vuoto
                 }
             });
-// Imposta lo stato del bottone a seconda della validità del form
+            // Imposta lo stato del bottone a seconda della validità del form
             $('#createRoomButton').prop('disabled', !isFormValid);
         });
     });

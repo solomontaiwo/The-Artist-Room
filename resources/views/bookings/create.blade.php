@@ -7,7 +7,7 @@
 
     <hr>
 
-    <form action="{{ route('booking.store') }}" method="POST">
+    <form action="{{ route('bookings.store') }}" method="POST">
         @csrf
 
         <div class="form-group">

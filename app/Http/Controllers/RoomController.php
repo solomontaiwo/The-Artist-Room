@@ -54,7 +54,7 @@ class RoomController extends Controller
 
         $newRoom = Room::create($data);
 
-        return redirect()->route('room.index')->with('success', 'Stanza creata!');
+        return redirect()->route('rooms.index')->with('success', 'Stanza creata!');
     }
 
     /**
@@ -89,15 +89,13 @@ class RoomController extends Controller
 
         $room->update($request->all());
 
-        return redirect()->route('room.show', $room->id)->with('success', 'Aula modificata correttamente!');
+        return redirect()->route('rooms.show', $room->id)->with('success', 'Aula modificata correttamente!');
     }
 
     public function show(Room $room)
     {
         return view('rooms.show', compact('room'));
     }
-
-    // Add methods for editing and updating a room...
 
     /**
      * Remove the specified room from the database.
