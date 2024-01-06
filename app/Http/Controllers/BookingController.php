@@ -16,7 +16,6 @@ class BookingController extends Controller
     {
         //Il middleware viene specificato nel costruttore del controller
         $this->middleware('auth');
-        
     }
 
     public function index()
@@ -52,11 +51,11 @@ class BookingController extends Controller
         ]);
 
         try {
-//
+            //
             DB::beginTransaction();
-//Riga 56 ci permette: se viene lanciata un'eccezione di qualsiasi tipo all'interno della chiusura, viene eseguito il rollback della transazione. Ciò significa che se si verifica un errore SQL (uno che normalmente non fallirebbe in modo silenzioso),
+            //Riga 56 ci permette: se viene lanciata un'eccezione di qualsiasi tipo all'interno della chiusura, viene eseguito il rollback della transazione. Ciò significa che se si verifica un errore SQL (uno che normalmente non fallirebbe in modo silenzioso),
             // viene eseguito il rollback della transazione. 
-            
+
             // Cerca l'aula selezionata
             //Il metodo findOrFail nel contesto di Laravel è utilizzato per recuperare un record 
             //dal database in base a una chiave primaria specificata
@@ -153,8 +152,8 @@ per applicare in modo definitivo le modifiche al database.
                 $room->available_seats += $peopleDifference;
                 $room->save();
             }
-//questa funzione da riga 147 a 156
-/*
+            //questa funzione da riga 147 a 156
+            /*
 $peopleDifference = $originalPeople - $newPeople;: Calcola la differenza tra il numero di persone nella prenotazione
 originale e quello nella nuova prenotazione.
 Questo valore sarà utilizzato per aggiornare il numero di posti disponibili nella stanza.

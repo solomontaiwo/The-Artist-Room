@@ -65,7 +65,7 @@
                             <a class="nav-link" href="{{ route('who-we-are') }}">{{ __('Chi siamo') }}</a>
                         </li>
 
-                        <!-- Link di autenticazione  la direttiva @guest di blade mi da la possibilità di far vedere la parte per accedere all'utente guest ovvero utente non autenticato-->
+                        <!-- Link di autenticazione la direttiva guest di blade mi dà la possibilità di far vedere la parte per accedere all'utente guest ovvero utente non autenticato-->
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
