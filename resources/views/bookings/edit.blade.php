@@ -64,7 +64,7 @@
             <label for="departure_date" class="form-label">Data di partenza</label>
             <select name="departure_date" id="formatted_departure_date" class="form-control">
                 <option value="" selected disabled></option>
-                <!-- Le opzioni si aggiornano con Javascript dinamicamente in base alla data di arrivo -->
+                <!-- Le opzioni si aggiornano con Javascript dinamicamente in base alla data di arrivo RIGA 212 -->
             </select>
             <input type="hidden" name="departure_date" id="departure_date">
             <div id="" class="form-text">Cambia la data di partenza</div>
@@ -144,7 +144,6 @@
         function fetchRoomInfo() {
             var roomId = $('#room_id').val();
 
-            console.log('Fetching room information for room ID:', roomId);
 
             // Trova i posti disponibili nellautla selezionata usando una AJAX request
             $.ajax({
@@ -217,11 +216,11 @@ e se tutti gli altri campi non sono compilati -->
             var arrivalDate = $('#arrival_date').val();
 
             if (arrivalDate) {
-                // Clear existing options
+
                 $('#formatted_departure_date').empty();
 
                 // Aggiungi opzioni in base alla data di arrivo selezionata
-                for (var i = 1; i <= 2; i++) { // You can adjust the range based on your requirements
+                for (var i = 1; i <= 2; i++) {
                     var newDate = new Date(arrivalDate);
                     newDate.setDate(newDate.getDate() + i);
 
