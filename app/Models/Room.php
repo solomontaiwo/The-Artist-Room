@@ -8,8 +8,8 @@ class Room extends Model
 {
     protected $fillable = [
         'room_id',
-        'name', 
-        'description', 
+        'name',
+        'description',
         'address',
         'size',
         'available_seats'
