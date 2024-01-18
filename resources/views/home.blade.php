@@ -67,7 +67,6 @@
                             <h5 class="card-title">Scultori</h5>
                             <p class="card-text">Scalpello alle mani: diamo forma alle tue idee, dandoti la possibilità di modellare e creare le tue sculture</p>
                             <a href="{{ route('bookings.create') }}" class="btn btn-outline-success btn-sm">Prenota ora</a>
-
                         </div>
                     </div>
                 </div>
@@ -78,7 +77,6 @@
                             <h5 class="card-title">Pittori e Disegnatori</h5>
                             <p class="card-text">Lascia libero spazio alla tua creatività: adesso hai a disposizione materiale e spazi adatti per esprimerti al meglio</p>
                             <a href="{{ route('bookings.create') }}" class="btn btn-outline-success btn-sm">Prenota ora</a>
-
                         </div>
                     </div>
                 </div>

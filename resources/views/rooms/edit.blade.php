@@ -12,7 +12,7 @@
         @method('PATCH')
         <!--Quando il form viene inviato, il server Laravel interpreterà la richiesta come un aggiornamento di un record esistente, 
         poiché il metodo HTTP è stato impostato su PATCH.
-        <form action="/example/{{ $example->id }}" method="POST">: Questo è l'inizio del tag del form. L'attributo action specifica l'URL 
+        L'inizio del tag del form si trova a riga 10. L'attributo action specifica l'URL 
         a cui verrà inviata la richiesta, e method="POST" viene utilizzato perché il browser supporta solo metodi HTTP GET e POST nei tag dei form HTML. 
         -->
 
@@ -64,7 +64,7 @@
     <form method="POST" action="{{ route('rooms.destroy', $room->id) }}">
         @csrf
         @method('DELETE')
-        <!-- <form action="/example/{{ $example->id }}" method="POST">: Questo è l'inizio del tag del form. 
+        <!-- L'inizio del tag del form si trova a riga 64. 
         L'attributo action specifica l'URL a cui verrà inviata la richiesta, e method="POST" viene utilizzato perché il browser 
         supporta solo metodi HTTP GET e POST nei tag dei form HTML. Tuttavia, grazie a @method('DELETE'), il metodo reale sarà DELETE.
 

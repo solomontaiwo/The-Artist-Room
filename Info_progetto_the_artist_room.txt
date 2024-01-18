@@ -275,6 +275,35 @@ implementata impossibilità di premere pulsante di prenotazione se i posti non s
 
 - [x] Rivedere pagina Mostre (VueJS)
 
-- [ ] Vedere presentazione 
+- [x] Vedere presentazione: Giorgia (Presentazione progetto, indice, panoramica, statistiche), 
+                            Luca (Logo, Wireframe, prototipo)
+                            Gaia (Gestione prenotazioni, vantaggi, su cosa ci siamo concentrati)
+                            Solomon (Cosa abbiamo utilizzato, conclusioni, ringraziamenti)
+                            2:30 a testa, 10 minuti totali
 
-- [ ] Pensare a percorso guidato 
+- [x] Percorso guidato: 1. Login da parte di utente normale (login iniziale di utente normale Giacomo Piva)
+                        2. Mostrare codice di citazioni in home.blade.php (da riga 49 a 60) e parlare brevemente 
+                        di schede scultori, pittori e disegnatori, camera oscura (da riga 62 a 97 - bootstrap)
+                        3. Pagina nuova prenotazione in resources/bookings/create.blade.php (funzione store di bookings, da riga 41 a 98 in app/http/controllers/BookingController)
+                        4. Pagina dettagli prenotazione in resources/bookings/show.blade.php   
+                        5. Pagina modifica prenotazione edit.blade.php (particolarità: validazione dei dati e pulsante elimina prenotazione)
+                        Nominare hidden input a riga 90 per calcolo posti dispobibili e pulsante elimina prenotazione che ha rotta verso funzione bookings.destroy - da riga 188 a 201
+                        6. Mostrare tutte le aule disponibili e la differenza tra utente normale e amministratore
+                        7. Mostrare funzionalità amministratori (crea aula e controllo utenti)
+                        8. Mostrare pulsanti prenotazioni, promuovi ad admin ed elimina utente 
+                        (gli ultimi due pulsanti sono AJAX, visibili solo come admin. 
+                        Codice in resources/views/users/index.blade.php, da riga 46 a 107)
+                        9. Pagina prossime mostre in VueJS 
+                        (componente in resources/js/ExhibitionComponent.vue: è diviso in template, script e style. Nella prima sezione si 
+                        trova lo scheletro, ossia le schede delle prossime mostre; in script abbiamo la funzione che mostra i dettagli - nome, descrizone, immagine e parametro mostraDettagli - e il metodo 'toggleDettagli' 
+                        che permette di cliccare sul pulsante 'Mostra dettagli' per vedere la descrizione delle mostre; style definisce l'animazione del titolo 'Prossime mostre')
+                        npm run build per costruire gli asset del componente VueJS.
+                        L'animazione di 'Prossime mostre' è realizzata con CSS3 (keyframes).
+                        10. Conclusioni e parliamo delle animazioni
+
+                        Luca: punti 1 e 2
+                        Gaia: punti 3, 4 e 5
+                        Solomon: punti 6, 7, 8
+                        Giorgia: punti 9 e 10
+
+

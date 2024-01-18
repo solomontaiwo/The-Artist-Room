@@ -138,8 +138,6 @@ e se tutti gli altri campi non sono compilati -->
             var departureDate = $('#formatted_departure_date').val();
             var departureTime = $('#departure_time').val();
 
-            console.log(departureDate);
-
             /* Richiesta AJAX per verificare se i posti richiesti sono maggiori di quelli disponibili.
             In caso positivo disabilitare il pulsante di prenotazione. */
             if (roomId && peopleCount && arrivalDate && arrivalTime && departureDate && departureTime) {
@@ -197,8 +195,6 @@ e se tutti gli altri campi non sono compilati -->
                     var year = parts[2];
 
                     var formattedDateWithLines = new Date(`${year}-${month}-${day}`).toISOString().slice(0, 10);
-
-                    console.log(formattedDateWithLines);
 
                     $('#departure_date').val(formattedDateWithLines);
                 }

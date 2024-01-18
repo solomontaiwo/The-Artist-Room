@@ -198,6 +198,6 @@ class BookingController extends Controller
         $room->available_seats += $peopleCount;
         $room->save();
 
-        return redirect('/booking');
+        return redirect('/bookings');
     }
 }

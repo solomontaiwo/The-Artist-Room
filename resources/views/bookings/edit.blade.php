@@ -86,7 +86,7 @@
 
         <br>
 
-        <!-- Input nascosto per il numero originario di persone originario -->
+        <!-- Input nascosto per il numero di persone originario -->
         <input type="hidden" name="original_people" value="{{ $booking->people }}">
 
         <div class="form-group">
@@ -99,16 +99,6 @@
 
         <!-- Manda lo user_id al BookingController, assicurandosi prima che l'utente sia effettivamente autenticato -->
         <input type="hidden" name="user_id" value="{{ optional(Auth::user())->id }}">
-
-        <!-- Script per verificare se viene cambiata aula -->
-        <script>
-            $(document).ready(function() {
-                $('#room_id').change(function() {
-                    var roomName = $('#room_id option:selected').text();
-                    $('#room_name').val(roomName);
-                });
-            });
-        </script>
 
         <input type="hidden" name="user_id" value="{{ optional(Auth::user())->id }}">
 
@@ -247,5 +237,15 @@ e se tutti gli altri campi non sono compilati -->
 
         // Aggiornamento iniziale al caricamento della pagina
         updateDepartureDateOptions();
+    });
+</script>
+
+<!-- Script per verificare se viene cambiata aula -->
+<script>
+    $(document).ready(function() {
+        $('#room_id').change(function() {
+            var roomName = $('#room_id option:selected').text();
+            $('#room_name').val(roomName);
+        });
     });
 </script>
