@@ -242,68 +242,70 @@ User:
 
     Relazione hasMany(Booking)
 
- ---- REQUISITI MINIMI e ASPETTI DA IMPLEMENTARE ----
+ ---- REQUISITI MINIMI e ATTIVITA' ----
 
 Requisiti minimi del progetto: 
-1. Gestione di più livelli di utenti: amministratori, utenti, ospiti ... --> fatto
-2. Almeno una entità con CRUD completo --> fatto (prenotazioni)
-3. Gestione della validazione dei dati inseriti --> fatto (creazione e modifica delle prenotazioni, creazione aula) 
-4. Almeno un inserimento o modifica di una entità sviluppato in AJAX --> modifica della stanza da parte di un admin? --> fatto con promozione ad admin e eliminazione utente
+1. [X] Gestione di più livelli di utenti: amministratori, utenti, ospiti ...
+2. [X] Almeno una entità con CRUD completo --> prenotazioni
+3. [X] Gestione della validazione dei dati inseriti --> creazione e modifica delle prenotazioni, creazione aula 
+4. [X] Almeno un inserimento o modifica di una entità sviluppato in AJAX --> promozione ad admin ed eliminazione utente
 
-Aspetti da implementare:
-- [x] Inserire tempo di arrivo e partenza come parametri delle prenotazioni
+Attività da svolgere:
+- [X] Inserire tempo di arrivo e partenza come parametri delle prenotazioni;
 
-- [x] Fare logica per permettere agli amministratori di rendere admin altri utenti 
--> da view utenti visibile solo agli admin; in questa view si vedono tutti gli utenti , con le loro prenotazioni e la possibilità di eliminarli con 
-una AJAX request
+- [X] Fare logica per permettere agli amministratori di rendere admin altri utenti;
 
-- [x] Fare in modo che gli utenti amministratori possano vedere tutte le prenotazioni eseguite da tutti gli utenti
+- [X] Fare in modo che gli utenti amministratori possano vedere tutte le prenotazioni eseguite da tutti gli utenti;
 
-- [x] Implementare AJAX -> implementare una JQuery (fatto) -> creare una AJAX request con JQuery (fatto)
+- [X] Implementare AJAX request per posti disponibili;
 
-- [x] Implementare animazioni con JQuery
+- [X] Implementare animazioni con jQuery;
 
-- [x] Implementare homepage di Giorgia
+- [X] Implementare homepage di Giorgia;
 
-- [x] Implementare codice per “che cosa dicono di noi”
+- [X] Implementare codice per “che cosa dicono di noi”;
 
-- [x] Implementare avviso di errore di prenotazione stanza quando non ci sono posti disponibili -> 
-implementata impossibilità di premere pulsante di prenotazione se i posti non sono disponibili
+- [X] Implementare impossibilità di premere pulsante di prenotazione se i posti non sono disponibili;
 
-- [x] Rivedere RoomController 
--> rivisto inserendo logiche di creazione e modifica aula
+- [X] Rivedere RoomController inserendo logiche di creazione e modifica aule;
 
-- [x] Rivedere pagina Mostre (VueJS)
+- [X] Implementare correttamente pagina Mostre (VueJS);
 
-- [x] Vedere presentazione: Giorgia (Presentazione progetto, indice, panoramica, statistiche), 
-                            Luca (Logo, Wireframe, prototipo)
-                            Gaia (Gestione prenotazioni, vantaggi, su cosa ci siamo concentrati)
-                            Solomon (Cosa abbiamo utilizzato, conclusioni, ringraziamenti)
-                            2:30 a testa, 10 minuti totali
+- [X] Presentazione progetto (https://www.canva.com/design/DAF2Sa5JzyI/rRurYLQjj4uAHAvgEtEwiA/edit): 
+    Giorgia: Presentazione progetto, indice, panoramica, statistiche; 
+    Luca: Logo, Wireframe, prototipo;
+    Gaia: Gestione prenotazioni, vantaggi, su cosa ci siamo concentrati;
+    Solomon: Cosa abbiamo utilizzato, conclusioni, ringraziamenti.
+--> Indicativamente 2:30 minuti a testa, 10 minuti totali.
 
-- [x] Percorso guidato: 1. Login da parte di utente normale (login iniziale di utente normale Giacomo Piva)
-                        2. Mostrare codice di citazioni in home.blade.php (da riga 49 a 60) e parlare brevemente 
-                        di schede scultori, pittori e disegnatori, camera oscura (da riga 62 a 97 - bootstrap)
-                        3. Pagina nuova prenotazione in resources/bookings/create.blade.php (funzione store di bookings, da riga 41 a 98 in app/http/controllers/BookingController)
-                        4. Pagina dettagli prenotazione in resources/bookings/show.blade.php   
-                        5. Pagina modifica prenotazione edit.blade.php (particolarità: validazione dei dati e pulsante elimina prenotazione)
-                        Nominare hidden input a riga 90 per calcolo posti dispobibili e pulsante elimina prenotazione che ha rotta verso funzione bookings.destroy - da riga 188 a 201
-                        6. Mostrare tutte le aule disponibili e la differenza tra utente normale e amministratore
-                        7. Mostrare funzionalità amministratori (crea aula e controllo utenti)
-                        8. Mostrare pulsanti prenotazioni, promuovi ad admin ed elimina utente 
-                        (gli ultimi due pulsanti sono AJAX, visibili solo come admin. 
-                        Codice in resources/views/users/index.blade.php, da riga 46 a 107)
-                        9. Pagina prossime mostre in VueJS 
-                        Componente in resources/js/ExhibitionComponent.vue: è diviso in template, script e style. Nella prima sezione si 
-                        trova lo scheletro, ossia le schede delle prossime mostre; in script abbiamo la funzione che mostra i 
-                        dettagli - nome, descrizone, immagine e parametro mostraDettagli - e il metodo 'toggleDettagli' 
-                        che permette di cliccare sul pulsante 'Mostra dettagli' per vedere la descrizione delle mostre; style definisce 
-                        l'animazione del titolo 'Prossime mostre'.
-                        Per costruire gli asset del componente VueJS occorre eseguire il comando 'npm run build'.
-                        L'animazione di 'Prossime mostre' è realizzata con CSS3 (keyframes).
-                        10. Conclusioni e parliamo delle animazioni
-
-                        Divisione delle parti: Luca: punti 1 e 2
-                                               Gaia: punti 3, 4 e 5
-                                               Solomon: punti 6, 7, 8
-                                               Giorgia: punti 9 e 10
+- [X] Pensare a percorso guidato: 
+    1. Login da parte di utente normale (login iniziale di utente normale Giacomo Piva);
+    2. Mostrare codice di citazioni in home.blade.php (da riga 49 a 60) e parlare brevemente 
+        di schede scultori, pittori e disegnatori, camera oscura (da riga 62 a 97 - bootstrap);
+    3. Pagina nuova prenotazione in resources/bookings/create.blade.php: 
+        funzione store di bookings, da riga 41 a 98 in app/http/controllers/BookingController;
+    4. Pagina dettagli prenotazione in resources/bookings/show.blade.php;   
+    5. Pagina modifica prenotazione edit.blade.php (particolarità: validazione dei dati e pulsante elimina prenotazione)
+       Nominare hidden input a riga 90 per calcolo posti dispobibili e 
+       pulsante elimina prenotazione che ha rotta verso funzione bookings.destroy - da riga 188 a 201;
+    6. Mostrare tutte le aule disponibili e la differenza tra utente normale e amministratore
+    7. Mostrare funzionalità amministratori (crea aula e controllo utenti)
+    8. Mostrare pulsanti prenotazioni, promuovi ad admin ed elimina utente 
+        (gli ultimi due pulsanti sono AJAX, visibili solo come admin. 
+        Codice in resources/views/users/index.blade.php, da riga 46 a 107)
+    9. Pagina prossime mostre in VueJS: 
+        Componente in resources/js/ExhibitionComponent.vue: è diviso in template, script e style. Nella prima sezione si 
+        trova lo scheletro, ossia le schede delle prossime mostre; in script abbiamo la funzione che mostra i 
+        dettagli - nome, descrizone, immagine e parametro mostraDettagli - e il metodo 'toggleDettagli' 
+        che permette di cliccare sul pulsante 'Mostra dettagli' per vedere la descrizione delle mostre; style definisce 
+        l'animazione del titolo 'Prossime mostre'.
+        Per costruire gli asset del componente VueJS occorre eseguire il comando 'npm run build'.
+        L'animazione di 'Prossime mostre' è realizzata con CSS3 (keyframes).
+    10. Conclusioni e parliamo delle animazioni.
+        
+    Divisione delle parti: 
+        Luca: punti 1 e 2;
+        Gaia: punti 3, 4 e 5;
+        Solomon: punti 6, 7, 8;
+        Giorgia: punti 9 e 10.
+    --> Indicativamente 3:45 minuti a testa, 15 minuti totali.
