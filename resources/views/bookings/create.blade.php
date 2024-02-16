@@ -14,11 +14,9 @@
             <label for="room_id" class="form-label">Stanza</label>
             <select name="room_id" id="room_id" class="form-control">
                 <option value="" selected disabled>Seleziona un'aula</option> <!-- Per fare in modo che nessuna stanza sia preselezionata -->
-                @isset($rooms)
                 @foreach ($rooms as $room)
                 <option value="{{ $room->id }}">{{ $room->name }}</option>
                 @endforeach
-                @endisset
             </select>
             <div id="" class="form-text">
                 <!-- Script per visualizzare in tempo reale i posti liberi nell'aula selezionata, inserito come 'sottotitolo' del form -->
