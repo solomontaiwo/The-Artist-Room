@@ -110,9 +110,6 @@ class BookingController extends Controller
     // Funzione per la modifica della prenotazione con il form relativo
     public function update(Request $request, Booking $booking)
     {
-
-        Log::info($request);
-
         // Validazione dei dati
         $request->validate([
             'room_id' => 'required|exists:rooms,id',
@@ -125,16 +122,10 @@ class BookingController extends Controller
             'user_id' => 'required|exists:users,id',
         ]);
 
-        Log::info($request);
-
         // Per verificare se l'aula è cambiata o meno
         $originalRoomId = $booking->room_id;
 
-        Log::info($originalRoomId);
-
         $newRoomId = $request->input('room_id');
-
-        Log::info($newRoomId);
 
         // Per verificare se è cambiato il numero di persone
         $originalPeople = $booking->people;
@@ -147,8 +138,6 @@ class BookingController extends Controller
 
             $newRoom->available_seats -= $request->input('people');
             $newRoom->save();
-
-            Log::info($newRoom);
 
             $originalRoom->available_seats += $originalPeople;
             $originalRoom->save();
