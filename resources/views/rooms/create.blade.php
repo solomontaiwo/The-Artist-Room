@@ -51,6 +51,13 @@
         <br>
 
         <button type="submit" id="createRoomButton" class="btn btn-success" disabled>Crea aula</button>
+
+        <br>
+
+        <br>
+
+        <a href="{{ url()->previous() }}" class="btn btn-primary">Indietro</a>
+
     </form>
 </div>
 

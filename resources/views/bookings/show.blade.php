@@ -16,7 +16,7 @@
     <p><strong>Numero di persone:</strong> {{ $booking->people }}</p>
 
     @admin
-    <p><strong>Data e ora creazione prenotazione:</strong> {{ $booking->created_at }}</p>
+    <p><strong>Data e ora creazione prenotazione:</strong> {{ \Carbon\Carbon::parse($booking->created_at)->format('d/m/Y H:i') }}</p>
     @endadmin
 
     <hr>

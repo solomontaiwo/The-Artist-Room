@@ -46,7 +46,7 @@
                             <img src="{{ asset('images/gaudenzi-luca.jpg') }}" alt="" class="card-img-top">
                             <div class="card-body">
                                 <h5 class="card-title">Gaudenzi Luca</h5>
-                                <p class="card-text">Giocatore di tennis professionista</p>
+                                <p class="card-text">Professionista di tennis</p>
                             </div>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                             <img src="{{ asset('images/marzola-gaia.jpg') }}" alt="" class="card-img-top">
                             <div class="card-body">
                                 <h5 class="card-title">Marzola Gaia</h5>
-                                <p class="card-text">Quella che offre da bere a tutti</p>
+                                <p class="card-text">Fotografa ma non troppo</p>
                             </div>
                         </div>
                     </div>

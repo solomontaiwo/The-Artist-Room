@@ -73,6 +73,9 @@
         <button type="submit" class="btn btn-danger" onclick="return confirm('Sei sicuro di voler eliminare l\'aula?')">Elimina aula</button>
     </form>
 
+    <a href="{{ url()->previous() }}" class="btn btn-primary">Indietro</a>
+
+
 </div>
 
 @endsection

@@ -55,7 +55,6 @@ export default {
 
 <style>
 .funky-title {
-    transform: rotate(-10deg);
     animation: bounce 2s infinite;
 }
 

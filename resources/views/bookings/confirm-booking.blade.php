@@ -12,13 +12,13 @@
     <p><strong>Giorno di arrivo:</strong> {{ $booking->arrival_date }}</p>
     <p><strong>Orario di partenza:</strong> {{ \Carbon\Carbon::parse($booking->arrival_time)->format('H:i') }}</p>
     <!--l pacchetto Carbon può aiutare a rendere la gestione della data e dell'ora in PHP molto più semplice e semantica, in modo che il nostro codice possa diventare più leggibile e gestibile.-->
-    <p><strong>Giorno di partenza:</strong> {{ $booking->departure_date }}</p>
+    <p><strong>Giorno di partenza:</strong> {{ \Carbon\Carbon::parse($booking->departure_date)->format('d/m/Y') }}</p>
     <p><strong>Orario di partenza:</strong> {{ $booking->departure_time }}</p>
     <p><strong>Numero di persone:</strong> {{ $booking->people }}</p>
 
     <br>
 
-    <p><strong>Data e ora creazione prenotazione:</strong> {{ $booking->created_at }}</p>
+    <p><strong>Data e ora creazione prenotazione:</strong> {{ \Carbon\Carbon::parse($booking->created_at)->format('d/m/Y') }}</p>
 
     <hr>
     <p><a href="{{ route('bookings.edit', $booking->id) }}" class="btn btn-warning">Modifica prenotazione</a></p>

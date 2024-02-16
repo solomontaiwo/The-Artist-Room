@@ -91,7 +91,7 @@
 
         <div class="form-group">
             <label for="people" class="form-label">Numero di persone</label>
-            <input type="number" class="form-control" name="people" value="{{ $booking->people }}">
+            <input type="number" id="people" class="form-control" name="people" value="{{ $booking->people }}">
             <div id="" class="form-text">Cambia il nuovo numero di persone</div>
         </div>
 
@@ -100,9 +100,7 @@
         <!-- Manda lo user_id al BookingController, assicurandosi prima che l'utente sia effettivamente autenticato -->
         <input type="hidden" name="user_id" value="{{ optional(Auth::user())->id }}">
 
-        <input type="hidden" name="user_id" value="{{ optional(Auth::user())->id }}">
-
-        <button type="submit" class="btn btn-primary">Salva modifiche</button>
+        <button type="submit" id="bookingButton" class="btn btn-success">Salva modifiche</button>
 
     </form>
 
@@ -113,6 +111,11 @@
 
         <button type="submit" class="btn btn-danger" onclick="return confirm('Sei sicuro di voler eliminare la prenotazione?')">Elimina prenotazione</button>
     </form>
+
+
+    <br>
+
+    <a href="{{ url()->previous() }}" class="btn btn-primary">Indietro</a>
 
 </div>
 
@@ -133,7 +136,6 @@
 
         function fetchRoomInfo() {
             var roomId = $('#room_id').val();
-
 
             // Trova i posti disponibili nellautla selezionata usando una AJAX request
             $.ajax({
@@ -175,6 +177,7 @@ e se tutti gli altri campi non sono compilati -->
                     method: 'GET',
                     success: function(response) {
                         var availableSeats = response.available_seats;
+                        /* Controllo che i posti prenotati siano minori o uguali ai posti disponibili */
                         $('#bookingButton').prop('disabled', peopleCount > availableSeats);
                     },
                     error: function() {
@@ -187,6 +190,7 @@ e se tutti gli altri campi non sono compilati -->
             }
         }
 
+
         // Controlla se viene inserito il numero di persone che prenota l'aula
         $('#people').on('input', updateBookingButton);
 
@@ -194,6 +198,7 @@ e se tutti gli altri campi non sono compilati -->
         $('#room_id, #arrival_date, #arrival_time, #formatted_departure_date, #departure_time').change(updateBookingButton);
 
         // Aggiornamento iniziale al caricamento della pagina
+
         updateBookingButton();
     });
 </script>
