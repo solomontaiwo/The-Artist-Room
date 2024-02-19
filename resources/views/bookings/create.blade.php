@@ -179,11 +179,14 @@ e se tutti gli altri campi non sono compilati -->
                 $('#formatted_departure_date').empty();
 
                 // Aggiungi opzioni in base alla data di arrivo selezionata
+                //Viene creata una nuova data (newDate) aggiungendo i giorni alla data di arrivo selezionata.
+                //Un ciclo viene eseguito due volte per aggiungere opzioni per i due giorni successivi alla data di arrivo selezionata
                 for (var i = 1; i <= 2; i++) {
                     var newDate = new Date(arrivalDate);
                     newDate.setDate(newDate.getDate() + i);
 
                     var formattedDate = newDate.toLocaleDateString('it-IT');
+                    //formatta secondo stardard italiano
 
                     $('#formatted_departure_date').append('<option value="' + formattedDate + '">' + formattedDate + '</option>');
 
@@ -191,6 +194,9 @@ e se tutti gli altri campi non sono compilati -->
                     var day = parts[0];
                     var month = parts[1];
                     var year = parts[2];
+        //Questa riga di codice crea una nuova data utilizzando le variabili year, month, e day,
+        //quindi la converte in una stringa nel formato ISO (International Organization for Standardization)
+         //e ne estrae una sottostringa di 10 caratteri.
 
                     var formattedDateWithLines = new Date(`${year}-${month}-${day}`).toISOString().slice(0, 10);
 
@@ -199,7 +205,7 @@ e se tutti gli altri campi non sono compilati -->
             }
         }
 
-        // Controlla se ci sono modifiche al form arrival date
+        // Controlla se ci sono modifiche ad 'arrival date'
         $('#arrival_date').change(function() {
             updateDepartureDateOptions();
         });
