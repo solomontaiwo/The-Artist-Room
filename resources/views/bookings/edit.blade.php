@@ -15,13 +15,11 @@
         <div class="form-group">
             <label for="room_id" class="form-label">Stanza</label>
             <select name="room_id" id="room_id" class="form-control">
-                @isset($rooms)
                 @foreach ($rooms as $room)
                 <option value="{{ $room->id }}" {{ $booking->room_id == $room->id ? 'selected' : '' }}>
                     {{ $room->name }}
                 </option>
                 @endforeach
-                @endisset
             </select>
             <div id="" class="form-text">
                 <div id="availableSeatsInfo">Posti disponibili nell'aula selezionata: 0</div>
