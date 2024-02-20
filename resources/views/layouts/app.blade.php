@@ -135,7 +135,7 @@
                             stanze adibite per artisti.
                         </p>
                         <p><a href="/home" class="fw-bold" style="text-decoration: none">Home</a></p>
-                        <p><a href="/who-are-we" class="fw-bold" style="text-decoration: none">Chi siamo</a></p>
+                        <p><a href="/who-we-are" class="fw-bold" style="text-decoration: none">Chi siamo</a></p>
                     </div>
                     <!-- Grid column -->
 
