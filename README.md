@@ -4,8 +4,8 @@
 
 ## The Artist Room
 
-Progetto a conclusione dell'insegnamento di Tecnologie Web (a.a. 2023/24) del corso di Informatica presso l'Università degli Studi di Ferrara.
+Repository containing the project for the Web Technologies class of the Computer Science course at the University of Ferrara, academic year 2023/24.
 
-<h3>Membri</h3>
+<h3>Members</h3>
 <strong>Gaudenzi Luca</strong> - <strong>Marzola Gaia</strong> - <strong>Pirelli Giorgia</strong> - <strong>Taiwo Solomon Olamide</strong>
 <hr>
