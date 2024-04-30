@@ -7,7 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'The Artist Room') }}</title>
+    <title>{{ 'The Artist Room' }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -28,7 +28,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <!-- Logo dell'app e nome -->
                     <img src="{{ asset('images/the-artist-room-logo.png') }}" alt="Logo" width="50" height="50">
-                    {{ config('app.name', 'The Artist Name') }}
+                    {{ 'The Artist Name' }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
