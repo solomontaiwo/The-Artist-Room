@@ -12,8 +12,8 @@ Repository containing the project for the Web Technologies class of the Computer
 
 <h3>Screenshots</h3>
 <img src="public/images/screenshots/full-hd/full-hd-bookings-create-the-artist-room.png"/>
-<img src="public/images/screenshots/full-hd/full-hd-bookings-the-artist-room.png" width="200" height="200"/>
-<img src="public/images/screenshots/full-hd/full-hd-exhibitions-the-artist-room.png" width="200" height="200"/>
-<img src="public/images/screenshots/full-hd/full-hd-rooms-the-artist-room.png" width="200" height="200"/>
-<img src="public/images/screenshots/full-hd/full-hd-the-artist-room.png" width="200" height="200"/>
-<img src="public/images/screenshots/full-hd/full-hd-users-the-artist-room.png" width="200" height="200"/>
+<img src="public/images/screenshots/full-hd/full-hd-bookings-the-artist-room.png"/>
+<img src="public/images/screenshots/full-hd/full-hd-exhibitions-the-artist-room.png"/>
+<img src="public/images/screenshots/full-hd/full-hd-rooms-the-artist-room.png"/>
+<img src="public/images/screenshots/full-hd/full-hd-the-artist-room.png"/>
+<img src="public/images/screenshots/full-hd/full-hd-users-the-artist-room.png"/>
